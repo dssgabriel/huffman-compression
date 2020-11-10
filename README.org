@@ -1,11 +1,11 @@
-#+TITLE:    IN505 - C++ project: encrypting and decrypting
+#+TITLE:    IN505 - C++ project: Encryption and Decryption
 #+AUTHOR:   Gabriel Dos Santos
 
 * Table of contents :toc:
 - [[#about][About]]
 - [[#part-1-abstract-data-structures][Part 1: Abstract data structures]]
 - [[#part-2-encryption][Part 2: Encryption]]
-- [[#part-3-decrypting][Part 3: Decrypting]]
+- [[#part-3-decryption][Part 3: Decryption]]
 
 * About
 The main goal of this project is to program an encryption and decryption system based on the Huffman code.
@@ -25,8 +25,13 @@ The goal of this part is to propose an object-oriented implementation of the str
 1. Propose two classes, the class ~Node~ of which each instance represents the node of a binary tree, and the class ~BinaryTree~ of which each instance represents a binary tree.
 2. Implement the operations for inserting and removing nodes from the tree, modifying the label of a node, researching an element in the tree, as well as the operations of fusion and decomposition of binary trees. You may also overload the necessary operators.
 3. Propose a test program that demonstrates the features of a binary tree.
-4. Implement a simple graphical user interface that allows, amongst other things, to print the created binary tree.
+4. Implement a simple graphical user interface (GUI) that allows, amongst other things, to print the created binary tree.
 
 * Part 2: Encryption
+The goal of this part is to take an input text (it can be in English, French, or any other language that you want) and to output an encrypted text using the Huffman code. Your application must support the following operations:
+1. Compute the percentage of occurence for each letter of the alphabet of the input text.
+2. Using the previously defined model of tree (cf. [[#part1-abstract-data-structures][part 1]]), create a encryption binary tree that implements the aforementioned algorithm (cf. [[#about][about]]) and the statistics evaluated in the first step.
+3. Encrypt an input text with the letter encryption made in step 2.
+4. Enhance the GUI to allow the user to print the text encrypt and its binary output.
 
-* Part 3: Decrypting
+* Part 3: Decryption
