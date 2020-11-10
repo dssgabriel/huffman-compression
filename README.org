@@ -8,13 +8,13 @@
 - [[#part-3-decryption][Part 3: Decryption]]
 
 * About
-The main goal of this project is to program an encryption and decryption system based on the Huffman code.
+The main goal of this project is to program an encryption and decryption application based on the Huffman code.
 
 The Huffman code aims at translating a text in binary (with '0's and '1's) and compressing the size of the output file without losing any data. For each letters in the text to encrypt, we count how many instances of each letters there are and then apply the following algorithm on each one:
 - Initially, each letter is represented by a binary tree labeled with the occurence of that character in the text. While there are more than one binary tree, do the following operations:
   1. Take ~A1~ and ~A2~, the two binary trees with the smallest label ~e1~ and ~e2~.
-  2. Create a new binary tree ~A~ of which the root ~r~ has for left and right branches the root of ~A1~ and ~A2~.
-  3. The root ~r~ of ~A~ is labeled with ~e1 + e2~.
+  2. Create a new binary tree ~A~ of which the root ~r~ has for left and right branches the roots of ~A1~ and ~A2~.
+  3. Label the root ~r~ of ~A~ with ~e1 + e2~.
 - For each node of the final tree, the left branches are labeled with '0's, and the right branches with '1's.
 - The code associated with each character is the binary word corresponding to the path from the root of the final binary tree to the leaf representing the letter.
 
@@ -35,3 +35,7 @@ The goal of this part is to take an input text (it can be in English, French, or
 4. Enhance the GUI to allow the user to print the text encrypt and its binary output.
 
 * Part 3: Decryption
+The goal of this third and last part is to take a encrypted text with the Huffman code and to decrypt this text. Your application should be able to:
+- Verify if a text has been encrypted using the binary tree created in part 2.
+- Decrypt a text encrypted with the Huffman code.
+- Display the text to decrypt in the GUI and print the result of the decryption process.
