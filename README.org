@@ -1,0 +1,32 @@
+#+TITLE:    IN505 - C++ project: encrypting and decrypting
+#+AUTHOR:   Gabriel Dos Santos
+
+* Table of contents :toc:
+- [[#about][About]]
+- [[#part-1-abstract-data-structures][Part 1: Abstract data structures]]
+- [[#part-2-encryption][Part 2: Encryption]]
+- [[#part-3-decrypting][Part 3: Decrypting]]
+
+* About
+The main goal of this project is to program an encryption and decryption system based on the Huffman code.
+
+The Huffman code aims at translating a text in binary (with '0's and '1's) and compressing the size of the output file without losing any data. For each letters in the text to encrypt, we count how many instances of each letters there are and then apply the following algorithm on each one:
+- Initially, each letter is represented by a binary tree labeled with the occurence of that character in the text. While there are more than one binary tree, do the following operations:
+  1. Take ~A1~ and ~A2~, the two binary trees with the smallest label ~e1~ and ~e2~.
+  2. Create a new binary tree ~A~ of which the root ~r~ has for left and right branches the root of ~A1~ and ~A2~.
+  3. The root ~r~ of ~A~ is labeled with ~e1 + e2~.
+- For each node of the final tree, the left branches are labeled with '0's, and the right branches with '1's.
+- The code associated with each character is the binary word corresponding to the path from the root of the final binary tree to the leaf representing the letter.
+
+This project is made up of three parts.
+
+* Part 1: Abstract data structures
+The goal of this part is to propose an object-oriented implementation of the structure and behavior of a labeled binary tree. In that regard, the objective will be to:
+1. Propose two classes, the class ~Node~ of which each instance represents the node of a binary tree, and the class ~BinaryTree~ of which each instance represents a binary tree.
+2. Implement the operations for inserting and removing nodes from the tree, modifying the label of a node, researching an element in the tree, as well as the operations of fusion and decomposition of binary trees. You may also overload the necessary operators.
+3. Propose a test program that demonstrates the features of a binary tree.
+4. Implement a simple graphical user interface that allows, amongst other things, to print the created binary tree.
+
+* Part 2: Encryption
+
+* Part 3: Decrypting

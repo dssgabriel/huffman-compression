@@ -1,0 +1,6 @@
+# Directories to ignore
+target/
+
+# Files to ignore
+*.pdf
+
