@@ -1,11 +1,13 @@
 #ifndef SOMMET_HPP
 #define SOMMET_HPP
 
+class ArbreB;
 
 /// The class `Sommet` represents a node of a Huffman binary tree.
 class Sommet
 {
 private:
+    friend class ArbreB;
     /// Stores a character present in the input text.
     char m_Data;
     /// Stores the frequency of a character in the text.
@@ -29,6 +31,9 @@ public:
     /// #Argument:
     /// `other` - The Sommet to copy.
     Sommet(const Sommet& other);
+
+    /// Destructor
+    ~Sommet();
 
     /// Overload of the assign operator.
     /// #Argument:

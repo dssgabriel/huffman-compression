@@ -1,7 +1,7 @@
 #include "Sommet.hpp"
 
 Sommet::Sommet()
-    : m_Left(nullptr), m_Right(nullptr)
+    : m_Data('\0'), m_Freq(0.0), m_Left(nullptr), m_Right(nullptr)
 {
 }
 
@@ -14,6 +14,18 @@ Sommet::Sommet(const char& data, const double& freq)
 Sommet::Sommet(const Sommet& other)
 {
     *this = other;
+}
+
+Sommet::~Sommet()
+{
+    if (m_Left != nullptr)
+    {
+        delete m_Left;
+    }
+    if (m_Right != nullptr)
+    {
+        delete m_Right;
+    }
 }
 
 Sommet& Sommet::operator=(const Sommet& other)
