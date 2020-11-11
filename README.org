@@ -1,11 +1,12 @@
 #+TITLE:    IN505 - C++ project: Encryption and Decryption
-#+AUTHOR:   Gabriel Dos Santos
+#+AUTHOR:   Gabriel Dos Santos, Raphael Marouani
 
 * Table of contents :toc:
 - [[#about][About]]
 - [[#part-1-abstract-data-structures][Part 1: Abstract data structures]]
 - [[#part-2-encryption][Part 2: Encryption]]
 - [[#part-3-decryption][Part 3: Decryption]]
+- [[#usage][Usage]]
 
 * About
 The main goal of this project is to program an encryption and decryption application based on the Huffman code.
@@ -39,3 +40,6 @@ The goal of this third and last part is to take a encrypted text with the Huffma
 - Verify if a text has been encrypted using the binary tree created in part 2.
 - Decrypt a text encrypted with the Huffman code.
 - Display the text to decrypt in the GUI and print the result of the decryption process.
+
+* Usage
+# TODO
