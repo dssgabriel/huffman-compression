@@ -16,7 +16,7 @@ release_dir:
 
 # Part 1
 build: debug_dir
-	$(CC) $(MAIN)part1_tests.cpp $(LIB)ArbreB.cpp $(DFLAGS) -o $(DEBUG)part1_tests
+	$(CC) $(MAIN)part1_tests.cpp $(LIB)Sommet.cpp $(DFLAGS) -o $(DEBUG)part1_tests
 
 run: build
 	./$(DEBUG)part1_tests
