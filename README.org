@@ -30,7 +30,7 @@ The goal of this part is to propose an object-oriented implementation of the str
 * Part 2: Encryption
 The goal of this part is to take an input text (it can be in English, French, or any other language that you want) and to output an encrypted text using the Huffman code. Your application must support the following operations:
 1. Compute the percentage of occurence for each letter of the alphabet of the input text.
-2. Using the previously defined model of tree (cf. [[#part1-abstract-data-structures][part 1]]), create a encryption binary tree that implements the aforementioned algorithm (cf. [[#about][about]]) and the statistics evaluated in the first step.
+2. Using the previously defined model of a binary tree, create a encryption binary tree that implements the aforementioned algorithm (cf. [[#about][about]]) and the statistics evaluated in step 1.
 3. Encrypt an input text with the letter encryption made in step 2.
 4. Enhance the GUI to allow the user to print the text encrypt and its binary output.
 

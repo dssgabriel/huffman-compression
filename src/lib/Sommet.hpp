@@ -1,16 +1,20 @@
 #ifndef SOMMET_HPP
 #define SOMMET_HPP
 
-#include <iostream>
-
-class Sommet {
+class Sommet
+{
 private:
-    int tag;
-    Sommet* left;
-    Sommet* right;
+    char m_Data;
+    double m_Freq;
+    Sommet* m_Left;
+    Sommet* m_Right;
 
 public:
-    Sommet(int tag): tag(tag), left(nullptr), right(nullptr) {}
+    Sommet();
+    Sommet(char& data, double& freq);
+    Sommet(const Sommet& other);
+
+    Sommet& operator=(const Sommet& other);
 };
 
 #endif

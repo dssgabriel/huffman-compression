@@ -3,20 +3,16 @@
 
 #include "Sommet.hpp"
 
-class ArbreB {
+class ArbreB
+{
 private:
-    Sommet* root;
+    Sommet* m_Root;
 
 public:
     ArbreB();
-    ArbreB(const ArbreB& a);
+    ArbreB(Sommet& sommet);
+    ArbreB(const ArbreB& other);
     ~ArbreB();
-
-    void insert(Sommet& s);
-    ArbreB& remove(Sommet& s);
-    Sommet& search(int value);
-    ArbreB& operator=(const ArbreB& a);
-    ArbreB operator+=(const ArbreB& a);
 };
 
 #endif
