@@ -44,22 +44,22 @@ Sommet& ArbreB::get_m_Root()
     return *m_Root;
 }
 
-void ArbreB::insert(const Sommet& node, const double& freq)
-{
-    if (m_Root == nullptr)
-    {
-        *m_Root = node;
-    }
-}
-
-bool ArbreB::search(const double& freq)
+// TODO
+void ArbreB::insert(const Sommet& node)
 {
 }
 
-ArbreB& ArbreB::remove(const double& freq)
+// TODO
+bool ArbreB::search(const char& data)
 {
 }
 
+// TODO
+ArbreB& ArbreB::remove(const char& data)
+{
+}
+
+// TODO
 ArbreB ArbreB::fuse(const ArbreB& other)
 {
 }
