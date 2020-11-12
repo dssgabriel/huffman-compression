@@ -3,57 +3,93 @@
 
 class ArbreB;
 
-/// The class `Sommet` represents a node of a Huffman binary tree.
+/**
+ * The class `Sommet` represents a node of a Huffman binary tree.
+ */
 class Sommet
 {
 private:
     friend class ArbreB;
-    /// Stores a character present in the input text.
+    /**
+     * Represents a character from a text.
+     */
     char m_Data;
-    /// Stores the frequency of a character in the text.
+    /**
+     * Represents the frequency of a character in a text.
+     */
     double m_Freq;
-    /// Pointer to the left child of the node.
+    /**
+     * Represents the left child of a Sommet.
+     */
     Sommet* m_Left;
-    /// Pointer to the right child of the node.
+    /**
+     * Represents the right child of a Sommet.
+     */
     Sommet* m_Right;
 
 public:
-    /// Default constructor.
+    /**
+     * Creates a default object Sommet.
+     * m_Data = '\0', m_Freq = 0, m_Left and m_Right = nullptr.
+     */
     Sommet();
 
-    /// Parameter constructor.
-    /// #Arguments:
-    /// `data` - The character to store.
-    /// ``freq` - The frequency of this character.
+    /**
+     * Creates an object Sommet with the specified parameters.
+     * @param data
+     *     The character to store.
+     * @param freq
+     *     The frequency of the stored character.
+     */
     Sommet(const char& data, const double& freq);
 
-    /// Copy constructor.
-    /// #Argument:
-    /// `other` - The Sommet to copy.
+    /**
+     * Creates a copy of the specified Sommet.
+     * @param other
+     *     The Sommet to copy.
+     */
     Sommet(const Sommet& other);
 
-    /// Destructor
+    /**
+     * Frees the memory for of a Sommet.
+     */
     ~Sommet();
 
-    /// Overload of the assign operator.
-    /// #Argument:
-    /// `other` - The Sommet to assign the object's fields from.
+    /**
+     * Redefines the behavior of the operator "=".
+     * @param other
+     *     The Sommet to assign the values from.
+     *  @return
+     *     A reference to a copy of other.
+     */
     Sommet& operator=(const Sommet& other);
 
-    /// Returns the character stored in m_Data.
+    /**
+     * Gets the character.
+     * @return
+     *     A reference of the character.
+     */
     char& get_m_Data();
 
-    /// Returns the frequency stored in m_Freq.
+    /**
+     * Gets the character's frequency.
+     * @return
+     *     A reference of the character's frequency.
+     */
     double& get_m_Freq();
 
-    /// Set the value of m_Data.
-    /// #Argument:
-    /// `data` - The character to assign to m_Data.
+    /**
+     * Sets the value of the character.
+     * @param data
+     *     The character to assign to m_Data.
+     */
     void set_m_Data(const char& data);
 
-    /// Set the value of m_Freq.
-    /// #Argument:
-    /// `freq` - The value to assign to m_Freq.
+    /**
+     * Sets the value of the frequency.
+     * @param freq
+     *     The value to assign to m_Freq.
+     */
     void set_m_Freq(const double& freq);
 };
 
