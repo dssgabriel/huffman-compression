@@ -2,13 +2,13 @@
 #+AUTHOR:   Gabriel Dos Santos, Raphael Marouani
 
 * Table of contents :toc:
-- [[#about][About]]
+- [[#description-of-the-project][Description of the project]]
 - [[#part-1-abstract-data-structures][Part 1: Abstract data structures]]
 - [[#part-2-encryption][Part 2: Encryption]]
 - [[#part-3-decryption][Part 3: Decryption]]
-- [[#usage][Usage]]
+- [[#building-the-project][Building the project]]
 
-* About
+* Description of the project
 The main goal of this project is to program an encryption and decryption application based on the Huffman code.
 
 The Huffman code aims at translating a text in binary (with '0's and '1's) and compressing the size of the output file without losing any data. For each letters in the text to encrypt, we count how many instances of each letters there are and then apply the following algorithm on each one:
@@ -41,5 +41,27 @@ The goal of this third and last part is to take a encrypted text with the Huffma
 - Decrypt a text encrypted with the Huffman code.
 - Display the text to decrypt in the GUI and print the result of the decryption process.
 
-* Usage
-# TODO
+* Building the project
+You can build and/or run the project using the provided Makefile as follows:
+#+BEGIN_SRC bash
+# To only build, run:
+make build
+
+# To build and run immediately:
+make run
+#+END_SRC
+
+You can also create an archive of the project with the provided ~archive~ command:
+#+BEGIN_SRC bash
+make archive
+#+END_SRC
+
+If you wish to build and run the project manually, use the following commands at the root of the project:
+#+BEGIN_SRC bash
+# First, build the project:
+mkdir -p target/release
+g++ src/bin/part1_tests.cpp src/lib/Sommet.cpp src/lib/ArbreB.cpp -O2 -o target/release/main1
+
+# Then run it:
+./target/release/main1
+#+END_SRC
