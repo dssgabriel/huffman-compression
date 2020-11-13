@@ -35,7 +35,7 @@ int main() {
         << ", Freq: " << s3.get_m_Freq() << std::endl;
 
 
-// class ArbreB
+// class ArbreB:
     std::cout << "\nTesting class ArbreB:" << std::endl;
 
     // Testing constructors
@@ -50,8 +50,24 @@ int main() {
     std::cout << "\tArbreB a3(s3):\n\tm_Root:\n\t\tData: " << a3.get_m_Root().get_m_Data()
         << ", Freq: " << a3.get_m_Root().get_m_Freq() << std::endl;
     // Testing values with copy constructor
-    std::cout << "ArbreB a4(a3):\n\tm_Root:\n\t\tData: " << a4.get_m_Root().get_m_Data()
+    std::cout << "\tArbreB a4(a3):\n\tm_Root:\n\t\tData: " << a4.get_m_Root().get_m_Data()
         << ", Freq: " << a4.get_m_Root().get_m_Freq() << std::endl;
+
+    // Inserting a Sommet
+    a2.insert(a2.m_Root, s2);
+    s2 = Sommet('y', 79.0);
+    a2.insert(a2.m_Root, s2);
+    s3 = Sommet('.', 0.1);
+    a2.insert(a2.m_Root, s3);
+    std::cout
+        << "\tArbreB a2.insert(a2.m_Root, s2):\n\tm_Root:\n\t\tData: " << a2.m_Root->get_m_Data()
+        << ", Freq: " << a2.m_Root->get_m_Freq()
+        << "\n\tm_Left:\n\t\tData: " << a2.m_Root->m_Left->get_m_Data()
+        << ", Freq: " << a2.m_Root->m_Left->get_m_Freq()
+        << "\n\tm_Right:\n\t\tData: " << a2.m_Root->m_Right->get_m_Data()
+        << ", Freq: " << a2.m_Root->m_Right->get_m_Freq()
+        << "\ntest: " << a2.m_Root->m_Left->m_Left->get_m_Data() << ", " << a2.m_Root->m_Left->m_Left->get_m_Freq()
+        << std::endl;
 
     return 0;
 }
