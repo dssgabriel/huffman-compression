@@ -67,6 +67,16 @@ double& Sommet::get_m_Freq()
     return m_Freq;
 }
 
+Sommet& Sommet::get_m_Left()
+{
+    return *m_Left;
+}
+
+Sommet& Sommet::get_m_Right()
+{
+    return *m_Right;
+}
+
 void Sommet::set_m_Data(const char& data)
 {
     m_Data = data;

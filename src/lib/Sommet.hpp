@@ -18,6 +18,8 @@ private:
      * Represents the frequency of a character in a text.
      */
     double m_Freq;
+
+public:
     /**
      * Represents the left child of a Sommet.
      */
@@ -26,8 +28,6 @@ private:
      * Represents the right child of a Sommet.
      */
     Sommet* m_Right;
-
-public:
     /**
      * Creates a default object Sommet.
      * m_Data = '\0', m_Freq = 0, m_Left and m_Right = nullptr.
@@ -77,6 +77,20 @@ public:
      *     A reference of the character's frequency.
      */
     double& get_m_Freq();
+
+    /**
+     * Gets the Sommet's left child.
+     * @return
+     *     A reference of the Sommet's left child.
+     */
+    Sommet& get_m_Left();
+
+    /**
+     * Gets the Sommet's right child.
+     * @return
+     *     A reference of the Sommet's right child.
+     */
+    Sommet& get_m_Right();
 
     /**
      * Sets the value of the character.
