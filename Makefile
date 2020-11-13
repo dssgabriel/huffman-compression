@@ -7,6 +7,8 @@ LIB = src/lib/
 DEBUG = target/debug/
 RELEASE = target/release/
 
+ARCHIVE = dos-santos_marouani
+
 # Create directories for binaries (if needed)
 debug_dir:
 	mkdir -p $(DEBUG)
@@ -36,3 +38,11 @@ clean_release:
 
 clean:
 	rm -Rf target/
+
+archive: clean
+	mkdir -p $(ARCHIVE)
+	cp -R src/ $(ARCHIVE)
+	cp Makefile $(ARCHIVE)
+	cp README.org $(ARCHIVE)
+	tar -zcvf $(ARCHIVE).tar $(ARCHIVE)
+	rm -Rf $(ARCHIVE)
