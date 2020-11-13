@@ -9,12 +9,12 @@
 class ArbreB
 {
 private:
+
+public:
     /**
      * Represents a pointer to the root of the binary tree.
      */
     Sommet* m_Root;
-
-public:
     /**
      * Creates a default object ArbreB.
      * m_Root = nullptr
@@ -66,22 +66,31 @@ public:
     Sommet& get_m_Root();
 
     /**
-     * Inserts a Sommet in the binary tree.
-     * Insertion behaves like in Binary Search Tree (BST).
-     * @param node
+     * Inserts a new node in the binary tree.
+     * The behavior of this method assumes that we are inserting
+     * a value in a Binary Search Tree (BST).
+     * By design decision, insertion is based on the m_Freq field of an object Sommet.
+     * This means that an ArbreB can have multiple Sommets with the same
+     * character (m_Data), but with different frequencies (m_Freq).
+     * @param current_node
+     *     A reference of the pointer of the current Sommet.
+     *     Allows to initialize the actual Sommet and not a copy of it.
+     * @param new_node
      *     The Sommet to insert in the binary tree.
      */
-    void insert(const Sommet& node);
+    void insert(Sommet*& current_node, Sommet& new_node);
 
     /**
-     * Searches for a character in the binary tree.
-     * Does a breadth first search (parcours en largeur).
+     * Searches for the specified character in the binary tree.
+     * This method is implemented with a breadth first search algorithm.
+     * @param current
+     *     A reference of the pointer of the current Sommet.
      * @param data
      *     The character to search for.
      * @return
      *     'True' if the character was found, 'False' otherwise.
      */
-    bool search(const char& data);
+    bool search(Sommet*& current, const char& data);
 
     /**
      * Removes a Sommet from the binary tree.

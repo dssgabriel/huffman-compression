@@ -16,6 +16,7 @@ ArbreB::ArbreB(const Sommet& node)
     *m_Root = node;
 }
 
+// Uses overloaded operator=
 ArbreB::ArbreB(const ArbreB& other)
 {
     *this = other;
@@ -44,13 +45,24 @@ Sommet& ArbreB::get_m_Root()
     return *m_Root;
 }
 
-// TODO
-void ArbreB::insert(const Sommet& node)
+void ArbreB::insert(Sommet*& current_node, Sommet& new_node)
 {
+    if (current_node == nullptr)
+    {
+        current_node = new Sommet(new_node);
+    }
+    if (current_node->get_m_Freq() > new_node.get_m_Freq())
+    {
+        insert(current_node->m_Left, new_node);
+    }
+    if (current_node->get_m_Freq() < new_node.get_m_Freq())
+    {
+        insert(current_node->m_Right, new_node);
+    }
 }
 
 // TODO
-bool ArbreB::search(const char& data)
+bool ArbreB::search(Sommet*& current, const char& data)
 {
 }
 
