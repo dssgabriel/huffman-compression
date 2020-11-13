@@ -69,5 +69,23 @@ int main() {
         << "\ntest: " << a2.m_Root->m_Left->m_Left->get_m_Data() << ", " << a2.m_Root->m_Left->m_Left->get_m_Freq()
         << std::endl;
 
+    // Searching for a character
+    if (a2.search(a2.m_Root, '.'))
+    {
+        std::cout << "Character found!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Character not found!" << std::endl;
+    }
+    if (a2.search(a2.m_Root, 'z'))
+    {
+        std::cout << "Character found!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Character not found!" << std::endl;
+    }
+
     return 0;
 }
