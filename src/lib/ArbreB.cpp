@@ -61,9 +61,20 @@ void ArbreB::insert(Sommet*& current_node, Sommet& new_node)
     }
 }
 
-// TODO
 bool ArbreB::search(Sommet*& current, const char& data)
 {
+    if (current == nullptr)
+    {
+        return false;
+    }
+    if (current->get_m_Data() == data)
+    {
+        return true;
+    }
+    else
+    {
+        return search(current->m_Left, data) || search(current->m_Right, data);
+    }
 }
 
 // TODO
