@@ -120,7 +120,39 @@ ArbreB& ArbreB::remove(Sommet*& current, const char& data)
     {
         return remove(current->m_Right, data);
     }
-    return *this;
+    else if (current->get_m_Data() == data)
+    {
+        if (current->m_Left == nullptr && current->m_Right == nullptr)
+        {
+            current = nullptr;
+        }
+        else if (current->m_Left == nullptr)
+        {
+            current = nullptr;
+            current = current->m_Right;
+        }
+        else if (current->m_Right == nullptr)
+        {
+            current = nullptr;
+            current = current->m_Left;
+        }
+        else
+        {
+            Sommet tmp(*current->m_Right);
+            while(tmp.m_Left != nullptr)
+            {
+                tmp = *tmp.m_Left;
+            }
+            current->set_m_Data(tmp.get_m_Data());
+            current->set_m_Freq(tmp.get_m_Freq());
+        }
+        return *this;
+    }
+    else
+    {
+        std::cout << "Error: undefined behavior" << std::endl;
+        return *this;
+    }
 }
 
 // Public:
@@ -203,15 +235,14 @@ ArbreB& ArbreB::remove(const char& data)
         std::cout << "Error: ArbreB is empty" << std::endl;
         return *this;
     }
-    else if (search(m_Root, data))
+    else if (!search(m_Root, data))
     {
         std::cout << "Error: the character to remove was not in the ArbreB" << std::endl;
         return *this;
     }
     else
     {
-        // TODO
-        return *this;
+        return remove(this->m_Root, data);
     }
 }
 
@@ -235,4 +266,11 @@ ArbreB ArbreB::operator+(const ArbreB& other)
     new_tree.m_Root->m_Right = new Sommet(*other.m_Root);
 
     return new_tree;
+}
+
+std::tuple<ArbreB, ArbreB> ArbreB::decompose()
+{
+    ArbreB new_left(*m_Root->m_Left);
+    ArbreB new_right(*m_Root->m_Right);
+    return std::make_tuple(new_left, new_right);
 }

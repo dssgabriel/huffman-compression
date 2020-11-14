@@ -4,6 +4,7 @@
 #include "Sommet.hpp"
 #include <iostream>
 #include <cstring>
+#include <tuple>
 
 /**
  * The class ArbreB represents a binary tree.
@@ -214,8 +215,12 @@ public:
 
     /**
      * Decomposes one ArbreB into two.
-     * TODO.
+     * @return
+     *     An std::tuple that holds two ArbreB.
+     *     The first one is the left branch of the original tree.
+     *     The second one is the right branch of the original tree.
      */
+    std::tuple<ArbreB, ArbreB> decompose();
 };
 
 #endif
