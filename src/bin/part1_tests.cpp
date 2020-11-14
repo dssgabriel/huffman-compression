@@ -54,34 +54,40 @@ int main() {
         << ", Freq: " << a4.get_m_Root().get_m_Freq() << std::endl;
 
     // Inserting a Sommet
-    a2.insert(a2.m_Root, s2);
+    a2.insert(s2);
     s2 = Sommet('y', 79.0);
-    a2.insert(a2.m_Root, s2);
+    a2.insert(s2);
     s3 = Sommet('.', 0.1);
-    a2.insert(a2.m_Root, s3);
+    a2.insert(s3);
     std::cout
-        << "\tArbreB a2.insert(a2.m_Root, s2):\n\tm_Root:\n\t\tData: " << a2.m_Root->get_m_Data()
-        << ", Freq: " << a2.m_Root->get_m_Freq()
-        << "\n\tm_Left:\n\t\tData: " << a2.m_Root->m_Left->get_m_Data()
-        << ", Freq: " << a2.m_Root->m_Left->get_m_Freq()
-        << "\n\tm_Right:\n\t\tData: " << a2.m_Root->m_Right->get_m_Data()
-        << ", Freq: " << a2.m_Root->m_Right->get_m_Freq() << std::endl;
+        << "\tArbreB a2.insert(a2.m_Root, s2):\n\tm_Root:\n\t\tData: " << a2.get_m_Root().get_m_Data()
+        << ", Freq: " << a2.get_m_Root().get_m_Freq()
+        << "\n\tm_Left:\n\t\tData: " << a2.get_m_Root().m_Left->get_m_Data()
+        << ", Freq: " << a2.get_m_Root().m_Left->get_m_Freq()
+        << "\n\tm_Right:\n\t\tData: " << a2.get_m_Root().m_Right->get_m_Data()
+        << ", Freq: " << a2.get_m_Root().m_Right->get_m_Freq() << std::endl;
 
     // Bst_Searching for a character
     std::string a = "";
-    a2.bst_search(a2.m_Root, '.', a);
+    a2.bst_search('.', a);
     std::string b = "";
-    a2.bst_search(a2.m_Root, 'z', b);
+    a2.bst_search('z', b);
     std::string c = "";
-    a2.bst_search(a2.m_Root, 'i', c);
+    a2.bst_search('i', c);
     std::string d = "";
-    a2.bst_search(a2.m_Root, 'y', d);
+    a2.bst_search('y', d);
     std::string e = "";
-    a2.bst_search(a2.m_Root, 'g', e);
+    a2.bst_search('g', e);
 
-    Sommet s5('a', 69.0);
-    a2.insert(a2.m_Root, s5);
+    Sommet s5('y', 1.2);
+    a2.insert(s5);
     a2.remove('d');
+
+    std::cout << a2;
+
+    ArbreB a5(a2);
+    ArbreB a6 = a2 + a5;
+    std::cout << a6;
 
     return 0;
 }

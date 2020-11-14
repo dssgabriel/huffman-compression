@@ -11,12 +11,90 @@
 class ArbreB
 {
 private:
+    /**
+     * Performs a preorder of the binary tree.
+     * @param current
+     *     A reference of the pointer of the current Sommet.
+     */
+    void preorder_traversal(Sommet*& current);
+
+    /**
+     * Performs an inorder of the binary tree.
+     * @param current
+     *     A reference of the pointer of the current Sommet.
+     */
+    void inorder_traversal(Sommet*& current);
+
+    /**
+     * Performs a postorder of the binary tree.
+     * @param current
+     *     A reference of the pointer of the current Sommet.
+     */
+    void postorder_traversal(Sommet*& current);
+
+    /**
+     * Inserts a new node in the binary tree.
+     * The behavior of this method assumes that we are inserting
+     * a value in a Binary Search Tree (BST).
+     * By design decision, insertion is based on the m_Data field of an object Sommet.
+     * If the specified node's character is already present in the binary tree,
+     * the new Sommet is not inserted but its frequency is
+     * added to the one of the already present Sommet.
+     * @param current_node
+     *     A reference of the pointer of the current Sommet.
+     *     Allows to initialize the actual Sommet and not a copy of it.
+     * @param new_node
+     *     The Sommet to insert in the binary tree.
+     */
+    void insert(Sommet*& current_node, Sommet& new_node);
+
+    /**
+     * Searches for the specified character in the binary tree.
+     * This method is implemented with a breadth first search (BFS) algorithm.
+     * @param current
+     *     A reference of the pointer of the current Sommet.
+     * @param data
+     *     The character to search for.
+     * @return
+     *     'True' if the character was found, 'False' otherwise.
+     */
+    bool search(Sommet*& current, const char& data);
+
+    /**
+     * Searches for the specified character in the binary tree.
+     * This method is implemented assuming the ArbreB is Binary Search Tree (BST).
+     * Allows for an average time complexity of O(log(n)).
+     *  @param current
+     *     A reference of the pointer of the current Sommet.
+     * @param data
+     *     The character to search for.
+     * @param path
+     *     A string that stores the path to the character.
+     *     '0's mean the path takes a left branch, '1's means it takes a right branch.
+     * @return
+     *     'True' if the character was found, 'False' otherwise.
+     */
+    bool bst_search(Sommet*& current, const char& data, std::string& path);
+
+    /**
+     * Removes a Sommet from the binary tree.
+     * Searches for a Sommet containing the specified character.
+     * If found, deletes the Sommet, else does not do anything.
+     * @param current
+     *     A reference of the pointer of the current Sommet.
+     * @param data
+     *     The character to delete the corresponding Sommet.
+     * @return
+     *     A reference of the ArbreB with the removed Sommet.
+     */
+    ArbreB& remove(Sommet*& current, const char& data);
 
 public:
     /**
      * Represents a pointer to the root of the binary tree.
      */
     Sommet* m_Root;
+
     /**
      * Creates a default object ArbreB.
      * m_Root = nullptr
@@ -76,41 +154,29 @@ public:
      * @return
      *     The output stream to print with std::cout.
      */
-    friend std::ostream& operator<<(std::ostream& stream, const ArbreB& tree);
+    friend std::ostream& operator<<(std::ostream& stream, ArbreB& tree);
 
     /**
      * Inserts a new node in the binary tree.
-     * The behavior of this method assumes that we are inserting
-     * a value in a Binary Search Tree (BST).
-     * By design decision, insertion is based on the m_Freq field of an object Sommet.
-     * This means that an ArbreB can have multiple Sommets with the same
-     * character (m_Data), but with different frequencies (m_Freq).
-     * @param current_node
-     *     A reference of the pointer of the current Sommet.
-     *     Allows to initialize the actual Sommet and not a copy of it.
+     * Internaly calls private `insert()` method.
      * @param new_node
      *     The Sommet to insert in the binary tree.
      */
-    void insert(Sommet*& current_node, Sommet& new_node);
+    void insert(Sommet& new_node);
 
     /**
      * Searches for the specified character in the binary tree.
-     * This method is implemented with a breadth first search (BFS) algorithm.
-     * @param current
-     *     A reference of the pointer of the current Sommet.
+     * Internaly calls private `search()` method.
      * @param data
      *     The character to search for.
      * @return
      *     'True' if the character was found, 'False' otherwise.
      */
-    bool search(Sommet*& current, const char& data);
+    bool search(const char& data);
 
     /**
      * Searches for the specified character in the binary tree.
-     * This method is implemented assuming the ArbreB is Binary Search Tree (BST).
-     * Allows for an average time complexity of O(log(n)).
-     *  @param current
-     *     A reference of the pointer of the current Sommet.
+     * Internaly calls private `bst_search()` method.
      * @param data
      *     The character to search for.
      * @param path
@@ -119,7 +185,7 @@ public:
      * @return
      *     'True' if the character was found, 'False' otherwise.
      */
-    bool bst_search(Sommet*& current, const char& data, std::string& path);
+    bool bst_search(const char& data, std::string& path);
 
     /**
      * Removes a Sommet from the binary tree.
@@ -133,18 +199,18 @@ public:
     ArbreB& remove(const char& data);
 
     /**
-     * Overload of the operator '+=' to redefine its behavior.
+     * Overload of the operator '+' to redefine its behavior.
      * Fuses two ArbreB together to creates a new ArbreB.
      * m_Left of the new root is 'this'.
      * m_Right of the new root is 'other'.
-     * m_Data of the new root is ?? (find something).
-     * m_Freq of the new root is the sum of this.m_Freq and other.m_Freq.
+     * m_Data of the new root is '\0'.
+     * m_Freq of the new root is the sum of m_Root->m_Freq and other.m_Root->m_Freq.
      * @param other
      *     The ArbreB to fuse.
      * @return
      *     A fused ArbreB.
      */
-    ArbreB operator+=(const ArbreB& other);
+    ArbreB operator+(const ArbreB& other);
 
     /**
      * Decomposes one ArbreB into two.
