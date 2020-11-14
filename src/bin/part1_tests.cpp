@@ -65,27 +65,23 @@ int main() {
         << "\n\tm_Left:\n\t\tData: " << a2.m_Root->m_Left->get_m_Data()
         << ", Freq: " << a2.m_Root->m_Left->get_m_Freq()
         << "\n\tm_Right:\n\t\tData: " << a2.m_Root->m_Right->get_m_Data()
-        << ", Freq: " << a2.m_Root->m_Right->get_m_Freq()
-        << "\ntest: " << a2.m_Root->m_Left->m_Left->get_m_Data() << ", " << a2.m_Root->m_Left->m_Left->get_m_Freq()
-        << std::endl;
+        << ", Freq: " << a2.m_Root->m_Right->get_m_Freq() << std::endl;
 
-    // Searching for a character
-    if (a2.search(a2.m_Root, '.'))
-    {
-        std::cout << "Character found!" << std::endl;
-    }
-    else
-    {
-        std::cout << "Character not found!" << std::endl;
-    }
-    if (a2.search(a2.m_Root, 'z'))
-    {
-        std::cout << "Character found!" << std::endl;
-    }
-    else
-    {
-        std::cout << "Character not found!" << std::endl;
-    }
+    // Bst_Searching for a character
+    std::string a = "";
+    a2.bst_search(a2.m_Root, '.', a);
+    std::string b = "";
+    a2.bst_search(a2.m_Root, 'z', b);
+    std::string c = "";
+    a2.bst_search(a2.m_Root, 'i', c);
+    std::string d = "";
+    a2.bst_search(a2.m_Root, 'y', d);
+    std::string e = "";
+    a2.bst_search(a2.m_Root, 'g', e);
+
+    Sommet s5('a', 69.0);
+    a2.insert(a2.m_Root, s5);
+    a2.remove('d');
 
     return 0;
 }

@@ -2,6 +2,8 @@
 #define ARBREB_HPP
 
 #include "Sommet.hpp"
+#include <iostream>
+#include <cstring>
 
 /**
  * The class ArbreB represents a binary tree.
@@ -50,7 +52,7 @@ public:
     ~ArbreB();
 
     /**
-     * Redefines the behavior of the operator "=".
+     * Overload of the operator '=' to redefine its behavior.
      * @param other
      *     The ArbreB to assign the values from.
      *  @return
@@ -64,6 +66,17 @@ public:
      *     A reference to the root.
      */
     Sommet& get_m_Root();
+
+    /**
+     * Overload the operator ">>" and redefines its behavior.
+     * @param stream
+     *     The output stream.
+     * @param tree
+     *     The binary tree.
+     * @return
+     *     The output stream to print with std::cout.
+     */
+    friend std::ostream& operator<<(std::ostream& stream, const ArbreB& tree);
 
     /**
      * Inserts a new node in the binary tree.
@@ -82,7 +95,7 @@ public:
 
     /**
      * Searches for the specified character in the binary tree.
-     * This method is implemented with a breadth first search algorithm.
+     * This method is implemented with a breadth first search (BFS) algorithm.
      * @param current
      *     A reference of the pointer of the current Sommet.
      * @param data
@@ -91,6 +104,22 @@ public:
      *     'True' if the character was found, 'False' otherwise.
      */
     bool search(Sommet*& current, const char& data);
+
+    /**
+     * Searches for the specified character in the binary tree.
+     * This method is implemented assuming the ArbreB is Binary Search Tree (BST).
+     * Allows for an average time complexity of O(log(n)).
+     *  @param current
+     *     A reference of the pointer of the current Sommet.
+     * @param data
+     *     The character to search for.
+     * @param path
+     *     A string that stores the path to the character.
+     *     '0's mean the path takes a left branch, '1's means it takes a right branch.
+     * @return
+     *     'True' if the character was found, 'False' otherwise.
+     */
+    bool bst_search(Sommet*& current, const char& data, std::string& path);
 
     /**
      * Removes a Sommet from the binary tree.
@@ -104,8 +133,8 @@ public:
     ArbreB& remove(const char& data);
 
     /**
-     * Fuses two ArbreB together into one.
-     * Creates a new ArbreB.
+     * Overload of the operator '+=' to redefine its behavior.
+     * Fuses two ArbreB together to creates a new ArbreB.
      * m_Left of the new root is 'this'.
      * m_Right of the new root is 'other'.
      * m_Data of the new root is ?? (find something).
@@ -115,7 +144,7 @@ public:
      * @return
      *     A fused ArbreB.
      */
-    ArbreB fuse(const ArbreB& other);
+    ArbreB operator+=(const ArbreB& other);
 
     /**
      * Decomposes one ArbreB into two.

@@ -8,8 +8,8 @@ class ArbreB;
  */
 class Sommet
 {
-private:
-    friend class ArbreB;
+friend class ArbreB;
+protected:
     /**
      * Represents a character from a text.
      */
