@@ -122,29 +122,39 @@ ArbreB& ArbreB::remove(Sommet*& current, const char& data)
     }
     else if (current->get_m_Data() == data)
     {
-        if (current->m_Left == nullptr && current->m_Right == nullptr)
+        if (current->m_Left == nullptr && current->m_Right == nullptr) // If current node has no child
         {
+            delete current;
             current = nullptr;
         }
-        else if (current->m_Left == nullptr)
+        else if (current->m_Left == nullptr) // If current node has only a right child
         {
-            current = nullptr;
             current = current->m_Right;
         }
-        else if (current->m_Right == nullptr)
+        else if (current->m_Right == nullptr) // If current node has only a left child
         {
-            current = nullptr;
             current = current->m_Left;
         }
-        else
+        else // If current node has two children
         {
+            // Find the inorder successor of the current node
             Sommet tmp(*current->m_Right);
-            while(tmp.m_Left != nullptr)
+            if (tmp.m_Left == nullptr)
             {
-                tmp = *tmp.m_Left;
+                current->set_m_Data(tmp.get_m_Data());
+                current->set_m_Freq(tmp.get_m_Freq());
+                return remove(current->m_Right, tmp.get_m_Data());
             }
-            current->set_m_Data(tmp.get_m_Data());
-            current->set_m_Freq(tmp.get_m_Freq());
+            else {
+                while(tmp.m_Left->m_Left != nullptr)
+                {
+                    tmp = *tmp.m_Left;
+                }
+                // Copy successor's content into current
+                current->set_m_Data(tmp.m_Left->get_m_Data());
+                current->set_m_Freq(tmp.m_Left->get_m_Freq());
+                return remove(current->m_Right, tmp.m_Left->get_m_Data());
+            }
         }
         return *this;
     }

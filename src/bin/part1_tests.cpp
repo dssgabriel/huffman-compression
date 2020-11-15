@@ -81,21 +81,22 @@ int main() {
 
     Sommet s5('y', 1.2);
     a2.insert(s5);
-    /* a2.remove('d');
-    std::cout << a2;
-    a2.remove('y');
-    std::cout << a2;
+    a2.remove('d');
+    std::cout << "\n\tArbreB a2:\n" << a2;
     a2.remove('i');
-    std::cout << a2; */
+    std::cout << "\n\tRemoved 'i' from a2:\n" << a2;
+    a2.remove('y');
+    std::cout << "\n\tRemoved 'y' from a2:\n" << a2;
 
     ArbreB a5(a2);
     ArbreB a6 = a2 + a5;
-    std::cout << a6;
+    std::cout << "\n\tArbreB a6 (a2 + a5):\n" << a6;
 
     ArbreB s7, s8;
     std::tie(s7, s8) = a6.decompose();
 
-    std::cout << s7 << std::endl << s8 << std::endl;
+    std::cout << "\n\tArbreB a7(decomp a6 (== a2))\n" << s7
+        << "\n\tArbreB a8(decomp a6 (== a5))\n" << s8 << std::endl;
 
     return 0;
 }
