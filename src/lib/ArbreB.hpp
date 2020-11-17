@@ -9,8 +9,7 @@
 /**
  * The class ArbreB represents a binary tree.
  */
-class ArbreB
-{
+class ArbreB {
 private:
     /**
      * Performs a preorder of the binary tree.
@@ -164,6 +163,16 @@ public:
      *     The Sommet to insert in the binary tree.
      */
     void insert(Sommet& new_node);
+
+    /**
+     * Inserts a new node in the binary tree.
+     * Internaly calls private `insert()` method.
+     * @param data
+     *     The character to insert in the binary tree.
+     * @param freq
+     *     The frequency of the character to insert.
+     */
+    void insert(const char& data, const double& freq);
 
     /**
      * Searches for the specified character in the binary tree.
