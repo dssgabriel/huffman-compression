@@ -6,10 +6,9 @@ class ArbreB;
 /**
  * The class `Sommet` represents a node of a Huffman binary tree.
  */
-class Sommet
-{
+class Sommet {
 friend class ArbreB;
-protected:
+private:
     /**
      * Represents a character from a text.
      */
@@ -28,6 +27,7 @@ public:
      * Represents the right child of a Sommet.
      */
     Sommet* m_Right;
+
     /**
      * Creates a default object Sommet.
      * m_Data = '\0', m_Freq = 0, m_Left and m_Right = nullptr.
