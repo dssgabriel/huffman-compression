@@ -4,7 +4,6 @@
 #include <iostream>
 #include "../lib/ArbreB.hpp"
 
-class Sommet;
 
 class PartOneTests {
 friend class Sommet;
@@ -31,6 +30,7 @@ public:
     bool should_assign_ArbreB();
     bool should_not_link_ArbreB_copies();
     bool should_insert_Sommet_into_ArbreB();
+    bool should_update_freq_if_char_already_in_ArbreB();
     bool should_find_character_c();
     bool should_not_find_character_z();
     bool should_remove_leaf();
@@ -39,9 +39,8 @@ public:
     bool should_fuse_two_ArbreB();
     bool should_decompose_one_ArbreB_into_two();
 
-    bool should_find_character_with_bfs();
-    bool should_not_find_character_with_bfs();
-    bool should_print_to_stdout();
+    bool should_find_character_y_with_bfs();
+    bool should_not_find_character_s_with_bfs();
 };
 
 #endif

@@ -199,6 +199,19 @@ bool PartOneTests::should_insert_Sommet_into_ArbreB() {
     return ret;
 }
 
+bool PartOneTests::should_update_freq_if_char_already_in_ArbreB() {
+    bool ret = true;
+    ArbreB a('m', 13.);
+    a.insert('m', 13.);
+
+    if (a.m_Root->get_m_Data() != 'm' ||
+        a.m_Root->get_m_Freq() != 26.)
+    { ret = false; tests_failed++; }
+
+    tests_run++;
+    return ret;
+}
+
 bool PartOneTests::should_find_character_c() {
     bool ret = true;
     ArbreB a('m', 13.);
@@ -242,58 +255,131 @@ bool PartOneTests::should_remove_leaf() {
     a.insert('r', 18.);
     a.insert('g', 7.);
     a.insert('y', 25.);
-    a.insert('u', 21.);
 
-    /*
-    std::cout << "\e[1mArbreB a:\n\e[0m" << a << std::endl;
-    a.remove('u');
-    std::cout << "\e[1mRemoved 'u' from a:\n\e[0m" << a << std::endl;
     a.remove('g');
-    std::cout << "\e[1mRemoved 'g' from a:\n\e[0m" << a << std::endl;
-    */
+
+    if (a.m_Root->m_Left->m_Right != nullptr) {
+        ret = false;
+        tests_failed++;
+    }
 
     tests_run++;
     return ret;
 }
 
-bool should_remove_Sommet_with_one_child() {
-    bool ret = false;
+bool PartOneTests::should_remove_Sommet_with_one_child() {
+    bool ret = true;
+    ArbreB a('m', 13.);
+    a.insert('c', 3.);
+    a.insert('r', 18.);
+    a.insert('g', 7.);
+    a.insert('y', 25.);
+    a.insert('u', 21.);
 
+    a.remove('y');
+
+    if (a.m_Root->m_Right->m_Right->m_Left != nullptr ||
+        a.m_Root->m_Right->m_Right->get_m_Data() != 'u' ||
+        a.m_Root->m_Right->m_Right->get_m_Freq() != 21.)
+    { ret = false; tests_failed++; }
+
+    tests_run++;
     return ret;
 }
 
-bool should_remove_Sommet_with_two_children() {
-    bool ret = false;
+bool PartOneTests::should_remove_Sommet_with_two_children() {
+    bool ret = true;
+    ArbreB a('m', 13.);
+    a.insert('g', 7.);
+    a.insert('u', 21.);
+    a.insert('c', 3.);
+    a.insert('k', 11.);
+    a.insert('r', 18.);
+    a.insert('y', 25.);
 
+    a.remove('m');
+
+    if (a.m_Root->get_m_Data() != 'r' ||
+        a.m_Root->get_m_Freq() != 18. ||
+        a.m_Root->m_Right->m_Left != nullptr)
+    { ret = false; tests_failed++; }
+
+    tests_run++;
     return ret;
 }
 
-bool should_fuse_two_ArbreB() {
-    bool ret = false;
+bool PartOneTests::should_fuse_two_ArbreB() {
+    bool ret = true;
+    ArbreB a1('g', 7.);
+    ArbreB a2('t', 20.);
+    ArbreB a3 = a1 + a2;
 
+    if (a3.m_Root->get_m_Data() != '\0' ||
+        a3.m_Root->get_m_Freq() != 27. ||
+        a3.m_Root->m_Left->get_m_Data() != 'g' ||
+        a3.m_Root->m_Left->get_m_Freq() != 7. ||
+        a3.m_Root->m_Right->get_m_Data() != 't' ||
+        a3.m_Root->m_Right->get_m_Freq() != 20.)
+    { ret = false; tests_failed++; }
+
+    tests_run++;
     return ret;
 }
 
-bool should_decompose_one_ArbreB_into_two() {
-    bool ret = false;
+bool PartOneTests::should_decompose_one_ArbreB_into_two() {
+    bool ret = true;
+    ArbreB a1('m', 13.);
+    a1.insert('g', 7.);
+    a1.insert('u', 21.);
+    a1.insert('c', 3.);
+    a1.insert('k', 11.);
+    a1.insert('r', 18.);
+    a1.insert('y', 25.);
 
+    ArbreB a2, a3;
+    std::tie(a2, a3) = a1.decompose();
+
+    if (a2.m_Root->get_m_Data() != 'g' ||
+        a2.m_Root->get_m_Freq() != 7. ||
+        a3.m_Root->get_m_Data() != 'u' ||
+        a3.m_Root->get_m_Freq() != 21.)
+    { ret = false; tests_failed++; }
+
+    tests_run++;
     return ret;
 }
 
-bool should_find_character_with_bfs() {
-    bool ret = false;
+bool PartOneTests::should_find_character_y_with_bfs() {
+    bool ret = true;
+    ArbreB a('m', 13.);
+    a.insert('c', 3.);
+    a.insert('r', 18.);
+    a.insert('g', 7.);
+    a.insert('y', 25.);
 
+    if (a.search('y') != true) {
+        ret = false;
+        tests_failed++;
+    }
+
+    tests_run++;
     return ret;
 }
 
-bool should_not_find_character_with_bfs() {
-    bool ret = false;
+bool PartOneTests::should_not_find_character_s_with_bfs() {
+    bool ret = true;
+    ArbreB a('m', 13.);
+    a.insert('c', 3.);
+    a.insert('r', 18.);
+    a.insert('g', 7.);
+    a.insert('y', 25.);
 
-    return ret;
-}
+    if (a.search('l') != false) {
+        ret = false;
+        tests_failed++;
+    }
 
-bool should_print_to_stdout() {
-    bool ret = false;
 
+    tests_run++;
     return ret;
 }
