@@ -32,51 +32,61 @@ void ArbreB::postorder_traversal(Sommet*& current) {
 }
 
 void ArbreB::insert(Sommet*& current_node, Sommet& new_node) {
+    // Base case
     if (current_node == nullptr) {
         current_node = new Sommet(new_node);
     }
+    // If the Sommet to insert is already in the ArbreB
     else if (current_node->get_m_Data() == new_node.get_m_Data()) {
-        // std::cout << "Warning: a Sommet of the same value is already in the ArbreB\n"
-        //           << "Updating already present Sommet's frequency" << std::endl;
-
+        /* std::cout << "Warning: a Sommet of the same value is already in the ArbreB\n"
+           << "Updating already present Sommet's frequency" << std::endl; */
         current_node->set_m_Freq(current_node->get_m_Freq() + new_node.get_m_Freq());
         return;
     }
+    // If current Sommet > Sommet to insert, insert left
     else if (current_node->get_m_Data() > new_node.get_m_Data()) {
         insert(current_node->m_Left, new_node);
     }
+    // If current Sommet < Sommet to insert, insert right
     else {
         insert(current_node->m_Right, new_node);
     }
 }
 
 bool ArbreB::search(Sommet*& current, const char& data) {
+    // Reached end of branch, character was not found
     if (current == nullptr) {
         return false;
     }
+    // Character found
     else if (current->get_m_Data() == data) {
         return true;
     }
+    // Call recursively on both children of the current Sommet
     else {
         return search(current->m_Left, data) || search(current->m_Right, data);
     }
 }
 
 bool ArbreB::bst_search(Sommet*& current, const char& data, std::string& path) {
+    // Reached end of branch, character was not found
     if (current == nullptr) {
-        // std::cout << "Character '" << data << "' was not found" << std::endl;
+        /* std::cout << "Character '" << data << "' was not found" << std::endl; */
         return false;
     }
+    // Character found
     else if (current->get_m_Data() == data) {
-        // std::cout << "Character '" << data << "' was found, "
-        //           << "its binary code is: " << path << std::endl;
+        /* std::cout << "Character '" << data << "' was found, "
+           << "its binary code is: " << path << std::endl; */
         return true;
     }
+    // If current > data, search left, update string
     else if (current->get_m_Data() > data) {
         path.resize(path.size() + 1);
         path += "0";
         return bst_search(current->m_Left, data, path);
     }
+    // If current < data, search right, update string
     else {
         path.resize(path.size() + 1);
         path += "1";
@@ -85,44 +95,57 @@ bool ArbreB::bst_search(Sommet*& current, const char& data, std::string& path) {
 }
 
 ArbreB& ArbreB::remove(Sommet*& current, const char& data) {
+    // If current > data, remove left
     if (current->get_m_Data() > data) {
         return remove(current->m_Left, data);
     }
+    // If current < data, remove right
     else if (current->get_m_Data() < data) {
         return remove(current->m_Right, data);
     }
+    // If current == data
     else {
-        if (current->m_Left == nullptr && current->m_Right == nullptr) { // If current node has no child
+        // If current node has no child, delete it
+        if (current->m_Left == nullptr && current->m_Right == nullptr) {
             delete current;
             current = nullptr;
         }
-        else if (current->m_Left == nullptr) { // If current node has only a right child
+        // If current node has only a right child, set current from right, delete right
+        else if (current->m_Left == nullptr) {
             current->set_m_Data(current->m_Right->get_m_Data());
             current->set_m_Freq(current->m_Right->get_m_Freq());
             return remove(current->m_Right, current->m_Right->get_m_Data());
         }
-        else if (current->m_Right == nullptr) { // If current node has only a left child
+        // If current node has only a left child, set current from left, delete left
+        else if (current->m_Right == nullptr) {
             current->set_m_Data(current->m_Left->get_m_Data());
             current->set_m_Freq(current->m_Left->get_m_Freq());
             return remove(current->m_Left, current->m_Left->get_m_Data());
         }
-        else { // If current node has two children
-            // Find the inorder successor of the current node
+        // If current node has two children
+        else {
+            // Find the inorder successor of current
             Sommet tmp(*current->m_Right);
-            if (tmp.m_Left == nullptr) {// Check if tmp has a left child (safety)
+            // First check if tmp has a left child (memory safety precaution)
+            if (tmp.m_Left == nullptr) {
+                // Set current from tmp, delete on tmp
                 current->set_m_Data(tmp.get_m_Data());
                 current->set_m_Freq(tmp.get_m_Freq());
                 return remove(current->m_Right, tmp.get_m_Data());
             }
+            // If tmp has left child
             else {
+                // Traverse tree to inorder successor
                 while(tmp.m_Left->m_Left != nullptr) {
                     tmp = *tmp.m_Left;
                 }
+                // Set current from tmp, delete on tmp
                 current->set_m_Data(tmp.m_Left->get_m_Data());
                 current->set_m_Freq(tmp.m_Left->get_m_Freq());
                 return remove(current->m_Right, tmp.m_Left->get_m_Data());
             }
         }
+
         return *this;
     }
 }
@@ -154,7 +177,7 @@ ArbreB::~ArbreB() {
 ArbreB& ArbreB::operator=(const ArbreB& other) {
     if (other.m_Root != nullptr) {
         m_Root = new Sommet();
-        *m_Root = *other.m_Root;
+        *m_Root = *other.m_Root; // Using overload of operator= for class Sommet
     }
     return *this;
 }
@@ -181,6 +204,7 @@ void ArbreB::insert(Sommet& new_node) {
 }
 
 void ArbreB::insert(const char& data, const double& freq) {
+    // Create Sommet from arguments and use private insert() method
     Sommet s(data, freq);
     insert(m_Root, s);
 }
@@ -194,14 +218,16 @@ bool ArbreB::bst_search(const char& data, std::string& path) {
 }
 
 ArbreB& ArbreB::remove(const char& data) {
+    // If ArbreB is empty
     if (m_Root == nullptr) {
-        // std::cout << "Warning: ArbreB is empty" << std::endl
-        //           << "Aborting remove()..." << std::endl;
+        /* std::cout << "Warning: ArbreB is empty" << std::endl
+            << "Aborting remove()..." << std::endl; */
         return *this;
     }
+    // If character to remove is not in the tree
     else if (!search(m_Root, data)) {
-        // std::cout << "Warning: the character to remove was not in the ArbreB" << std::endl
-        //           << "Aborting remove()..." << std::endl;
+        /* std::cout << "Warning: the character to remove was not in the ArbreB" << std::endl
+            << "Aborting remove()..." << std::endl; */
         return *this;
     }
     else {
@@ -210,28 +236,35 @@ ArbreB& ArbreB::remove(const char& data) {
 }
 
 ArbreB ArbreB::operator+(const ArbreB& other) {
+    // Bases cases
     if (m_Root == nullptr) {
         return other;
     }
-    if (other.m_Root == nullptr) {
+    else if (other.m_Root == nullptr) {
         return *this;
     }
+    // ArbreB has two children
+    else {
+        // Initialize new fields for new tree
+        char new_char = '\0';
+        double new_freq = m_Root->get_m_Freq() + other.m_Root->get_m_Freq();
 
-    // Initialize new fields for new tree
-    char new_char = '\0';
-    double new_freq = m_Root->get_m_Freq() + other.m_Root->get_m_Freq();
-    // Create tree with these fields
-    ArbreB new_tree(new_char, new_freq);
-    // Link child branches
-    new_tree.m_Root->m_Left = new Sommet(*m_Root);
-    new_tree.m_Root->m_Right = new Sommet(*other.m_Root);
+        // Create tree with these fields
+        ArbreB new_tree(new_char, new_freq);
 
-    return new_tree;
+        // Link child branches
+        new_tree.m_Root->m_Left = new Sommet(*m_Root);
+        new_tree.m_Root->m_Right = new Sommet(*other.m_Root);
+
+        return new_tree;
+    }
 }
 
 std::tuple<ArbreB, ArbreB> ArbreB::decompose() {
+    // Create new ArbreBs from left and right children
     ArbreB new_left(*m_Root->m_Left);
     ArbreB new_right(*m_Root->m_Right);
 
+    // Return an std::tuple
     return std::make_tuple(new_left, new_right);
 }

@@ -12,6 +12,7 @@ Sommet::Sommet(const Sommet& other) {
 }
 
 Sommet::~Sommet() {
+    // Delete only if pointers to m_Left/m_Right are not nullptr
     if (m_Left != nullptr) {
         delete m_Left;
     }
@@ -24,6 +25,7 @@ Sommet& Sommet::operator=(const Sommet& other) {
     // Copy `other`'s m_Data and m_Freq
     m_Data = other.m_Data;
     m_Freq = other.m_Freq;
+
     // Check that other.m_Left is not a nullptr before assigning m_Left
     if (other.m_Left != nullptr) {
         m_Left = new Sommet();
