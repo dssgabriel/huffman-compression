@@ -4,6 +4,7 @@ RFLAGS = -O2
 
 MAIN = src/bin/
 LIB = src/lib/
+TEST = src/test/
 DEBUG = target/debug/
 RELEASE = target/release/
 
@@ -18,16 +19,16 @@ release_dir:
 
 # Part 1
 build: debug_dir
-	$(CC) $(MAIN)part1_tests.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(DFLAGS) -o $(DEBUG)part1_tests
+	$(CC) $(MAIN)main1.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(TEST)PartOneTests.cpp $(DFLAGS) -o $(DEBUG)main1
 
 run: build
-	./$(DEBUG)part1_tests
+	./$(DEBUG)main1
 
 gdb: build
-	gdb ./$(DEBUG)part1_tests
+	gdb ./$(DEBUG)main1
 
 vg: build
-	valgrind --leak-check=full -v ./$(DEBUG)part1_tests
+	valgrind --leak-check=full -v ./$(DEBUG)main1
 
 # Clean target directories
 clean_debug:
