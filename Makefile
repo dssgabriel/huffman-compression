@@ -1,6 +1,6 @@
-CC = g++
-DFLAGS = -Wall -Wextra -g
-RFLAGS = -O2
+CC = clang++-9
+DFLAGS = -std=c++17 -Wall -Wextra -g
+RFLAGS = -std=c++17 -O2
 
 MAIN = src/bin/
 LIB = src/lib/
