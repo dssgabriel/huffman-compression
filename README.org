@@ -60,7 +60,7 @@ If you wish to build and run the project manually, use the following commands at
 #+BEGIN_SRC bash
 # First, build the project:
 mkdir -p target/release
-g++ src/bin/part1_tests.cpp src/lib/Sommet.cpp src/lib/ArbreB.cpp -O2 -o target/release/main1
+g++ src/bin/main1.cpp src/lib/Sommet.cpp src/lib/ArbreB.cpp -O2 -o target/release/main1
 
 # Then run it:
 ./target/release/main1
