@@ -18,12 +18,19 @@ release_dir:
 	mkdir -p $(RELEASE) 
 
 # Part 1
-build: debug_dir
+build: debug_dir release_dir
 	$(CC) $(MAIN)main1.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(TEST)PartOneTests.cpp $(DFLAGS) -o $(DEBUG)main1
+
+build_release:
+	$(CC) $(MAIN)main1.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(TEST)PartOneTests.cpp $(RFLAGS) -o $(RELEASE)main1
 
 run: build
 	./$(DEBUG)main1
 
+run_release: build_release
+	./$(RELEASE)main1
+
+# Debugging
 gdb: build
 	gdb ./$(DEBUG)main1
 
@@ -40,6 +47,7 @@ clean_release:
 clean:
 	rm -Rf target/
 
+# Create an archive of the project
 archive: clean
 	mkdir -p $(ARCHIVE)
 	cp -R src/ $(ARCHIVE)
