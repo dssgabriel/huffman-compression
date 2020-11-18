@@ -53,6 +53,7 @@ make build
 make run
 #+END_SRC
 
+
 This will allow you to use the other provided Makefile commands in case you need to do some debugging:
 #+BEGIN_SRC bash
 # To run with gdb:
@@ -61,6 +62,7 @@ make gdb
 # To run with valgrind:
 make vg
 #+END_SRC
+
 
 If you wish to build and/or run the program in release mode, you can do so by running the following in your terminal:
 #+BEGIN_SRC bash
@@ -71,6 +73,7 @@ make build_release
 make run_release
 #+END_SRC
 This will compile the project with optimization flags that help the program run faster.
+
 
 If you wish to build and run the project manually, use the following commands at the root of the project:
 #+BEGIN_SRC bash
