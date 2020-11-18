@@ -7,6 +7,7 @@
 - [[#part-2-encryption][Part 2: Encryption]]
 - [[#part-3-decryption][Part 3: Decryption]]
 - [[#building-the-project][Building the project]]
+- [[#listing-and-documentation][Listing and documentation]]
 
 * Description of the project
 The main goal of this project is to program an encryption and decryption application based on the Huffman code.
@@ -42,7 +43,8 @@ The goal of this third and last part is to take a encrypted text with the Huffma
 - Display the text to decrypt in the GUI and print the result of the decryption process.
 
 * Building the project
-You can build and/or run the project using the provided Makefile as follows:
+The project can either be compiled in debug or release mode.
+You can build and/or run it in debug mode using the provided Makefile as follows:
 #+BEGIN_SRC bash
 # To only build, run:
 make build
@@ -51,10 +53,24 @@ make build
 make run
 #+END_SRC
 
-You can also create an archive of the project with the provided ~archive~ command:
+This will allow you to use the other provided Makefile commands in case you need to do some debugging:
 #+BEGIN_SRC bash
-make archive
+# To run with gdb:
+make gdb
+
+# To run with valgrind:
+make vg
 #+END_SRC
+
+If you wish to build and/or run the program in release mode, you can do so by running the following in your terminal:
+#+BEGIN_SRC bash
+# To only build, run:
+make build_release
+
+# To build and run immediately:
+make run_release
+#+END_SRC
+This will compile the project with optimization flags that help the program run faster.
 
 If you wish to build and run the project manually, use the following commands at the root of the project:
 #+BEGIN_SRC bash
@@ -65,3 +81,11 @@ g++ src/bin/main1.cpp src/lib/Sommet.cpp src/lib/ArbreB.cpp -O2 -o target/releas
 # Then run it:
 ./target/release/main1
 #+END_SRC
+
+Lastly, you can also create an archive of the project with the provided ~archive~ command:
+#+BEGIN_SRC bash
+make archive
+#+END_SRC
+
+* Listing and documentation
+This project contains classes that have been documented with special block comments that describes their members and how their methods work. A documentation has been created in the form of the pdf file ~listing.pdf~ using Doxygen. Please feel free to have a look at it!

@@ -1,4 +1,4 @@
-CC = clang++-9
+CC = g++
 DFLAGS = -std=c++17 -Wall -Wextra -g
 RFLAGS = -std=c++17 -O2
 
@@ -10,12 +10,11 @@ RELEASE = target/release/
 
 ARCHIVE = dos-santos_marouani
 
-# Create directories for binaries (if needed)
-debug_dir:
-	mkdir -p $(DEBUG)
+run: build
+	./$(DEBUG)main1
 
-release_dir:
-	mkdir -p $(RELEASE) 
+run_release: build_release
+	./$(RELEASE)main1
 
 # Part 1
 build: debug_dir release_dir
@@ -24,18 +23,19 @@ build: debug_dir release_dir
 build_release:
 	$(CC) $(MAIN)main1.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(TEST)PartOneTests.cpp $(RFLAGS) -o $(RELEASE)main1
 
-run: build
-	./$(DEBUG)main1
-
-run_release: build_release
-	./$(RELEASE)main1
-
 # Debugging
 gdb: build
 	gdb ./$(DEBUG)main1
 
 vg: build
 	valgrind --leak-check=full -v ./$(DEBUG)main1
+
+# Create directories for binaries (if needed)
+debug_dir:
+	mkdir -p $(DEBUG)
+
+release_dir:
+	mkdir -p $(RELEASE) 
 
 # Clean target directories
 clean_debug:
@@ -53,5 +53,6 @@ archive: clean
 	cp -R src/ $(ARCHIVE)
 	cp Makefile $(ARCHIVE)
 	cp README.org $(ARCHIVE)
+	cp listing.pdf $(ARCHIVE)
 	tar -zcvf $(ARCHIVE).tar $(ARCHIVE)
 	rm -Rf $(ARCHIVE)

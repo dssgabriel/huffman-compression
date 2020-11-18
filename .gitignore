@@ -1,5 +1,7 @@
 # Directories to ignore
 target/
+docs/
 
 # Files to ignore
 *.pdf
+Doxyfile
