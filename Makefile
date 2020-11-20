@@ -17,10 +17,10 @@ run_release: build_release
 	./$(RELEASE)main1
 
 # Part 1
-build: debug_dir release_dir
+build: debug_dir
 	$(CC) $(MAIN)main1.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(TEST)PartOneTests.cpp $(DFLAGS) -o $(DEBUG)main1
 
-build_release:
+build_release: release_dir
 	$(CC) $(MAIN)main1.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(TEST)PartOneTests.cpp $(RFLAGS) -o $(RELEASE)main1
 
 # Debugging
