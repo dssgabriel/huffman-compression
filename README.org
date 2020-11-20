@@ -1,14 +1,6 @@
 #+TITLE:    IN505 - C++ project: Encryption and Decryption
 #+AUTHOR:   Gabriel Dos Santos, Raphael Marouani
 
-* Table of contents :toc:
-- [[#description-of-the-project][Description of the project]]
-- [[#part-1-abstract-data-structures][Part 1: Abstract data structures]]
-- [[#part-2-encryption][Part 2: Encryption]]
-- [[#part-3-decryption][Part 3: Decryption]]
-- [[#building-the-project][Building the project]]
-- [[#listing-and-documentation][Listing and documentation]]
-
 * Description of the project
 The main goal of this project is to program an encryption and decryption application based on the Huffman code.
 
@@ -22,28 +14,28 @@ The Huffman code aims at translating a text in binary (with '0's and '1's) and c
 
 This project is made up of three parts.
 
-* Part 1: Abstract data structures
+** Part 1: Abstract data structures
 The goal of this part is to propose an object-oriented implementation of the structure and behavior of a labeled binary tree. In that regard, the objective will be to:
-1. Propose two classes, the class ~Node~ of which each instance represents the node of a binary tree, and the class ~BinaryTree~ of which each instance represents a binary tree.
-2. Implement the operations for inserting and removing nodes from the tree, modifying the label of a node, researching an element in the tree, as well as the operations of fusion and decomposition of binary trees. You may also overload the necessary operators.
-3. Propose a test program that demonstrates the features of a binary tree.
-4. Implement a simple graphical user interface (GUI) that allows, amongst other things, to print the created binary tree.
+- Propose two classes, the class ~Node~ of which each instance represents the node of a binary tree, and the class ~BinaryTree~ of which each instance represents a binary tree.
+- Implement the operations for inserting and removing nodes from the tree, modifying the label of a node, researching an element in the tree, as well as the operations of fusion and decomposition of binary trees. You may also overload the necessary operators.
+- Propose a test program that demonstrates the features of a binary tree.
+- Implement a simple graphical user interface (GUI) that allows, amongst other things, to print the created binary tree.
 
-* Part 2: Encryption
+** Part 2: Encryption
 The goal of this part is to take an input text (it can be in English, French, or any other language that you want) and to output an encrypted text using the Huffman code. Your application must support the following operations:
 1. Compute the percentage of occurence for each letter of the alphabet of the input text.
-2. Using the previously defined model of a binary tree, create a encryption binary tree that implements the aforementioned algorithm (cf. [[#about][about]]) and the statistics evaluated in step 1.
+2. Using the previously defined model of a binary tree, create a encryption binary tree that implements the aforementioned algorithm and the statistics evaluated in step 1.
 3. Encrypt an input text with the letter encryption made in step 2.
 4. Enhance the GUI to allow the user to print the text encrypt and its binary output.
 
-* Part 3: Decryption
+** Part 3: Decryption
 The goal of this third and last part is to take a encrypted text with the Huffman code and to decrypt this text. Your application should be able to:
 - Verify if a text has been encrypted using the binary tree created in part 2.
 - Decrypt a text encrypted with the Huffman code.
 - Display the text to decrypt in the GUI and print the result of the decryption process.
 
 * Building the project
-The project can either be compiled in debug or release mode.
+This project can either be compiled in debug or release mode.
 You can build and/or run it in debug mode using the provided Makefile as follows:
 #+BEGIN_SRC bash
 # To only build, run:
@@ -79,7 +71,7 @@ If you wish to build and run the project manually, use the following commands at
 #+BEGIN_SRC bash
 # First, build the project:
 mkdir -p target/release
-g++ src/bin/main1.cpp src/lib/Sommet.cpp src/lib/ArbreB.cpp -O2 -o target/release/main1
+g++ src/bin/main1.cpp src/lib/Sommet.cpp src/lib/ArbreB.cpp src/test/PartOneTests -std=c++17 -O2 -o target/release/main1
 
 # Then run it:
 ./target/release/main1
@@ -89,6 +81,3 @@ Lastly, you can also create an archive of the project with the provided ~archive
 #+BEGIN_SRC bash
 make archive
 #+END_SRC
-
-* Listing and documentation
-This project contains classes that have been documented with special block comments that describes their members and how their methods work. A documentation has been created in the form of the pdf file ~listing.pdf~ using Doxygen. Please feel free to have a look at it!

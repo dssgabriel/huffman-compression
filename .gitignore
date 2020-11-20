@@ -1,7 +1,10 @@
 # Directories to ignore
 target/
 docs/
+.screenshots/
 
 # Files to ignore
-*.pdf
-Doxyfile
+project.pdf
+.Doxyfile
+report.*
+*.tar.gz

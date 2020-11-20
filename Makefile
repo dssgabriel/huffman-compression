@@ -54,5 +54,6 @@ archive: clean
 	cp Makefile $(ARCHIVE)
 	cp README.org $(ARCHIVE)
 	cp listing.pdf $(ARCHIVE)
-	tar -zcvf $(ARCHIVE).tar $(ARCHIVE)
+	cp compte-rendu.pdf $(ARCHIVE)
+	tar -czvf $(ARCHIVE).tar.gz $(ARCHIVE)
 	rm -Rf $(ARCHIVE)
