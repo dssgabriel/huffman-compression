@@ -268,3 +268,24 @@ std::tuple<ArbreB, ArbreB> ArbreB::decompose() {
     // Return an std::tuple
     return std::make_tuple(new_left, new_right);
 }
+
+// AFFICHAGE par Raphael
+// Pas encore fonctionnel
+
+void ArbreB::print(int a, ArbreB& other){
+     
+      if(other.m_Root == nullptr) 
+      { return;} 
+      a += 8;
+      
+      other.m_Root->print(*other.m_Root->m_Right);
+       std::cout<<std::endl;
+       
+      for(int i = 8; i < a; i++)
+         {std::cout << " ";}
+          
+      std::cout<< other.m_Root->get_m_Data()<<"\n";
+      other.m_Root->print(*other.m_Root->m_Left); 
+
+}
+

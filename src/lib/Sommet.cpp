@@ -67,3 +67,22 @@ void Sommet::set_m_Data(const char& data) {
 void Sommet::set_m_Freq(const double& freq) {
     m_Freq = freq;
 }
+
+void Sommet::print(Sommet& other) {   //AJOUT
+    if(other.m_Right == nullptr){
+        return;}
+    
+    if(other.m_Left == nullptr){
+        return;}
+        
+    
+    if(other.m_Left){
+        print(*other.m_Left);
+    }
+    
+    if(other.m_Right){
+        print(*other.m_Right);
+    }
+    
+    std::cout<<other.get_m_Data();
+}

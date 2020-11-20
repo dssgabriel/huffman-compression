@@ -185,6 +185,11 @@ class ArbreB {
          * @return An std::tuple that holds two `ArbreB`. The first one is the left branch of the original tree. The second one is the right branch of the original tree.
          */
         std::tuple<ArbreB, ArbreB> decompose();
+
+        /**
+         * Function written by Rapahel Marouani
+         */
+        void print(int a, ArbreB& other);
 };
 
 #endif

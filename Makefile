@@ -49,11 +49,13 @@ clean:
 
 # Create an archive of the project
 archive: clean
+	rm -Rf $(ARCHIVE).tar.gz
 	mkdir -p $(ARCHIVE)
 	cp -R src/ $(ARCHIVE)
 	cp Makefile $(ARCHIVE)
 	cp README.org $(ARCHIVE)
 	cp listing.pdf $(ARCHIVE)
 	cp compte-rendu.pdf $(ARCHIVE)
+	cp -R graphics/ $(ARCHIVE)
 	tar -czvf $(ARCHIVE).tar.gz $(ARCHIVE)
 	rm -Rf $(ARCHIVE)

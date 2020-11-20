@@ -1,6 +1,8 @@
 #ifndef SOMMET_HPP
 #define SOMMET_HPP
 
+#include <iostream>
+
 class ArbreB;
 
 /**
@@ -97,6 +99,11 @@ class Sommet {
          * @param freq The value to assign to `m_Freq`.
          */
         void set_m_Freq(const double& freq);
+
+        /** 
+         * Function written by Raphael
+         */
+        void print(Sommet& other); //AJOUT
 };
 
 #endif
