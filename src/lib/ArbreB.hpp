@@ -189,7 +189,9 @@ class ArbreB {
         /**
          * Function written by Rapahel Marouani
          */
-        void print(int a, ArbreB& other);
+        void print(int a, ArbreB other);
+
+        
 };
 
 #endif

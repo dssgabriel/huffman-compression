@@ -180,5 +180,20 @@ int main() {
         std::cout << "\e[1mStatus: \e[31mBUILD FAILURE\e[0m" << std::endl;
     }
 
-    return 0;
+    ArbreB a;
+    a.insert('m', 13.);
+    a.insert('c', 3.);
+    a.insert('r', 18.);
+    a.insert('l', 7.);
+    a.insert('y', 25.);
+    a.insert('p', 2.);
+    a.insert('s', 10.);
+    a.insert('g', 17.);
+    
+    a.print(0,a);
+
+    
+
+
+        return 0;
 }

@@ -9,6 +9,8 @@ void ArbreB::preorder_traversal(Sommet*& current) {
     std::cout << "(" << current->get_m_Data() << ", " << current->get_m_Freq() << ") ";
     preorder_traversal(current->m_Left);
     preorder_traversal(current->m_Right);
+
+    
 }
 
 void ArbreB::inorder_traversal(Sommet*& current) {
@@ -272,20 +274,56 @@ std::tuple<ArbreB, ArbreB> ArbreB::decompose() {
 // AFFICHAGE par Raphael
 // Pas encore fonctionnel
 
-void ArbreB::print(int a, ArbreB& other){
+void ArbreB::print(int a, ArbreB other){
      
-      if(other.m_Root == nullptr) 
-      { return;} 
+     /* if(other.m_Root == nullptr) 
+      
+      { return; } 
+     
       a += 8;
       
-      other.m_Root->print(*other.m_Root->m_Right);
+     //
+      print(8,*other.m_Root->m_Right);
+       
        std::cout<<std::endl;
        
+
       for(int i = 8; i < a; i++)
-         {std::cout << " ";}
+         { 
+         	std::cout << " ";
+         	
+
+           //other.m_Root->print(*other.m_Root->m_Right);
+
+         	}
           
-      std::cout<< other.m_Root->get_m_Data()<<"\n";
-      other.m_Root->print(*other.m_Root->m_Left); 
+           std::cout<< other.m_Root->get_m_Data()<<"\n";
+    
+  // 
+         	print(8,*other.m_Root->m_Left); */
+
+	if(other.m_Root == nullptr)
+	{
+		return;
+	}
+
+	a += 4;
+	
+	if(other.m_Root->m_Right)
+			print(a,*other.m_Root->m_Right);
+	for(int i = 4; i < a; i++)
+         { 
+         	std::cout << " ";
+         }
+
+
+		std::cout<< other.m_Root->get_m_Data()<<"\n"
+		;
+		
+		if(other.m_Root->m_Left)
+			print(a,*other.m_Root->m_Left);
 
 }
+
+
 

@@ -78,11 +78,14 @@ void Sommet::print(Sommet& other) {   //AJOUT
     
     if(other.m_Left){
         print(*other.m_Left);
+         std::cout<<other.m_Right->get_m_Data() << "\n";
     }
-    
+    std::cout<<other.get_m_Data() << "\n";
+
     if(other.m_Right){
         print(*other.m_Right);
+         std::cout<<other.m_Right->get_m_Data() << "\n";
     }
     
-    std::cout<<other.get_m_Data();
+    
 }
