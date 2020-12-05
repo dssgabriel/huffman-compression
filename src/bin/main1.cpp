@@ -180,5 +180,20 @@ int main() {
         std::cout << "\e[1mStatus: \e[31mBUILD FAILURE\e[0m" << std::endl;
     }
 
+    std::cout << "\nPrinting a tree:\n" << std::endl;
+    ArbreB a;
+    a.insert('m', 13.);
+    a.insert('c', 3.);
+    a.insert('r', 18.);
+    a.insert('g', 7.);
+    a.insert('y', 25.);
+
+    ArbreB b(a);
+    ArbreB c = a + b;
+
+    c.print();
+
+    std::cout << std::endl;
+
     return 0;
 }
