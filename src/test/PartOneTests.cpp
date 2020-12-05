@@ -11,10 +11,10 @@ bool PartOneTests::should_create_default_Sommet() {
     bool ret = true;
     Sommet s;
 
-    if (s.get_m_Data() != '\0' ||
-        s.get_m_Freq() != 0 ||
-        s.m_Left != nullptr ||
-        s.m_Right != nullptr)
+    if (s.get_data() != '\0' ||
+        s.get_freq() != 0 ||
+        s.get_left() != nullptr ||
+        s.get_right() != nullptr)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -25,10 +25,10 @@ bool PartOneTests::should_create_parameterized_Sommet() {
     bool ret = true;
     Sommet s('a', 1.);
 
-    if (s.get_m_Data() != 'a' ||
-        s.get_m_Freq() != 1. ||
-        s.m_Left != nullptr ||
-        s.m_Right != nullptr)
+    if (s.get_data() != 'a' ||
+        s.get_freq() != 1. ||
+        s.get_left() != nullptr ||
+        s.get_right() != nullptr)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -40,10 +40,10 @@ bool PartOneTests::should_create_copy_Sommet() {
     Sommet s1('a', 1.);
     Sommet s2(s1);
 
-    if (s2.get_m_Data() != 'a' ||
-        s2.get_m_Freq() != 1. ||
-        s2.m_Left != nullptr ||
-        s2.m_Right != nullptr)
+    if (s2.get_data() != 'a' ||
+        s2.get_freq() != 1. ||
+        s2.get_left() != nullptr ||
+        s2.get_right() != nullptr)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -57,8 +57,8 @@ bool PartOneTests::should_set_Sommet_values() {
     s.set_m_Data('a');
     s.set_m_Freq(1.);
 
-    if (s.get_m_Data() != 'a' ||
-        s.get_m_Freq() != 1.)
+    if (s.get_data() != 'a' ||
+        s.get_freq() != 1.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -72,8 +72,8 @@ bool PartOneTests::should_assign_Sommet() {
 
     s2 = s1;
 
-    if (s2.get_m_Data() != 'a' ||
-        s2.get_m_Freq() != 1.)
+    if (s2.get_data() != 'a' ||
+        s2.get_freq() != 1.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -88,10 +88,10 @@ bool PartOneTests::should_not_link_Sommet_copies() {
     s2.set_m_Data('b');
     s2.set_m_Freq(2.);
 
-    if (s1.get_m_Data() != 'a' ||
-        s1.get_m_Freq() != 1. ||
-        s2.get_m_Data() != 'b' ||
-        s2.get_m_Freq() != 2.)
+    if (s1.get_data() != 'a' ||
+        s1.get_freq() != 1. ||
+        s2.get_data() != 'b' ||
+        s2.get_freq() != 2.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -102,7 +102,7 @@ bool PartOneTests::should_create_default_ArbreB() {
     bool ret = true;
     ArbreB a;
 
-    if (a.m_Root != nullptr) {
+    if (a.get_root() != nullptr) {
         ret = false;
         tests_failed++;
     }
@@ -115,8 +115,8 @@ bool PartOneTests::should_create_parameterized_ArbreB() {
     bool ret = true;
     ArbreB a('a', 1.);
 
-    if (a.m_Root->get_m_Data() != 'a' ||
-        a.m_Root->get_m_Freq() != 1.)
+    if (a.get_root()->get_data() != 'a' ||
+        a.get_root()->get_freq() != 1.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -128,8 +128,8 @@ bool PartOneTests::should_create_ArbreB_from_Sommet() {
     Sommet s('a', 1.);
     ArbreB a(s);
 
-    if (a.m_Root->get_m_Data() != 'a' ||
-        a.m_Root->get_m_Freq() != 1.)
+    if (a.get_root()->get_data() != 'a' ||
+        a.get_root()->get_freq() != 1.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -141,8 +141,8 @@ bool PartOneTests::should_create_copy_ArbreB() {
     ArbreB a1('a', 1.);
     ArbreB a2(a1);
 
-    if (a2.m_Root->get_m_Data() != 'a' ||
-        a2.m_Root->get_m_Freq() != 1.)
+    if (a2.get_root()->get_data() != 'a' ||
+        a2.get_root()->get_freq() != 1.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -156,8 +156,8 @@ bool PartOneTests::should_assign_ArbreB() {
 
     a2 = a1;
 
-    if (a2.m_Root->get_m_Data() != 'a' ||
-        a2.m_Root->get_m_Freq() != 1.)
+    if (a2.get_root()->get_data() != 'a' ||
+        a2.get_root()->get_freq() != 1.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -169,13 +169,13 @@ bool PartOneTests::should_not_link_ArbreB_copies() {
     ArbreB a1('a', 1.);
     ArbreB a2(a1);
 
-    a2.m_Root->set_m_Data('b');
-    a2.m_Root->set_m_Freq(2.);
+    a2.get_root()->set_m_Data('b');
+    a2.get_root()->set_m_Freq(2.);
 
-    if (a1.m_Root->get_m_Data() != 'a' ||
-        a1.m_Root->get_m_Freq() != 1. ||
-        a2.m_Root->get_m_Data() != 'b' ||
-        a2.m_Root->get_m_Freq() != 2.)
+    if (a1.get_root()->get_data() != 'a' ||
+        a1.get_root()->get_freq() != 1. ||
+        a2.get_root()->get_data() != 'b' ||
+        a2.get_root()->get_freq() != 2.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -189,10 +189,10 @@ bool PartOneTests::should_insert_Sommet_into_ArbreB() {
     a.insert(s);
     a.insert('r', 18.);
 
-    if (a.m_Root->m_Left->get_m_Data() != 'c' ||
-        a.m_Root->m_Left->get_m_Freq() != 3. ||
-        a.m_Root->m_Right->get_m_Data() != 'r' ||
-        a.m_Root->m_Right->get_m_Freq() != 18.)
+    if (a.get_root()->get_left()->get_data() != 'c' ||
+        a.get_root()->get_left()->get_freq() != 3. ||
+        a.get_root()->get_right()->get_data() != 'r' ||
+        a.get_root()->get_right()->get_freq() != 18.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -204,8 +204,8 @@ bool PartOneTests::should_update_freq_if_char_already_in_ArbreB() {
     ArbreB a('m', 13.);
     a.insert('m', 13.);
 
-    if (a.m_Root->get_m_Data() != 'm' ||
-        a.m_Root->get_m_Freq() != 26.)
+    if (a.get_root()->get_data() != 'm' ||
+        a.get_root()->get_freq() != 26.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -258,7 +258,7 @@ bool PartOneTests::should_remove_leaf() {
 
     a.remove('g');
 
-    if (a.m_Root->m_Left->m_Right != nullptr) {
+    if (a.get_root()->get_left()->get_right() != nullptr) {
         ret = false;
         tests_failed++;
     }
@@ -278,9 +278,9 @@ bool PartOneTests::should_remove_Sommet_with_one_child() {
 
     a.remove('y');
 
-    if (a.m_Root->m_Right->m_Right->m_Left != nullptr ||
-        a.m_Root->m_Right->m_Right->get_m_Data() != 'u' ||
-        a.m_Root->m_Right->m_Right->get_m_Freq() != 21.)
+    if (a.get_root()->get_right()->get_right()->get_left() != nullptr ||
+        a.get_root()->get_right()->get_right()->get_data() != 'u' ||
+        a.get_root()->get_right()->get_right()->get_freq() != 21.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -299,9 +299,9 @@ bool PartOneTests::should_remove_Sommet_with_two_children() {
 
     a.remove('m');
 
-    if (a.m_Root->get_m_Data() != 'r' ||
-        a.m_Root->get_m_Freq() != 18. ||
-        a.m_Root->m_Right->m_Left != nullptr)
+    if (a.get_root()->get_data() != 'r' ||
+        a.get_root()->get_freq() != 18. ||
+        a.get_root()->get_right()->get_left() != nullptr)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -314,12 +314,12 @@ bool PartOneTests::should_fuse_two_ArbreB() {
     ArbreB a2('t', 20.);
     ArbreB a3 = a1 + a2;
 
-    if (a3.m_Root->get_m_Data() != '\0' ||
-        a3.m_Root->get_m_Freq() != 27. ||
-        a3.m_Root->m_Left->get_m_Data() != 'g' ||
-        a3.m_Root->m_Left->get_m_Freq() != 7. ||
-        a3.m_Root->m_Right->get_m_Data() != 't' ||
-        a3.m_Root->m_Right->get_m_Freq() != 20.)
+    if (a3.get_root()->get_data() != '\0' ||
+        a3.get_root()->get_freq() != 27. ||
+        a3.get_root()->get_left()->get_data() != 'g' ||
+        a3.get_root()->get_left()->get_freq() != 7. ||
+        a3.get_root()->get_right()->get_data() != 't' ||
+        a3.get_root()->get_right()->get_freq() != 20.)
     { ret = false; tests_failed++; }
 
     tests_run++;
@@ -339,10 +339,10 @@ bool PartOneTests::should_decompose_one_ArbreB_into_two() {
     ArbreB a2, a3;
     std::tie(a2, a3) = a1.decompose();
 
-    if (a2.m_Root->get_m_Data() != 'g' ||
-        a2.m_Root->get_m_Freq() != 7. ||
-        a3.m_Root->get_m_Data() != 'u' ||
-        a3.m_Root->get_m_Freq() != 21.)
+    if (a2.get_root()->get_data() != 'g' ||
+        a2.get_root()->get_freq() != 7. ||
+        a3.get_root()->get_data() != 'u' ||
+        a3.get_root()->get_freq() != 21.)
     { ret = false; tests_failed++; }
 
     tests_run++;
