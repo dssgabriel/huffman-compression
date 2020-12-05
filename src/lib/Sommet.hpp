@@ -22,8 +22,6 @@ class Sommet {
          * Represents the frequency of a character in a text.
          */
         double m_Freq;
-
-    public:
         /**
          * Represents the left child of an object `Sommet`.
          */
@@ -33,6 +31,7 @@ class Sommet {
          */
         Sommet* m_Right;
 
+    public:
         /**
          * Creates a default object `Sommet`.
          * Sets `m_Data` to `\0`, `m_Freq` to `0`, `m_Left` and `m_Right` to `nullptr`.
@@ -68,25 +67,25 @@ class Sommet {
          * Gets the character.
          * @return A reference of the character.
          */
-        char& get_m_Data();
+        char& get_data();
 
         /**
          * Gets the character's frequency.
          * @return A reference of the character's frequency.
          */
-        double& get_m_Freq();
+        double& get_freq();
 
         /**
          * Gets the left child.
          * @return A reference of the left child.
          */
-        Sommet& get_m_Left();
+        Sommet* get_left();
 
         /**
          * Gets the right child.
          * @return A reference of the right child.
          */
-        Sommet& get_m_Right();
+        Sommet* get_right();
 
         /**
          * Sets the value of the character.
@@ -104,6 +103,11 @@ class Sommet {
          * Function written by Raphael
          */
         void print(Sommet& other); //AJOUT
+
+        /**
+         * Prints an ArbreB.
+         */
+        void print(int spacing);
 };
 
 #endif

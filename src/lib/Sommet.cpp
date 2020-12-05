@@ -44,20 +44,20 @@ Sommet& Sommet::operator=(const Sommet& other) {
     return *this;
 }
 
-char& Sommet::get_m_Data() {
+char& Sommet::get_data() {
     return m_Data;
 }
 
-double& Sommet::get_m_Freq() {
+double& Sommet::get_freq() {
     return m_Freq;
 }
 
-Sommet& Sommet::get_m_Left() {
-    return *m_Left;
+Sommet* Sommet::get_left() {
+    return m_Left;
 }
 
-Sommet& Sommet::get_m_Right() {
-    return *m_Right;
+Sommet* Sommet::get_right() {
+    return m_Right;
 }
 
 void Sommet::set_m_Data(const char& data) {
@@ -69,20 +69,40 @@ void Sommet::set_m_Freq(const double& freq) {
 }
 
 void Sommet::print(Sommet& other) {   //AJOUT
-    if(other.m_Right == nullptr){
+    if(other.get_right() == nullptr){
         return;}
     
-    if(other.m_Left == nullptr){
+    if(other.get_left() == nullptr){
         return;}
         
     
-    if(other.m_Left){
-        print(*other.m_Left);
+    if(other.get_left()){
+        print(*other.get_left());
     }
     
-    if(other.m_Right){
-        print(*other.m_Right);
+    if(other.get_right()){
+        print(*other.get_right());
     }
     
-    std::cout<<other.get_m_Data();
+    std::cout<<other.get_data();
+}
+
+void Sommet::print(int spacing) {
+    if (m_Right) {
+        m_Right->print(spacing + 1);
+    }
+
+    for (int i = 0; i < spacing; i++) {
+        std::cout << "    ";
+    }
+    if (m_Data == '\0') {
+        std::cout << "(" << m_Freq << "), " << std::endl;
+    }
+    else {
+        std::cout << "(" << m_Data << ", " << m_Freq << ")" << std::endl;
+    }
+
+    if (m_Left) {
+        m_Left->print(spacing + 1);
+    }
 }
