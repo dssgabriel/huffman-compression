@@ -15,6 +15,11 @@
 class ArbreB {
     private:
         /**
+         * Represents a pointer to the root of the object `ArbreB`.
+         */
+        Sommet* m_Root;
+
+        /**
          * Recursively performs a preorder traversal of the object `ArbreB`.
          * @param current A reference of the pointer of the current `Sommet`.
          */
@@ -74,11 +79,6 @@ class ArbreB {
         ArbreB& remove(Sommet*& current, const char& data);
 
     public:
-        /**
-         * Represents a pointer to the root of the object `ArbreB`.
-         */
-        Sommet* m_Root;
-
         /**
          * Creates a default object `ArbreB`.
          * Sets `m_Root` at `nullptr`.
@@ -187,9 +187,20 @@ class ArbreB {
         std::tuple<ArbreB, ArbreB> decompose();
 
         /**
+         *
+         */
+        Sommet* get_root();
+
+        /**
          * Function written by Rapahel Marouani
          */
         void print(int a, ArbreB& other);
+
+        /**
+         * Prints an ArbreB.
+         */
+        void print();
+
 };
 
 #endif
