@@ -10,32 +10,49 @@ RELEASE = target/release/
 
 ARCHIVE = dos-santos_marouani
 
-run: build
-	./$(DEBUG)main1
+run1: build1
+	$(DEBUG)main1
 
-run_release: build_release
-	./$(RELEASE)main1
+run2: build2
+	$(DEBUG)main2 test.txt
 
-# Part 1
-build: debug_dir
+run_release1: build_release1
+	$(RELEASE)main1
+
+run_release2: build_release2
+	$(RELEASE)main2 text.txt
+
+build1: debug_dir
 	$(CC) $(MAIN)main1.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(TEST)PartOneTests.cpp $(DFLAGS) -o $(DEBUG)main1
 
-build_release: release_dir
+build2: debug_dir
+	$(CC) $(MAIN)main2.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(DFLAGS) -o $(DEBUG)main2
+
+build_release1: release_dir
 	$(CC) $(MAIN)main1.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(TEST)PartOneTests.cpp $(RFLAGS) -o $(RELEASE)main1
 
-# Debugging
-gdb: build
-	gdb ./$(DEBUG)main1
+build_release2: release_dir
+	$(CC) $(MAIN)main2.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(RFLAGS) -o $(RELEASE)main2
 
-vg: build
-	valgrind --leak-check=full -v ./$(DEBUG)main1
+# Debugging
+gdb1: build1
+	gdb $(DEBUG)main1
+
+gdb2: build2
+	gdb $(DEBUG)main2
+
+vg1: build1
+	valgrind --leak-check=full -v $(DEBUG)main1
+
+vg2: build2
+	valgrind --leak-check=full -v $(DEBUG)main2 text.txt
 
 # Create directories for binaries (if needed)
 debug_dir:
 	mkdir -p $(DEBUG)
 
 release_dir:
-	mkdir -p $(RELEASE) 
+	mkdir -p $(RELEASE)
 
 # Clean target directories
 clean_debug:
