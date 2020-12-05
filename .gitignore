@@ -2,6 +2,7 @@
 target/
 docs/
 .screenshots/
+textfiles/
 
 # Files to ignore
 project.pdf
