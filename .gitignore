@@ -1,8 +1,6 @@
 # Directories to ignore
 target/
-docs/
 .screenshots/
-textfiles/
 
 # Files to ignore
 .Doxyfile
