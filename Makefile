@@ -14,13 +14,13 @@ run1: build1
 	$(DEBUG)main1
 
 run2: build2
-	$(DEBUG)main2 test.txt
+	$(DEBUG)main2 textfiles/test.txt
 
 run_release1: build_release1
 	$(RELEASE)main1
 
 run_release2: build_release2
-	$(RELEASE)main2 text.txt
+	$(RELEASE)main2 textfiles/test.txt
 
 build1: debug_dir
 	$(CC) $(MAIN)main1.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(TEST)PartOneTests.cpp $(DFLAGS) -o $(DEBUG)main1
@@ -45,7 +45,7 @@ vg1: build1
 	valgrind --leak-check=full -v $(DEBUG)main1
 
 vg2: build2
-	valgrind --leak-check=full -v $(DEBUG)main2 text.txt
+	valgrind --leak-check=full -v $(DEBUG)main2 textfiles/test.txt
 
 # Create directories for binaries (if needed)
 debug_dir:
