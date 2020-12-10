@@ -3,81 +3,139 @@
 #include <vector>
 #include "../lib/ArbreB.hpp"
 
-std::vector<ArbreB> parse_file_to_vector(char* filename) {
-    std::vector<ArbreB> vec_btree;
-    std::ifstream file;
-
-    file.open(filename, std::ifstream::in);
-
-    if (!file) {
-        std::cerr << "Error: could not open file " << filename << std::endl;
+std::string parse_file_to_string(char* filename) {
+    // Check that filename is not a nullptr
+    if (!filename) {
+        return std::cout << "Error: file name is nullptr" << std::endl, nullptr;
     }
 
-    double char_count = 0.;
-    char read_char;
-    while (not file.eof()) {
-        file.get(read_char);
-        char_count += 1.;
-        bool known = false;
-        for (unsigned int i = 0; i < vec_btree.size(); i++) {
-            if (read_char == vec_btree[i].get_root()->get_data()) {
-                known = true;
-                vec_btree[i].get_root()->set_m_Freq(vec_btree[i].get_root()->get_freq() + 1);
-                break;
-            }
-        }
+    std::string file_content;
+    std::ifstream fp;
+    fp.open(filename, std::ifstream::in);
 
-        if (known == false) {
-            ArbreB new_char(read_char, 1.);
-            vec_btree.push_back(new_char);
-        }
-    }
-    file.close();
-
-    for (unsigned int i = 0; i < vec_btree.size(); i++) {
-        vec_btree[i].get_root()->set_m_Freq(vec_btree[i].get_root()->get_freq() / char_count);
+    // Check that fp has opened correctly
+    if (!fp) {
+        return std::cout << "Error: could not open file " << filename << std::endl, nullptr;
     }
 
-    return vec_btree;
+    char read;
+    // Read each character in the file
+    while (!fp.eof()) {
+        fp.get(read);
+        file_content.push_back(read);
+    }
+
+    // Close file
+    fp.close();
+
+    return file_content;
 }
 
-ArbreB get_lowest(std::vector<ArbreB>& vec_btree) {
-    int index = 0;
-    double freq = vec_btree[0].get_root()->get_freq();
+unsigned int find(std::vector<ArbreB>& vec, char& content) {
+    bool found = false;
+    unsigned int index = 0;
 
-    for (unsigned int i = 0; i < vec_btree.size(); i++) {
-        if (vec_btree[i].get_root()->get_freq() < freq) {
+    // Loop will stop if a matching character is found
+    for (index = 0; !found && index < vec.size(); index++) {
+        found = (vec[index].get_root()->get_data() == content);
+    }
+
+     return (found) ? index : 0;
+}
+
+std::vector<ArbreB> build_btree_vector(std::string& content) {
+    std::vector<ArbreB> btrees;
+
+    for (unsigned int i = 0; i < content.length(); i++) {
+        // Check for a matching character in the vector
+        unsigned int f = find(btrees, content[i]);
+
+        // Update corresponding ArbreB's root frequency in the vector if found
+        if (f) {
+            btrees[f - 1].get_root()->set_freq(btrees[f - 1].get_root()->get_freq() + 1);
+        }
+        // Emplace an ArbreB with the new character otherwise
+        else {
+            if (btrees.size() == btrees.capacity()) {
+                // Avoid reallocating memory with each call emplace_back()
+                btrees.reserve(btrees.size() * 2);
+            }
+            btrees.emplace_back(ArbreB(content[i], 1.));
+        }
+    }
+    // De-allocate unused memory
+    btrees.shrink_to_fit();
+
+    return btrees;
+}
+
+ArbreB find_lowest(std::vector<ArbreB>& btrees) {
+    // Initialize index and frequency
+    unsigned int index = 0;
+    double freq = btrees[0].get_root()->get_freq();
+
+    for (unsigned int i = 1; i < btrees.size(); i++) {
+        // Update index and freq if current ArbreB's frequency is lower than freq
+        if (btrees[i].get_root()->get_freq() < freq) {
             index = i;
-            freq = vec_btree[i].get_root()->get_freq();
+            freq = btrees[i].get_root()->get_freq();
         }
     }
 
-    ArbreB lowest = vec_btree[index];
-    vec_btree.erase(vec_btree.begin() + index);
+    ArbreB lowest = btrees[index];
+    // Remove ArbreB with lowest frequency from the vector
+    btrees.erase(btrees.begin() + index);
 
     return lowest;
 }
 
-ArbreB build_huffman_tree(std::vector<ArbreB>& vec_btree) {
-    while (vec_btree.size() > 1) {
-        ArbreB first = get_lowest(vec_btree);
-        ArbreB second = get_lowest(vec_btree);
-        ArbreB fused_lowests = first + second;
-        vec_btree.push_back(fused_lowests);
+ArbreB build_huffman_tree(std::vector<ArbreB>& btrees) {
+    // Emplace fusions of ArbreBs when there is more than one in the vector
+    while (btrees.size() > 1) {
+        btrees.emplace_back(find_lowest(btrees) + find_lowest(btrees));
     }
 
-    return vec_btree[0];
+    return btrees[0];
+}
+
+std::string crypt_text(std::map<char, std::string> map, std::string file_content) {
+    std::string compressed;
+
+    for (unsigned int i = 0; i < file_content.length(); i++) {
+        auto char_code = map.find(file_content[i]);
+        compressed += char_code->second;
+    }
+
+    return  compressed;
 }
 
 int main(int argc, char** argv) {
     if (argc < 2) {
-        std::cerr << "Error: not enough arguments" << std::endl;
-        return 1;
+        return std::cout << "Error: not enough arguments" << std::endl, 1;
     }
 
-    std::vector<ArbreB> vec_btree = parse_file_to_vector(argv[1]);
-    ArbreB huffman = build_huffman_tree(vec_btree);
+    std::string file_content = parse_file_to_string(argv[1]);
+    std::cout << "\nInput text:\n" << file_content;
+
+    std::vector<ArbreB> btrees = build_btree_vector(file_content);
+    ArbreB huffman = build_huffman_tree(btrees);
+
+    std::cout << "Corresponding Huffman tree:" << std::endl;
     huffman.print();
+
+    std::map<char, std::string> huffman_code_map = huffman.build_huffman_map();
+    std::cout << "\nCode for each character:" << std::endl;
+    for (auto i : huffman_code_map) {
+        if (i.first == '\n') {
+            std::cout << "\\n : " << i.second << std::endl;
+        }
+        else {
+            std::cout << i.first << "  : " << i.second << std::endl;
+        }
+    }
+
+    std::string crypted = crypt_text(huffman_code_map, file_content);
+    std::cout << "\nCompressed text:\n" << crypted << std::endl;
 
     return 0;
 }
