@@ -296,3 +296,9 @@ void ArbreB::print() {
     m_Root->print(0);
 }
 
+std::map<char, std::string> ArbreB::build_huffman_map() {
+    std::map<char, std::string> map;
+    std::string path = "";
+    map_char_to_code(m_Root, map, path);
+    return map;
+}
