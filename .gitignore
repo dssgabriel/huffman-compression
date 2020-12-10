@@ -5,7 +5,6 @@ docs/
 textfiles/
 
 # Files to ignore
-project.pdf
 .Doxyfile
 .compte-rendu.org
 *.tar.gz
