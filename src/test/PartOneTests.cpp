@@ -54,8 +54,8 @@ bool PartOneTests::should_set_Sommet_values() {
     bool ret = true;
     Sommet s;
 
-    s.set_m_Data('a');
-    s.set_m_Freq(1.);
+    s.set_data('a');
+    s.set_freq(1.);
 
     if (s.get_data() != 'a' ||
         s.get_freq() != 1.)
@@ -85,8 +85,8 @@ bool PartOneTests::should_not_link_Sommet_copies() {
     Sommet s1('a', 1.);
     Sommet s2(s1);
 
-    s2.set_m_Data('b');
-    s2.set_m_Freq(2.);
+    s2.set_data('b');
+    s2.set_freq(2.);
 
     if (s1.get_data() != 'a' ||
         s1.get_freq() != 1. ||
@@ -169,8 +169,8 @@ bool PartOneTests::should_not_link_ArbreB_copies() {
     ArbreB a1('a', 1.);
     ArbreB a2(a1);
 
-    a2.get_root()->set_m_Data('b');
-    a2.get_root()->set_m_Freq(2.);
+    a2.get_root()->set_data('b');
+    a2.get_root()->set_freq(2.);
 
     if (a1.get_root()->get_data() != 'a' ||
         a1.get_root()->get_freq() != 1. ||
