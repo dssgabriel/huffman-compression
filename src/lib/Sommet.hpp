@@ -91,13 +91,13 @@ class Sommet {
          * Sets the value of the character.
          * @param data The character to assign to `m_Data`.
          */
-        void set_m_Data(const char& data);
+        void set_data(const char& data);
 
         /**
          * Sets the value of the frequency.
          * @param freq The value to assign to `m_Freq`.
          */
-        void set_m_Freq(const double& freq);
+        void set_freq(const double& freq);
 
         /** 
          * Function written by Raphael

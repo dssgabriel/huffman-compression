@@ -60,34 +60,35 @@ Sommet* Sommet::get_right() {
     return m_Right;
 }
 
-void Sommet::set_m_Data(const char& data) {
+void Sommet::set_data(const char& data) {
     m_Data = data;
 }
 
-void Sommet::set_m_Freq(const double& freq) {
+void Sommet::set_freq(const double& freq) {
     m_Freq = freq;
 }
 
 void Sommet::print(Sommet& other) {   //AJOUT
     if(other.get_right() == nullptr){
         return;}
-    
+
     if(other.get_left() == nullptr){
         return;}
-        
-    
+
+
     if(other.get_left()){
         print(*other.get_left());
     }
-    
+
     if(other.get_right()){
         print(*other.get_right());
     }
-    
+
     std::cout<<other.get_data();
 }
 
 void Sommet::print(int spacing) {
+    std::cout.precision(3);
     if (m_Right) {
         m_Right->print(spacing + 1);
     }
@@ -97,6 +98,9 @@ void Sommet::print(int spacing) {
     }
     if (m_Data == '\0') {
         std::cout << "(" << m_Freq << "), " << std::endl;
+    }
+    else if (m_Data == '\n') {
+        std::cout << "(\\n, " << m_Freq << ")" << std::endl;
     }
     else {
         std::cout << "(" << m_Data << ", " << m_Freq << ")" << std::endl;
