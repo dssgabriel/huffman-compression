@@ -40,7 +40,7 @@ void ArbreB::insert(Sommet*& current_node, Sommet& new_node) {
     else if (current_node->m_Data == new_node.m_Data) {
         /* std::cout << "Warning: a Sommet of the same value is already in the ArbreB\n"
            << "Updating already present Sommet's frequency" << std::endl; */
-        current_node->set_m_Freq(current_node->m_Freq + new_node.m_Freq);
+        current_node->set_freq(current_node->m_Freq + new_node.m_Freq);
         return;
     }
     // If current Sommet > Sommet to insert, insert left
@@ -112,14 +112,14 @@ ArbreB& ArbreB::remove(Sommet*& current, const char& data) {
         }
         // If current node has only a right child, set current from right, delete right
         else if (current->m_Left == nullptr) {
-            current->set_m_Data(current->m_Right->m_Data);
-            current->set_m_Freq(current->m_Right->m_Freq);
+            current->set_data(current->m_Right->m_Data);
+            current->set_freq(current->m_Right->m_Freq);
             return remove(current->m_Right, current->m_Right->m_Data);
         }
         // If current node has only a left child, set current from left, delete left
         else if (current->m_Right == nullptr) {
-            current->set_m_Data(current->m_Left->m_Data);
-            current->set_m_Freq(current->m_Left->m_Freq);
+            current->set_data(current->m_Left->m_Data);
+            current->set_freq(current->m_Left->m_Freq);
             return remove(current->m_Left, current->m_Left->m_Data);
         }
         // If current node has two children
@@ -129,8 +129,8 @@ ArbreB& ArbreB::remove(Sommet*& current, const char& data) {
             // First check if tmp has a left child (memory safety precaution)
             if (tmp.m_Left == nullptr) {
                 // Set current from tmp, delete on tmp
-                current->set_m_Data(tmp.m_Data);
-                current->set_m_Freq(tmp.m_Freq);
+                current->set_data(tmp.m_Data);
+                current->set_freq(tmp.m_Freq);
                 return remove(current->m_Right, tmp.m_Data);
             }
             // If tmp has left child
@@ -140,13 +140,32 @@ ArbreB& ArbreB::remove(Sommet*& current, const char& data) {
                     tmp = *tmp.m_Left;
                 }
                 // Set current from tmp, delete on tmp
-                current->set_m_Data(tmp.m_Left->m_Data);
-                current->set_m_Freq(tmp.m_Left->m_Freq);
+                current->set_data(tmp.m_Left->m_Data);
+                current->set_freq(tmp.m_Left->m_Freq);
                 return remove(current->m_Right, tmp.m_Left->m_Data);
             }
         }
 
         return *this;
+    }
+}
+
+void ArbreB::map_char_to_code(Sommet*& current, std::map<char, std::string>& char_code, std::string& path) {
+    if (current->m_Left == nullptr && current->m_Right == nullptr) {
+        char_code.emplace(current->m_Data, path);
+        return;
+    }
+
+    if (current->m_Left != nullptr) {
+        path.push_back('0');
+        map_char_to_code(current->m_Left, char_code, path);
+        path.pop_back();
+    }
+
+    if (current->m_Right != nullptr) {
+        path.push_back('1');
+        map_char_to_code(current->m_Right, char_code, path);
+        path.pop_back();
     }
 }
 
@@ -294,4 +313,11 @@ void ArbreB::print(int a, ArbreB& other){
 
 void ArbreB::print() {
     m_Root->print(0);
+}
+
+std::map<char, std::string> ArbreB::build_huffman_map() {
+    std::map<char, std::string> char_code;
+    std::string path = "";
+    map_char_to_code(m_Root, char_code, path);
+    return char_code;
 }

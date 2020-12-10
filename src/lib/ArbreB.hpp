@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstring>
 #include <tuple>
+#include <map>
 
 /**
  * The class `ArbreB` represents a binary tree.
@@ -77,6 +78,11 @@ class ArbreB {
          * @return A reference of the `ArbreB` with the removed `Sommet`.
          */
         ArbreB& remove(Sommet*& current, const char& data);
+
+        /**
+         * TODO: write documentation
+         */
+        void map_char_to_code(Sommet*& current, std::map<char, std::string>& char_code, std::string& path);
 
     public:
         /**
@@ -201,6 +207,11 @@ class ArbreB {
          */
         void print();
 
+
+        /**
+         * TODO: write documentation
+         */
+        std::map<char, std::string> build_huffman_map();
 };
 
 #endif
