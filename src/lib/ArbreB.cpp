@@ -292,32 +292,7 @@ Sommet* ArbreB::get_root() {
     return m_Root;
 }
 
-// AFFICHAGE par Raphael
-// Pas encore fonctionnel
-void ArbreB::print(int a, ArbreB& other){
-
-      if(other.m_Root == nullptr)
-      { return;}
-      a += 8;
-
-      other.m_Root->print(*other.m_Root->m_Right);
-       std::cout<<std::endl;
-
-      for(int i = 8; i < a; i++)
-         {std::cout << " ";}
-
-      std::cout<< other.m_Root->m_Data<<"\n";
-      other.m_Root->print(*other.m_Root->m_Left);
-
-}
-
 void ArbreB::print() {
     m_Root->print(0);
 }
 
-std::map<char, std::string> ArbreB::build_huffman_map() {
-    std::map<char, std::string> char_code;
-    std::string path = "";
-    map_char_to_code(m_Root, char_code, path);
-    return char_code;
-}

@@ -198,15 +198,9 @@ class ArbreB {
         Sommet* get_root();
 
         /**
-         * Function written by Rapahel Marouani
-         */
-        void print(int a, ArbreB& other);
-
-        /**
          * Prints an ArbreB.
          */
         void print();
-
 
         /**
          * TODO: write documentation

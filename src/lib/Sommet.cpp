@@ -68,25 +68,6 @@ void Sommet::set_freq(const double& freq) {
     m_Freq = freq;
 }
 
-void Sommet::print(Sommet& other) {   //AJOUT
-    if(other.get_right() == nullptr){
-        return;}
-
-    if(other.get_left() == nullptr){
-        return;}
-
-
-    if(other.get_left()){
-        print(*other.get_left());
-    }
-
-    if(other.get_right()){
-        print(*other.get_right());
-    }
-
-    std::cout<<other.get_data();
-}
-
 void Sommet::print(int spacing) {
     std::cout.precision(3);
     if (m_Right) {
