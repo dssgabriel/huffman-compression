@@ -3,6 +3,8 @@ target/
 CMakeFiles/
 .screenshots/
 .vscode/
+main2_autogen
+main2
 
 # Files to ignore
 .Doxyfile

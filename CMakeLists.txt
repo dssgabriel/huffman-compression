@@ -19,7 +19,6 @@ set(SRC
     src/bin/main2.cpp
     src/lib/Part2.cpp
     src/lib/AppWindow.cpp
-    src/lib/AppMenu.cpp
     src/lib/ArbreB.cpp
     src/lib/Sommet.cpp
 )
@@ -27,7 +26,6 @@ set(SRC
 set(HEADERS
     src/headers/Part2.hpp
     src/headers/AppWindow.hpp
-    src/headers/AppMenu.hpp
     src/headers/ArbreB.hpp
     src/headers/Sommet.hpp
 )

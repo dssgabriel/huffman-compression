@@ -1,22 +1,18 @@
 #include "../headers/AppWindow.hpp"
+#include "../headers/Part2.hpp"
 
 AppWindow::AppWindow() {
     setWindowTitle("Projet C++ : Partie 2");
-    setMinimumSize(720, 480);
+    setMinimumSize(960, 720);
     setMaximumSize(1920, 1080);
 
-    layout_menu = new QGridLayout();
-    layout_menu->setAlignment(Qt::AlignTop);
-
+    // Setting up text box
     layout_text = new QGridLayout();
-
-    menu = new AppMenu();
-    menu->show();
-    layout_menu->addWidget(menu, 0, 0);
 
     input = new QTextEdit();
     QString text("Entrez votre texte ici");
     input->setText(text);
+    input->canPaste();
     input->show();
     layout_text->addWidget(input, 0, 0);
 
@@ -25,6 +21,21 @@ AppWindow::AppWindow() {
     output->show();
     layout_text->addWidget(output, 0, 1);
 
+    // Setting up button menu
+    layout_menu = new QGridLayout();
+    layout_menu->setAlignment(Qt::AlignTop);
+    
+    compress = new QPushButton("Compresser", this);
+    compress->show();
+    layout_menu->addWidget(compress, 0, 0);
+    QObject::connect(compress, SIGNAL(clicked()), this, SLOT(run())); 
+
+    exit = new QPushButton("Quitter", this);
+    exit->show();
+    layout_menu->addWidget(exit, 0, 1);
+    QObject::connect(exit, SIGNAL(clicked()), qApp, SLOT(quit()));
+
+    // Setting up layout for whole window
     layout_global = new QGridLayout();
     layout_global->addLayout(layout_menu, 0, 0);
     layout_global->addLayout(layout_text, 1, 0);
@@ -32,3 +43,23 @@ AppWindow::AppWindow() {
 }
 
 AppWindow::~AppWindow() {}
+
+void AppWindow::run() {
+    std::string content = input->toPlainText().toStdString();
+    print_input(content);
+
+    std::vector<ArbreB> vec = build_btree_vector(content);
+    ArbreB huffman = build_huffman_tree(vec);
+
+    std::cout << "Corresponding Huffman tree:" << std::endl;
+    huffman.print();
+
+    std::map<char, std::string> huffman_code_map = huffman.build_huffman_map();
+    print_map(huffman_code_map);
+
+    std::string compressed = compress_to_bin(huffman_code_map, content);
+    print_output(compressed);
+
+    QString q_compressed = QString::fromStdString(compressed);
+    output->setText(q_compressed);
+}

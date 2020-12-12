@@ -190,33 +190,6 @@ src/bin/main2.cpp.s:
 	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/bin/main2.cpp.s
 .PHONY : src/bin/main2.cpp.s
 
-src/lib/AppMenu.o: src/lib/AppMenu.cpp.o
-
-.PHONY : src/lib/AppMenu.o
-
-# target to build an object file
-src/lib/AppMenu.cpp.o:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppMenu.cpp.o
-.PHONY : src/lib/AppMenu.cpp.o
-
-src/lib/AppMenu.i: src/lib/AppMenu.cpp.i
-
-.PHONY : src/lib/AppMenu.i
-
-# target to preprocess a source file
-src/lib/AppMenu.cpp.i:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppMenu.cpp.i
-.PHONY : src/lib/AppMenu.cpp.i
-
-src/lib/AppMenu.s: src/lib/AppMenu.cpp.s
-
-.PHONY : src/lib/AppMenu.s
-
-# target to generate assembly for a file
-src/lib/AppMenu.cpp.s:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppMenu.cpp.s
-.PHONY : src/lib/AppMenu.cpp.s
-
 src/lib/AppWindow.o: src/lib/AppWindow.cpp.o
 
 .PHONY : src/lib/AppWindow.o
@@ -341,9 +314,6 @@ help:
 	@echo "... src/bin/main2.o"
 	@echo "... src/bin/main2.i"
 	@echo "... src/bin/main2.s"
-	@echo "... src/lib/AppMenu.o"
-	@echo "... src/lib/AppMenu.i"
-	@echo "... src/lib/AppMenu.s"
 	@echo "... src/lib/AppWindow.o"
 	@echo "... src/lib/AppWindow.i"
 	@echo "... src/lib/AppWindow.s"

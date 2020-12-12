@@ -107,11 +107,11 @@ std::string compress_to_bin(std::map<char, std::string> map, std::string file_co
 }
 
 void print_input(std::string input) {
-    std::cout << "\nInput text:\n" << input;
+    std::cout << "Input text:\n" << input;
 }
 
 void print_map(std::map<char, std::string> map) {
-    std::cout << "\nCode for each character:" << std::endl;
+    std::cout << "Code for each character:" << std::endl;
     for (auto i : map) {
         if (i.first == '\n') {
             std::cout << "\\n : " << i.second << std::endl;
