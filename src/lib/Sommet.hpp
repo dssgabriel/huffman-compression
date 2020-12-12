@@ -100,11 +100,6 @@ class Sommet {
         void set_freq(const double& freq);
 
         /**
-         * Function written by Raphael
-         */
-        void print(Sommet& other); //AJOUT
-
-        /**
          * Prints an ArbreB.
          */
         void print(int spacing);

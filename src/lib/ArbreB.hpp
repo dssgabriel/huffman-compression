@@ -2,7 +2,6 @@
 #define ARBREB_HPP
 
 #include "Sommet.hpp"
-#include <iostream>
 #include <cstring>
 #include <tuple>
 #include <map>
@@ -80,7 +79,12 @@ class ArbreB {
         ArbreB& remove(Sommet*& current, const char& data);
 
         /**
-         * TODO: write documentation
+         * Initializes a map from the `ArbreB`.
+         * For each leaf of the tree, maps the character held in m_Data to a string that holds the path to that leaf.
+         * The path to a leaf is labeled with a '0' when taking a left branch, and with a '1' when taking a right branch.
+         * @param current A reference of a pointer to the current `Sommet`.
+         * @param char_code A map that holds characters as keys and strings as values.
+         * @param path A string that holds '0's and '1's representing the path to a character in the ArbreB.
          */
         void map_char_to_code(Sommet*& current, std::map<char, std::string>& char_code, std::string& path);
 
@@ -121,12 +125,6 @@ class ArbreB {
          * @return A reference to a copy of `other`.
          */
         ArbreB& operator=(const ArbreB& other);
-
-        /**
-         * Gets the root of the object `ArbreB`.
-         * @return A reference to the root of the `ArbreB`.
-         */
-        Sommet& get_m_Root();
 
         /**
          * Overloads the operator `>>` and redefines its behavior.
@@ -193,7 +191,8 @@ class ArbreB {
         std::tuple<ArbreB, ArbreB> decompose();
 
         /**
-         *
+         * Returns a pointer to the root of the `ArbreB`.
+         * @return The pointer on the root.
          */
         Sommet* get_root();
 
@@ -203,7 +202,9 @@ class ArbreB {
         void print();
 
         /**
-         * TODO: write documentation
+         * Returns a map holding each character in the `ArbreB` and its binary code.
+         * Internaly calls private method `map_char_to_code()`.
+         * @return The map holding the characters and their encoding.
          */
         std::map<char, std::string> build_huffman_map();
 };

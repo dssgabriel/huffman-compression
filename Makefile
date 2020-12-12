@@ -12,8 +12,10 @@ ARCHIVE = dos-santos_marouani
 
 # Run everything
 run: build debug_1 debug_2
+run_release: build_release release_1 release_2
 # Build everything
 build: build_1 build_2
+build_release: build_release_1 build_release_2
 
 
 ### PART 1 ###
@@ -21,7 +23,7 @@ build: build_1 build_2
 debug_1: build_1
 	$(DEBUG)main1
 
-release_p1: build_release_1
+release_1: build_release_1
 	$(RELEASE)main1
 
 # Compiling
@@ -35,7 +37,7 @@ build_release_1: release_dir
 gdb_1: build_1
 	gdb $(DEBUG)main1
 
-vg1: build_1
+vg_1: build_1
 	valgrind --leak-check=full -v $(DEBUG)main1
 
 
@@ -44,22 +46,22 @@ vg1: build_1
 debug_2: build_2
 	$(DEBUG)main2 .textfiles/test.txt
 
-release_p2: build_release_2
+release_2: build_release_2
 	$(RELEASE)main2 .textfiles/test.txt
 
 # Compiling
 build_2: debug_dir
-	$(CC) $(MAIN)main2.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(DFLAGS) -o $(DEBUG)main2
+	$(CC) $(MAIN)main2.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(LIB)PartTwo.cpp $(DFLAGS) -o $(DEBUG)main2
 
 build_release_2: release_dir
-	$(CC) $(MAIN)main2.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(RFLAGS) -o $(RELEASE)main2
+	$(CC) $(MAIN)main2.cpp $(LIB)Sommet.cpp $(LIB)ArbreB.cpp $(LIB)PartTwo.cpp $(RFLAGS) -o $(RELEASE)main2
 
 # Debugging
-gdb2: build2
+gdb_2: build_2
 	gdb $(DEBUG)main2
 
-vg2: build2
-	valgrind --leak-check=full -v $(DEBUG)main2 textfiles/test.txt
+vg_2: build_2
+	valgrind --leak-check=full -v $(DEBUG)main2 .textfiles/test.txt
 
 
 ### MISC ###

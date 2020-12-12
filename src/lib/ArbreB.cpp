@@ -183,7 +183,9 @@ ArbreB::ArbreB(const Sommet& node) {
 }
 
 // Uses overloaded operator=
-ArbreB::ArbreB(const ArbreB& other) {
+ArbreB::ArbreB(const ArbreB& other)
+    : m_Root(nullptr)
+{
     *this = other;
 }
 
@@ -194,6 +196,9 @@ ArbreB::~ArbreB() {
 }
 
 ArbreB& ArbreB::operator=(const ArbreB& other) {
+    if (m_Root != nullptr) {
+        delete m_Root;
+    }
     if (other.m_Root != nullptr) {
         m_Root = new Sommet();
         *m_Root = *other.m_Root; // Using overload of operator= for class Sommet
@@ -201,20 +206,8 @@ ArbreB& ArbreB::operator=(const ArbreB& other) {
     return *this;
 }
 
-Sommet& ArbreB::get_m_Root() {
-    return *m_Root;
-}
-
 std::ostream& operator<<(std::ostream& stream, ArbreB& tree) {
-    std::cout << "Preorder traversal:\t";
-    tree.preorder_traversal(tree.m_Root);
-
-    std::cout << std::endl << "Inorder traversal:\t";
-    tree.inorder_traversal(tree.m_Root);
-
-    std::cout << std::endl << "Postorder traversal:\t";
-    tree.postorder_traversal(tree.m_Root);
-
+    tree.print();
     return stream;
 }
 
