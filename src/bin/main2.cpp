@@ -1,5 +1,5 @@
-#include "../lib/PartTwo.hpp"
-#include "../lib/Window.hpp"
+#include "../headers/Part2.hpp"
+#include "../headers/AppWindow.hpp"
 
 //
 int main(int argc, char** argv) {
@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
 
     QApplication app(argc, argv);
     
-    Window window;
+    AppWindow window;
     window.show();
 
     return app.exec();

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../test/PartOneTests.hpp"
+#include "../headers/Part1.hpp"
 
 int main() {
     PartOneTests test;

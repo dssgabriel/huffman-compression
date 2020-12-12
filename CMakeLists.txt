@@ -17,15 +17,24 @@ find_package(Qt5 COMPONENTS Widgets Gui Core REQUIRED)
 
 set(SRC
     src/bin/main2.cpp
-    src/lib/Sommet.cpp
+    src/lib/Part2.cpp
+    src/lib/AppWindow.cpp
+    src/lib/AppMenu.cpp
     src/lib/ArbreB.cpp
-    src/lib/PartTwo.cpp
-    src/lib/Menu.hpp
-    src/lib/Window.hpp
+    src/lib/Sommet.cpp
+)
+
+set(HEADERS
+    src/headers/Part2.hpp
+    src/headers/AppWindow.hpp
+    src/headers/AppMenu.hpp
+    src/headers/ArbreB.hpp
+    src/headers/Sommet.hpp
 )
 
 add_executable(main2
     ${SRC}
+    ${HEADERS}
 )
 
 target_link_libraries(main2 Qt5::Widgets Qt5::Core Qt5::Gui)

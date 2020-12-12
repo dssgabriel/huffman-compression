@@ -1,10 +1,11 @@
 #ifndef ARBREB_HPP
 #define ARBREB_HPP
 
-#include "Sommet.hpp"
-#include <cstring>
+#pragma once
+#include <string>
 #include <tuple>
 #include <map>
+#include "Sommet.hpp"
 
 /**
  * The class `ArbreB` represents a binary tree.

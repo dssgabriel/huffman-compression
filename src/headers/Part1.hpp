@@ -1,16 +1,16 @@
-#ifndef PARTONETESTS_HPP
-#define PARTONETESTS_HPP
+#ifndef PART_ONE_HPP
+#define PART_ONE_HPP
 
-#include <iostream>
-#include "../lib/ArbreB.hpp"
+#pragma once
+#include "../headers/ArbreB.hpp"
 
 /**
- * The class `PartOneTests` implements tests to assert that the functions in classes `Sommet` and `ArbreB` have the expected behavior.
+ * The class `Part1` implements tests to assert that the functions in classes `Sommet` and `ArbreB` have the expected behavior.
  * @author Gabriel Dos Santos
  * @version 0.1.0
  * @date 2020/11/17
  */
-class PartOneTests {
+class Part1 {
     friend class Sommet;
     friend class ArbreB;
 
@@ -29,9 +29,9 @@ class PartOneTests {
         static unsigned int total_tests;
 
         /**
-         * Creates an object `PartOneTests`.
+         * Creates an object `Part1`.
          */
-        PartOneTests();
+        Part1();
 
         /**
          * Asserts that the default constructor of `Sommet` initializes the object correctly.

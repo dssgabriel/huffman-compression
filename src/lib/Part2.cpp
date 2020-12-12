@@ -1,4 +1,4 @@
-#include "PartTwo.hpp"
+#include "../headers/Part2.hpp"
 
 unsigned int find(std::vector<ArbreB>& vec, char& content) {
     bool found = false;

@@ -1,4 +1,4 @@
-#include "ArbreB.hpp"
+#include "../headers/ArbreB.hpp"
 
 // Private:
 void ArbreB::preorder_traversal(Sommet*& current) {

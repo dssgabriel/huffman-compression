@@ -1,7 +1,7 @@
 #ifndef PART_TWO_HPP
 #define PART_TWO_HPP
 
-#include <iostream>
+#pragma once
 #include <fstream>
 #include <vector>
 #include "ArbreB.hpp"

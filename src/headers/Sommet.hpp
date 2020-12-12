@@ -1,6 +1,7 @@
 #ifndef SOMMET_HPP
 #define SOMMET_HPP
 
+#pragma once
 #include <iostream>
 
 class ArbreB;

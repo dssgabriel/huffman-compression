@@ -1,13 +1,13 @@
-#include "PartOneTests.hpp"
+#include "../headers/Part1.hpp"
 
-unsigned int PartOneTests::total_tests = 23;
+unsigned int Part1::total_tests = 23;
 
-PartOneTests::PartOneTests() {
+Part1::Part1() {
     tests_failed = 0;
     tests_run = 0;
 }
 
-bool PartOneTests::should_create_default_Sommet() {
+bool Part1::should_create_default_Sommet() {
     bool ret = true;
     Sommet s;
 
@@ -21,7 +21,7 @@ bool PartOneTests::should_create_default_Sommet() {
     return ret;
 }
 
-bool PartOneTests::should_create_parameterized_Sommet() {
+bool Part1::should_create_parameterized_Sommet() {
     bool ret = true;
     Sommet s('a', 1.);
 
@@ -35,7 +35,7 @@ bool PartOneTests::should_create_parameterized_Sommet() {
     return ret;
 }
 
-bool PartOneTests::should_create_copy_Sommet() {
+bool Part1::should_create_copy_Sommet() {
     bool ret = true;
     Sommet s1('a', 1.);
     Sommet s2(s1);
@@ -50,7 +50,7 @@ bool PartOneTests::should_create_copy_Sommet() {
     return ret;
 }
 
-bool PartOneTests::should_set_Sommet_values() {
+bool Part1::should_set_Sommet_values() {
     bool ret = true;
     Sommet s;
 
@@ -65,7 +65,7 @@ bool PartOneTests::should_set_Sommet_values() {
     return ret;
 }
 
-bool PartOneTests::should_assign_Sommet() {
+bool Part1::should_assign_Sommet() {
     bool ret = true;
     Sommet s1('a', 1.);
     Sommet s2;
@@ -80,7 +80,7 @@ bool PartOneTests::should_assign_Sommet() {
     return ret;
 }
 
-bool PartOneTests::should_not_link_Sommet_copies() {
+bool Part1::should_not_link_Sommet_copies() {
     bool ret = true;
     Sommet s1('a', 1.);
     Sommet s2(s1);
@@ -98,7 +98,7 @@ bool PartOneTests::should_not_link_Sommet_copies() {
     return ret;
 }
 
-bool PartOneTests::should_create_default_ArbreB() {
+bool Part1::should_create_default_ArbreB() {
     bool ret = true;
     ArbreB a;
 
@@ -111,7 +111,7 @@ bool PartOneTests::should_create_default_ArbreB() {
     return ret;
 }
 
-bool PartOneTests::should_create_parameterized_ArbreB() {
+bool Part1::should_create_parameterized_ArbreB() {
     bool ret = true;
     ArbreB a('a', 1.);
 
@@ -123,7 +123,7 @@ bool PartOneTests::should_create_parameterized_ArbreB() {
     return ret;
 }
 
-bool PartOneTests::should_create_ArbreB_from_Sommet() {
+bool Part1::should_create_ArbreB_from_Sommet() {
     bool ret = true;
     Sommet s('a', 1.);
     ArbreB a(s);
@@ -136,7 +136,7 @@ bool PartOneTests::should_create_ArbreB_from_Sommet() {
     return ret;
 }
 
-bool PartOneTests::should_create_copy_ArbreB() {
+bool Part1::should_create_copy_ArbreB() {
     bool ret = true;
     ArbreB a1('a', 1.);
     ArbreB a2(a1);
@@ -149,7 +149,7 @@ bool PartOneTests::should_create_copy_ArbreB() {
     return ret;
 }
 
-bool PartOneTests::should_assign_ArbreB() {
+bool Part1::should_assign_ArbreB() {
     bool ret = true;
     ArbreB a1('a', 1.);
     ArbreB a2;
@@ -164,7 +164,7 @@ bool PartOneTests::should_assign_ArbreB() {
     return ret;
 }
 
-bool PartOneTests::should_not_link_ArbreB_copies() {
+bool Part1::should_not_link_ArbreB_copies() {
     bool ret = true;
     ArbreB a1('a', 1.);
     ArbreB a2(a1);
@@ -182,7 +182,7 @@ bool PartOneTests::should_not_link_ArbreB_copies() {
     return ret;
 }
 
-bool PartOneTests::should_insert_Sommet_into_ArbreB() {
+bool Part1::should_insert_Sommet_into_ArbreB() {
     bool ret = true;
     ArbreB a('m', 13.);
     Sommet s('c', 3.);
@@ -199,7 +199,7 @@ bool PartOneTests::should_insert_Sommet_into_ArbreB() {
     return ret;
 }
 
-bool PartOneTests::should_update_freq_if_char_already_in_ArbreB() {
+bool Part1::should_update_freq_if_char_already_in_ArbreB() {
     bool ret = true;
     ArbreB a('m', 13.);
     a.insert('m', 13.);
@@ -212,7 +212,7 @@ bool PartOneTests::should_update_freq_if_char_already_in_ArbreB() {
     return ret;
 }
 
-bool PartOneTests::should_find_character_c() {
+bool Part1::should_find_character_c() {
     bool ret = true;
     ArbreB a('m', 13.);
     a.insert('c', 3.);
@@ -230,7 +230,7 @@ bool PartOneTests::should_find_character_c() {
     return ret;
 }
 
-bool PartOneTests::should_not_find_character_z() {
+bool Part1::should_not_find_character_z() {
     bool ret = true;
     ArbreB a('m', 13.);
     a.insert('c', 3.);
@@ -248,7 +248,7 @@ bool PartOneTests::should_not_find_character_z() {
     return ret;
 }
 
-bool PartOneTests::should_remove_leaf() {
+bool Part1::should_remove_leaf() {
     bool ret = true;
     ArbreB a('m', 13.);
     a.insert('c', 3.);
@@ -267,7 +267,7 @@ bool PartOneTests::should_remove_leaf() {
     return ret;
 }
 
-bool PartOneTests::should_remove_Sommet_with_one_child() {
+bool Part1::should_remove_Sommet_with_one_child() {
     bool ret = true;
     ArbreB a('m', 13.);
     a.insert('c', 3.);
@@ -287,7 +287,7 @@ bool PartOneTests::should_remove_Sommet_with_one_child() {
     return ret;
 }
 
-bool PartOneTests::should_remove_Sommet_with_two_children() {
+bool Part1::should_remove_Sommet_with_two_children() {
     bool ret = true;
     ArbreB a('m', 13.);
     a.insert('g', 7.);
@@ -308,7 +308,7 @@ bool PartOneTests::should_remove_Sommet_with_two_children() {
     return ret;
 }
 
-bool PartOneTests::should_fuse_two_ArbreB() {
+bool Part1::should_fuse_two_ArbreB() {
     bool ret = true;
     ArbreB a1('g', 7.);
     ArbreB a2('t', 20.);
@@ -326,7 +326,7 @@ bool PartOneTests::should_fuse_two_ArbreB() {
     return ret;
 }
 
-bool PartOneTests::should_decompose_one_ArbreB_into_two() {
+bool Part1::should_decompose_one_ArbreB_into_two() {
     bool ret = true;
     ArbreB a1('m', 13.);
     a1.insert('g', 7.);
@@ -349,7 +349,7 @@ bool PartOneTests::should_decompose_one_ArbreB_into_two() {
     return ret;
 }
 
-bool PartOneTests::should_find_character_y_with_bfs() {
+bool Part1::should_find_character_y_with_bfs() {
     bool ret = true;
     ArbreB a('m', 13.);
     a.insert('c', 3.);
@@ -366,7 +366,7 @@ bool PartOneTests::should_find_character_y_with_bfs() {
     return ret;
 }
 
-bool PartOneTests::should_not_find_character_s_with_bfs() {
+bool Part1::should_not_find_character_s_with_bfs() {
     bool ret = true;
     ArbreB a('m', 13.);
     a.insert('c', 3.);

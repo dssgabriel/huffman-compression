@@ -190,6 +190,60 @@ src/bin/main2.cpp.s:
 	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/bin/main2.cpp.s
 .PHONY : src/bin/main2.cpp.s
 
+src/lib/AppMenu.o: src/lib/AppMenu.cpp.o
+
+.PHONY : src/lib/AppMenu.o
+
+# target to build an object file
+src/lib/AppMenu.cpp.o:
+	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppMenu.cpp.o
+.PHONY : src/lib/AppMenu.cpp.o
+
+src/lib/AppMenu.i: src/lib/AppMenu.cpp.i
+
+.PHONY : src/lib/AppMenu.i
+
+# target to preprocess a source file
+src/lib/AppMenu.cpp.i:
+	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppMenu.cpp.i
+.PHONY : src/lib/AppMenu.cpp.i
+
+src/lib/AppMenu.s: src/lib/AppMenu.cpp.s
+
+.PHONY : src/lib/AppMenu.s
+
+# target to generate assembly for a file
+src/lib/AppMenu.cpp.s:
+	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppMenu.cpp.s
+.PHONY : src/lib/AppMenu.cpp.s
+
+src/lib/AppWindow.o: src/lib/AppWindow.cpp.o
+
+.PHONY : src/lib/AppWindow.o
+
+# target to build an object file
+src/lib/AppWindow.cpp.o:
+	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppWindow.cpp.o
+.PHONY : src/lib/AppWindow.cpp.o
+
+src/lib/AppWindow.i: src/lib/AppWindow.cpp.i
+
+.PHONY : src/lib/AppWindow.i
+
+# target to preprocess a source file
+src/lib/AppWindow.cpp.i:
+	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppWindow.cpp.i
+.PHONY : src/lib/AppWindow.cpp.i
+
+src/lib/AppWindow.s: src/lib/AppWindow.cpp.s
+
+.PHONY : src/lib/AppWindow.s
+
+# target to generate assembly for a file
+src/lib/AppWindow.cpp.s:
+	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppWindow.cpp.s
+.PHONY : src/lib/AppWindow.cpp.s
+
 src/lib/ArbreB.o: src/lib/ArbreB.cpp.o
 
 .PHONY : src/lib/ArbreB.o
@@ -217,32 +271,32 @@ src/lib/ArbreB.cpp.s:
 	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/ArbreB.cpp.s
 .PHONY : src/lib/ArbreB.cpp.s
 
-src/lib/PartTwo.o: src/lib/PartTwo.cpp.o
+src/lib/Part2.o: src/lib/Part2.cpp.o
 
-.PHONY : src/lib/PartTwo.o
+.PHONY : src/lib/Part2.o
 
 # target to build an object file
-src/lib/PartTwo.cpp.o:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/PartTwo.cpp.o
-.PHONY : src/lib/PartTwo.cpp.o
+src/lib/Part2.cpp.o:
+	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/Part2.cpp.o
+.PHONY : src/lib/Part2.cpp.o
 
-src/lib/PartTwo.i: src/lib/PartTwo.cpp.i
+src/lib/Part2.i: src/lib/Part2.cpp.i
 
-.PHONY : src/lib/PartTwo.i
+.PHONY : src/lib/Part2.i
 
 # target to preprocess a source file
-src/lib/PartTwo.cpp.i:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/PartTwo.cpp.i
-.PHONY : src/lib/PartTwo.cpp.i
+src/lib/Part2.cpp.i:
+	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/Part2.cpp.i
+.PHONY : src/lib/Part2.cpp.i
 
-src/lib/PartTwo.s: src/lib/PartTwo.cpp.s
+src/lib/Part2.s: src/lib/Part2.cpp.s
 
-.PHONY : src/lib/PartTwo.s
+.PHONY : src/lib/Part2.s
 
 # target to generate assembly for a file
-src/lib/PartTwo.cpp.s:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/PartTwo.cpp.s
-.PHONY : src/lib/PartTwo.cpp.s
+src/lib/Part2.cpp.s:
+	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/Part2.cpp.s
+.PHONY : src/lib/Part2.cpp.s
 
 src/lib/Sommet.o: src/lib/Sommet.cpp.o
 
@@ -287,12 +341,18 @@ help:
 	@echo "... src/bin/main2.o"
 	@echo "... src/bin/main2.i"
 	@echo "... src/bin/main2.s"
+	@echo "... src/lib/AppMenu.o"
+	@echo "... src/lib/AppMenu.i"
+	@echo "... src/lib/AppMenu.s"
+	@echo "... src/lib/AppWindow.o"
+	@echo "... src/lib/AppWindow.i"
+	@echo "... src/lib/AppWindow.s"
 	@echo "... src/lib/ArbreB.o"
 	@echo "... src/lib/ArbreB.i"
 	@echo "... src/lib/ArbreB.s"
-	@echo "... src/lib/PartTwo.o"
-	@echo "... src/lib/PartTwo.i"
-	@echo "... src/lib/PartTwo.s"
+	@echo "... src/lib/Part2.o"
+	@echo "... src/lib/Part2.i"
+	@echo "... src/lib/Part2.s"
 	@echo "... src/lib/Sommet.o"
 	@echo "... src/lib/Sommet.i"
 	@echo "... src/lib/Sommet.s"

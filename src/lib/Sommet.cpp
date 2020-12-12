@@ -1,4 +1,4 @@
-#include "Sommet.hpp"
+#include "../headers/Sommet.hpp"
 
 Sommet::Sommet()
     : m_Data('\0'), m_Freq(0.0), m_Left(nullptr), m_Right(nullptr) {}
