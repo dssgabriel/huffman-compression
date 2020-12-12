@@ -1,4 +1,5 @@
 #include "../lib/PartTwo.hpp"
+#include "../lib/Window.hpp"
 
 //
 int main(int argc, char** argv) {
@@ -7,19 +8,24 @@ int main(int argc, char** argv) {
     }
 
     std::string file_content = parse_file_to_string(argv[1]);
-    //print_input(file_content);
+    print_input(file_content);
 
     std::vector<ArbreB> btrees = build_btree_vector(file_content);
     ArbreB huffman = build_huffman_tree(btrees);
 
-    //std::cout << "Corresponding Huffman tree:" << std::endl;
+    std::cout << "Corresponding Huffman tree:" << std::endl;
     huffman.print();
 
     std::map<char, std::string> huffman_code_map = huffman.build_huffman_map();
-    //print_map(huffman_code_map);
+    print_map(huffman_code_map);
 
     std::string compressed = compress_to_bin(huffman_code_map, file_content);
-    //print_output(compressed);
+    print_output(compressed);
 
-    return 0;
+    QApplication app(argc, argv);
+    
+    Window window;
+    window.show();
+
+    return app.exec();
 }

@@ -1,0 +1,115 @@
+#+TITLE:    Rapport du projet C++ : Partie 1
+#+AUTHOR:   Gabriel Dos Santos, Raphael Marouani
+
+* Introduction
+Le but principal de ce projet est de développer un système de codage et de décodage basé sur le code de Huffmann.
+Le codage d’Huffmann a pour but de coder un texte en binaire préfixé qui consiste à coder chaque lettre par un mot sur 0, 1 (toujours le même pour une lettre). Etant donné le pourcentage d’occurrence de chaque lettre dans le texte à coder, l’algorithme de codage des lettres est le suivant :
+- Initialement, chaque lettre est un arbre binaire ramené à un sommet étiqueté par la proportion d’occurences de cette lettre dans le texte. Tant qu’il y a plus d’un arbre, réaliser les opérations suivantes :
+  1. Considérer ~A1~ et ~A2~ les deux arbres dont les racines portent les plus petites étiquettes ~e1~ et ~e2~.
+  2. Construire un nouvel arbre ~A~ dont la racine ~r~ a pour fils les racines de ~A1~ et ~A2~.
+  3. La racine ~r~ est étiqueté par ~e1 + e2~.
+- Pour chaque noeud de l’arbre final, l’arête vers son fils gauche est étiquetée 0 et celle vers son fils droit 1.
+- Le code associé à une lettre est le mot binaire composé des étiquettes sur les arêtes entre la racine de l’arbre final et la feuille étiquetée avec cette lettre.
+
+* Utilisation de l'application
+** Contenu de l'archive du projet
+L'archive que vous avez recu contient les fichiers suivants :
+- Le rapport du projet, que vous etes en train de lire.
+- Le fichier ~README.org~, qui resume le projet et explique rapidement comment utiliser l'application.
+- Le fichier ~listing.pdf~, qui est la documentation complete de la partie realisee par Gabriel.
+- Le fichier ~Makefile~, qui contient les outils de compilation et d'execution de l'application.
+- Le dossier ~src~, qui contient les fichiers sources du projet. Celui-ci est divise en trois sous-dossiers :
+  - ~bin~, qui contient le fichier ~main1.cpp~ avec le programme de test.
+  - ~lib~, qui contient les fichiers des classes ~Sommet~ et ~ArbreB~.
+  - ~test~, qui contient les fichiers de la classe de test ~PartOneTests~, dont les methodes sont utilisees dans le programme de test.
+
+** Configuration requise
+Afin de pouvoir utiliser ce programme vous aurez besoin des outils suivants :
+- Le compilateur ~gcc~ (version 7.5.0 ou superieure). Alternativement, vous pouvez utiliser le compilateur ~clang++~ (testee avec la version 9.0.0 uniquement).
+- Le standard C++ 17 (le minimum requis est le standard C++ 11 mais il est preferable de compiler avec C++ 17).
+
+** Compilation et execution avec interface en ligne de commande
+Ce projet peut etre compile et execute dans deux modes differents : soit en mode "debug", soit en mode "release".
+Le mode "debug" compile le programme avec les flags ~-Wall -Wextra -g~ afin de permettre a l'utilisateur une meilleure comprehension des erreurs et avertissements affiches par le compilateur, ainsi que d'executer le programme avec des outils comme Valgrind ou gdb.
+Le mode "release" compile quant a lui avec le flag d'optimisation ~-O2~ afin de rendre le binaire plus "compact" et plus rapide a l'execution.
+
+Afin de compiler et/ou executer le programme en mode "debug", vous pouvez utiliser les commandes du Makefile (fourni dans l'archive du projet) de la maniere suivante :
+#+BEGIN_SRC bash
+# Pour compiler uniquement :
+make build
+# Pour compiler et executer :
+make run
+#+END_SRC
+
+Vous pouvez egalement utiliser les outils de debugging gdb et Valgrind :
+#+BEGIN_SRC bash
+make gdb
+make vg
+#+END_SRC
+
+Si vous souhaitez compiler en mode "release", les commandes a taper sont les suivantes :
+#+BEGIN_SRC bash
+# Compilation uniquement :
+make build_release
+# Compilation et execution :
+make run_release
+#+END_SRC
+
+Dans l'eventualite ou vous souhaiteriez compiler et executer le programme manuellement, voici les commandes dont vous aurez besoin :
+#+BEGIN_SRC bash
+mkdir -p target/release
+
+g++ src/bin/main1.cpp src/lib/Sommet.cpp src/lib/ArbreB.cpp src/test/PartOneTests -std=c++17 -O2 -o target/release/main1
+
+./target/release/main1
+#+END_SRC
+
+Enfin, le Makefile met a votre disposition d'autres commandes "utilitaires" que voici :
+#+BEGIN_SRC bash
+# Pour supprimer les fichiers executables
+make clean
+# Pour generer une archive du projet
+make archive
+#+END_SRC
+
+** Compilation et execution avec interface graphique (Qt)
+/A faire par Raphael/
+
+* Description du travail realise
+** Repartition du travail
+Nous avions initialement prevu de travailler de maniere equitable sur l'ensemble de la partie 1 du projet. Le but etait que chacun implemente une partie des classes et des fonctionnalitees demandees dans l'enonce, afin que chaque membre du binome comprenne les choix d'implementation et la facon dont est ecrit le programme.
+
+Devant le manque de reponses et de retours de Raphael, Gabriel a finalement realiser l'integralite de l'implementation des classes ~Sommet~, ~ArbreB~, ~PartOneTests~ ainsi que le programme de test ~main1.cpp~. La redaction de la documentation et des commentaires dans le code source, du README et d'une partie de ce rapport ont egalement ete realisees par Gabriel.
+Raphael s'est charge de l'interface graphique et a redige les parties qui y correspondent dans ce compte-rendu.
+
+** Description des classes
+*** Classe Sommet
+La classe ~Sommet~ represente un noeud d'un arbre binaire.
+Par choix d'implementation et pour faciliter les parties suivantes du projet, la classe ~Sommet~ contient deja des attributs pour stocker un caractere et sa frequence. Chaque instance de cette classe contient egalement deux pointeurs, qui permettent une implementation similaire a une liste chainee.
+Les attributs de la classe sont les suivants :
+- ~char m_Data~ : le caractere affecte au Sommet.
+- ~double m_Freq~ : la frequence du caractere affecte au Sommet. L'enonce demandant que la frequence soit represente par un pourcentage, la frequence est representee avec un flottant a double precision.
+- ~Sommet* m_Left~ : le fils gauche affecte au Sommet. C'est un pointeur vers un autre Sommet.
+- ~Sommet* m_Right~ : le fils droit affecte au Sommet. C'est un egalement un pointeur vers un autre Sommet.
+
+*** Classe ArbreB
+La classe ~ArbreB~ represente un arbre binaire.
+Elle ne possede qu'un seul attribut, un pointeur sur la racine de cet arbre :
+- ~Sommet* m_Root~ : la racine de l'arbre, depuis laquelle on peut acceder a tous les sommets qui le compose grace a l'implementation en liste chainee de la classe ~Sommet~.
+
+*** Classe PartOneTests
+La classe ~PartOneTests~ ne sert qu'a implementer des tests qui valident ou non les fonctionnalites des classes ~Sommet~ et ~ArbreB~. Les methodes qui y sont implementees sont utilisees dans le programme de test afin de tester de maniere precises.
+Elle possede des attributs qui ne servent qu'a suivre l'etat des tests :
+- ~static unsigned int total_tests~ : le nombre total de tests qui ont ete ecrit , ce qui permet de determiner si des tests n'ont pas ete executes (/skipped/).
+- ~unsigned int tests_run~ : le nombre de tests qui ont ete executes.
+- ~unsigned int tests_failed~ : le nombre de tests qui ont echoues.
+
+** Interface en ligne de commande
+Pour l'interface en ligne de commande, Gabriel a ecrit un programme de test (~src/bin/main1.cpp~) qui utilise les methodes de la classe de test ~PartOneTests~. Le but etait de decomposer chaque fonctionnalite des classes de facon a pouvoir les tester le plus precisement possible. L'ordre dans lequel les tests sont executes est egalement logique, les tests plus avances s'appuient sur des fonctionnalites precedemment validees.
+L'affichage dans le terminal est inspire de bibliotheque de tests unitaires telle que JUnit (pour le Java).
+#+CAPTION:  Voici ce que vous devriez obtenir dans le terminal en tapant la commande 'make run' a la racine du projet.
+#+NAME:     fig:cli_output
+[[./.screenshot/cli_output.png]]
+
+** Interface graphique
+/A faire par Raphael/
