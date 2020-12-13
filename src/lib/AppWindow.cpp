@@ -51,12 +51,16 @@ AppWindow::~AppWindow() {}
 
 void AppWindow::run_compression() {
     std::string content = input->toPlainText().toStdString();
+    if (content.empty())  {
+        std::cout << "Warning: input string is empty" << std::endl;
+        return;
+    }
     print_input(content);
 
     std::vector<ArbreB> vec = build_btree_vector(content);
     ArbreB huffman = build_huffman_tree(vec);
 
-    std::cout << "\nCorresponding Huffman tree:" << std::endl;
+    std::cout << "\nHuffman tree for input text:" << std::endl;
     huffman.print();
 
     std::map<char, std::string> huffman_code_map = huffman.build_huffman_map();
