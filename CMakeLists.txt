@@ -15,7 +15,7 @@ endif()
 
 find_package(Qt5 COMPONENTS Widgets Gui Core REQUIRED)
 
-set(SRC
+set(LIBS
     src/bin/main2.cpp
     src/lib/Part2.cpp
     src/lib/AppWindow.cpp
@@ -30,9 +30,6 @@ set(HEADERS
     src/headers/Sommet.hpp
 )
 
-add_executable(main2
-    ${SRC}
-    ${HEADERS}
-)
+add_executable(partie_2 ${LIBS} ${HEADERS})
 
-target_link_libraries(main2 Qt5::Widgets Qt5::Core Qt5::Gui)
+target_link_libraries(partie_2 Qt5::Widgets Qt5::Core Qt5::Gui)

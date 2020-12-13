@@ -111,57 +111,57 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main2
+# Target rules for targets named partie_2
 
 # Build rule for target.
-main2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main2
-.PHONY : main2
+partie_2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 partie_2
+.PHONY : partie_2
 
 # fast build rule for target.
-main2/fast:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/build
-.PHONY : main2/fast
+partie_2/fast:
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/build
+.PHONY : partie_2/fast
 
 #=============================================================================
-# Target rules for targets named main2_autogen
+# Target rules for targets named partie_2_autogen
 
 # Build rule for target.
-main2_autogen: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main2_autogen
-.PHONY : main2_autogen
+partie_2_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 partie_2_autogen
+.PHONY : partie_2_autogen
 
 # fast build rule for target.
-main2_autogen/fast:
-	$(MAKE) -f CMakeFiles/main2_autogen.dir/build.make CMakeFiles/main2_autogen.dir/build
-.PHONY : main2_autogen/fast
+partie_2_autogen/fast:
+	$(MAKE) -f CMakeFiles/partie_2_autogen.dir/build.make CMakeFiles/partie_2_autogen.dir/build
+.PHONY : partie_2_autogen/fast
 
-main2_autogen/mocs_compilation.o: main2_autogen/mocs_compilation.cpp.o
+partie_2_autogen/mocs_compilation.o: partie_2_autogen/mocs_compilation.cpp.o
 
-.PHONY : main2_autogen/mocs_compilation.o
+.PHONY : partie_2_autogen/mocs_compilation.o
 
 # target to build an object file
-main2_autogen/mocs_compilation.cpp.o:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/main2_autogen/mocs_compilation.cpp.o
-.PHONY : main2_autogen/mocs_compilation.cpp.o
+partie_2_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/partie_2_autogen/mocs_compilation.cpp.o
+.PHONY : partie_2_autogen/mocs_compilation.cpp.o
 
-main2_autogen/mocs_compilation.i: main2_autogen/mocs_compilation.cpp.i
+partie_2_autogen/mocs_compilation.i: partie_2_autogen/mocs_compilation.cpp.i
 
-.PHONY : main2_autogen/mocs_compilation.i
+.PHONY : partie_2_autogen/mocs_compilation.i
 
 # target to preprocess a source file
-main2_autogen/mocs_compilation.cpp.i:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/main2_autogen/mocs_compilation.cpp.i
-.PHONY : main2_autogen/mocs_compilation.cpp.i
+partie_2_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/partie_2_autogen/mocs_compilation.cpp.i
+.PHONY : partie_2_autogen/mocs_compilation.cpp.i
 
-main2_autogen/mocs_compilation.s: main2_autogen/mocs_compilation.cpp.s
+partie_2_autogen/mocs_compilation.s: partie_2_autogen/mocs_compilation.cpp.s
 
-.PHONY : main2_autogen/mocs_compilation.s
+.PHONY : partie_2_autogen/mocs_compilation.s
 
 # target to generate assembly for a file
-main2_autogen/mocs_compilation.cpp.s:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/main2_autogen/mocs_compilation.cpp.s
-.PHONY : main2_autogen/mocs_compilation.cpp.s
+partie_2_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/partie_2_autogen/mocs_compilation.cpp.s
+.PHONY : partie_2_autogen/mocs_compilation.cpp.s
 
 src/bin/main2.o: src/bin/main2.cpp.o
 
@@ -169,7 +169,7 @@ src/bin/main2.o: src/bin/main2.cpp.o
 
 # target to build an object file
 src/bin/main2.cpp.o:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/bin/main2.cpp.o
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/bin/main2.cpp.o
 .PHONY : src/bin/main2.cpp.o
 
 src/bin/main2.i: src/bin/main2.cpp.i
@@ -178,7 +178,7 @@ src/bin/main2.i: src/bin/main2.cpp.i
 
 # target to preprocess a source file
 src/bin/main2.cpp.i:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/bin/main2.cpp.i
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/bin/main2.cpp.i
 .PHONY : src/bin/main2.cpp.i
 
 src/bin/main2.s: src/bin/main2.cpp.s
@@ -187,7 +187,7 @@ src/bin/main2.s: src/bin/main2.cpp.s
 
 # target to generate assembly for a file
 src/bin/main2.cpp.s:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/bin/main2.cpp.s
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/bin/main2.cpp.s
 .PHONY : src/bin/main2.cpp.s
 
 src/lib/AppWindow.o: src/lib/AppWindow.cpp.o
@@ -196,7 +196,7 @@ src/lib/AppWindow.o: src/lib/AppWindow.cpp.o
 
 # target to build an object file
 src/lib/AppWindow.cpp.o:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppWindow.cpp.o
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/AppWindow.cpp.o
 .PHONY : src/lib/AppWindow.cpp.o
 
 src/lib/AppWindow.i: src/lib/AppWindow.cpp.i
@@ -205,7 +205,7 @@ src/lib/AppWindow.i: src/lib/AppWindow.cpp.i
 
 # target to preprocess a source file
 src/lib/AppWindow.cpp.i:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppWindow.cpp.i
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/AppWindow.cpp.i
 .PHONY : src/lib/AppWindow.cpp.i
 
 src/lib/AppWindow.s: src/lib/AppWindow.cpp.s
@@ -214,7 +214,7 @@ src/lib/AppWindow.s: src/lib/AppWindow.cpp.s
 
 # target to generate assembly for a file
 src/lib/AppWindow.cpp.s:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/AppWindow.cpp.s
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/AppWindow.cpp.s
 .PHONY : src/lib/AppWindow.cpp.s
 
 src/lib/ArbreB.o: src/lib/ArbreB.cpp.o
@@ -223,7 +223,7 @@ src/lib/ArbreB.o: src/lib/ArbreB.cpp.o
 
 # target to build an object file
 src/lib/ArbreB.cpp.o:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/ArbreB.cpp.o
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/ArbreB.cpp.o
 .PHONY : src/lib/ArbreB.cpp.o
 
 src/lib/ArbreB.i: src/lib/ArbreB.cpp.i
@@ -232,7 +232,7 @@ src/lib/ArbreB.i: src/lib/ArbreB.cpp.i
 
 # target to preprocess a source file
 src/lib/ArbreB.cpp.i:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/ArbreB.cpp.i
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/ArbreB.cpp.i
 .PHONY : src/lib/ArbreB.cpp.i
 
 src/lib/ArbreB.s: src/lib/ArbreB.cpp.s
@@ -241,7 +241,7 @@ src/lib/ArbreB.s: src/lib/ArbreB.cpp.s
 
 # target to generate assembly for a file
 src/lib/ArbreB.cpp.s:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/ArbreB.cpp.s
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/ArbreB.cpp.s
 .PHONY : src/lib/ArbreB.cpp.s
 
 src/lib/Part2.o: src/lib/Part2.cpp.o
@@ -250,7 +250,7 @@ src/lib/Part2.o: src/lib/Part2.cpp.o
 
 # target to build an object file
 src/lib/Part2.cpp.o:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/Part2.cpp.o
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/Part2.cpp.o
 .PHONY : src/lib/Part2.cpp.o
 
 src/lib/Part2.i: src/lib/Part2.cpp.i
@@ -259,7 +259,7 @@ src/lib/Part2.i: src/lib/Part2.cpp.i
 
 # target to preprocess a source file
 src/lib/Part2.cpp.i:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/Part2.cpp.i
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/Part2.cpp.i
 .PHONY : src/lib/Part2.cpp.i
 
 src/lib/Part2.s: src/lib/Part2.cpp.s
@@ -268,7 +268,7 @@ src/lib/Part2.s: src/lib/Part2.cpp.s
 
 # target to generate assembly for a file
 src/lib/Part2.cpp.s:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/Part2.cpp.s
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/Part2.cpp.s
 .PHONY : src/lib/Part2.cpp.s
 
 src/lib/Sommet.o: src/lib/Sommet.cpp.o
@@ -277,7 +277,7 @@ src/lib/Sommet.o: src/lib/Sommet.cpp.o
 
 # target to build an object file
 src/lib/Sommet.cpp.o:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/Sommet.cpp.o
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/Sommet.cpp.o
 .PHONY : src/lib/Sommet.cpp.o
 
 src/lib/Sommet.i: src/lib/Sommet.cpp.i
@@ -286,7 +286,7 @@ src/lib/Sommet.i: src/lib/Sommet.cpp.i
 
 # target to preprocess a source file
 src/lib/Sommet.cpp.i:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/Sommet.cpp.i
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/Sommet.cpp.i
 .PHONY : src/lib/Sommet.cpp.i
 
 src/lib/Sommet.s: src/lib/Sommet.cpp.s
@@ -295,7 +295,7 @@ src/lib/Sommet.s: src/lib/Sommet.cpp.s
 
 # target to generate assembly for a file
 src/lib/Sommet.cpp.s:
-	$(MAKE) -f CMakeFiles/main2.dir/build.make CMakeFiles/main2.dir/src/lib/Sommet.cpp.s
+	$(MAKE) -f CMakeFiles/partie_2.dir/build.make CMakeFiles/partie_2.dir/src/lib/Sommet.cpp.s
 .PHONY : src/lib/Sommet.cpp.s
 
 # Help Target
@@ -305,12 +305,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... main2"
+	@echo "... partie_2"
 	@echo "... edit_cache"
-	@echo "... main2_autogen"
-	@echo "... main2_autogen/mocs_compilation.o"
-	@echo "... main2_autogen/mocs_compilation.i"
-	@echo "... main2_autogen/mocs_compilation.s"
+	@echo "... partie_2_autogen"
+	@echo "... partie_2_autogen/mocs_compilation.o"
+	@echo "... partie_2_autogen/mocs_compilation.i"
+	@echo "... partie_2_autogen/mocs_compilation.s"
 	@echo "... src/bin/main2.o"
 	@echo "... src/bin/main2.i"
 	@echo "... src/bin/main2.s"
