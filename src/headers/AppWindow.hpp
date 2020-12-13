@@ -10,6 +10,7 @@ class AppWindow : public QWidget {
 
     private:
         QPushButton* compress;
+        QPushButton* clear;
         QPushButton* exit;
         QGridLayout* layout_menu;
 
@@ -24,5 +25,6 @@ class AppWindow : public QWidget {
         ~AppWindow();
 
     public slots:
-        void run();
+        void run_compression();
+        void clear_text();
 };

@@ -2,7 +2,7 @@
 #include "../headers/Part2.hpp"
 
 AppWindow::AppWindow() {
-    setWindowTitle("Projet C++ : Partie 2");
+    setWindowTitle("Huffman - C++ Project: Part 2");
     setMinimumSize(960, 720);
     setMaximumSize(1920, 1080);
 
@@ -10,8 +10,8 @@ AppWindow::AppWindow() {
     layout_text = new QGridLayout();
 
     input = new QTextEdit();
-    QString text("Entrez votre texte ici");
-    input->setText(text);
+    QString text("Type your text here");
+    input->setPlaceholderText(text);
     input->canPaste();
     input->show();
     layout_text->addWidget(input, 0, 0);
@@ -25,15 +25,20 @@ AppWindow::AppWindow() {
     layout_menu = new QGridLayout();
     layout_menu->setAlignment(Qt::AlignTop);
     
-    compress = new QPushButton("Compresser", this);
+    compress = new QPushButton("Compress text", this);
     compress->show();
     layout_menu->addWidget(compress, 0, 0);
-    QObject::connect(compress, SIGNAL(clicked()), this, SLOT(run())); 
+    connect(compress, SIGNAL(clicked()), this, SLOT(run_compression())); 
 
-    exit = new QPushButton("Quitter", this);
+    clear = new QPushButton("Clear text", this);
+    clear->show();
+    layout_menu->addWidget(clear, 0, 1);
+    connect(clear, SIGNAL(clicked()), this, SLOT(clear_text()));
+
+    exit = new QPushButton("Quit", this);
     exit->show();
-    layout_menu->addWidget(exit, 0, 1);
-    QObject::connect(exit, SIGNAL(clicked()), qApp, SLOT(quit()));
+    layout_menu->addWidget(exit, 0, 2);
+    connect(exit, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     // Setting up layout for whole window
     layout_global = new QGridLayout();
@@ -44,14 +49,14 @@ AppWindow::AppWindow() {
 
 AppWindow::~AppWindow() {}
 
-void AppWindow::run() {
+void AppWindow::run_compression() {
     std::string content = input->toPlainText().toStdString();
     print_input(content);
 
     std::vector<ArbreB> vec = build_btree_vector(content);
     ArbreB huffman = build_huffman_tree(vec);
 
-    std::cout << "Corresponding Huffman tree:" << std::endl;
+    std::cout << "\nCorresponding Huffman tree:" << std::endl;
     huffman.print();
 
     std::map<char, std::string> huffman_code_map = huffman.build_huffman_map();
@@ -62,4 +67,12 @@ void AppWindow::run() {
 
     QString q_compressed = QString::fromStdString(compressed);
     output->setText(q_compressed);
+}
+
+void AppWindow::clear_text() {
+    QString blank = "";
+    QString info = "Type your text here";
+    input->setText(blank);
+    input->setPlaceholderText(info);
+    output->setText(blank);
 }
