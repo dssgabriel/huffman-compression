@@ -10,7 +10,7 @@
 /**
  * The class `ArbreB` represents a binary tree.
  * @author Gabriel Dos Santos
- * @version 0.1.0
+ * @version 0.2.0
  * @date 2020/11/17
  */
 class ArbreB {

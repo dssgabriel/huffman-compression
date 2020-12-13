@@ -1,8 +1,19 @@
+/**
+ * @file main1.cpp
+ * @author Gabriel Dos Santos
+ * @brief Main function for part 1 of the project.
+ * @version 0.2.0
+ * @date 2020/12/13
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include <iostream>
 #include "../headers/Part1.hpp"
 
 int main() {
-    PartOneTests test;
+    Part1 test;
 
     std::cout << "\n\t\e[1;34mRunning tests for class Sommet...\e[0m" << std::endl;
 
