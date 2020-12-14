@@ -1,4 +1,6 @@
-# Description of the project
+# IN505 - C++ Project: Compression and Decompression
+
+## Description of the project
 
 The goal of this project is to write an application for compressing and decompressing text based on a C++ implementation of the Huffman compression algorithm.
 
@@ -13,7 +15,7 @@ The Huffman code aims at converting a text in binary (with '0's and '1's) and co
 
 This project is made up of three parts.
 
-## Part 1: Abstract data structures
+### Part 1: Abstract data structures
 
 The goal of this part is to propose an object-oriented implementation of the structure and behavior of a labeled binary tree. In that regard, the objective will be to:
 
@@ -22,7 +24,7 @@ The goal of this part is to propose an object-oriented implementation of the str
 -   Propose a test program that demonstrates the features of a binary tree.
 -   Implement a simple graphical user interface (GUI) that allows, amongst other things, to print the created binary tree.
 
-## Part 2: Compression
+### Part 2: Compression
 
 The goal of this part is to take an input text (it can be in English, French, or any other language that you want) and to output a compressed text using the Huffman code. Your application must support the following operations:
 
@@ -31,7 +33,7 @@ The goal of this part is to take an input text (it can be in English, French, or
 3.  Compress an input text with the letter compression made in step 2.
 4.  Enhance the GUI to allow the user to print the text to compress and its binary output.
 
-## Part 3: Decompression
+### Part 3: Decompression
 
 The goal of this third and last part is to take a compressed text with the Huffman code and to decompress this text. Your application should be able to:
 
@@ -40,7 +42,7 @@ The goal of this third and last part is to take a compressed text with the Huffm
 -   Display the text to decompress in the GUI and print the result of the decompression process.
 
 
-# Building the project
+## Building the project
 
 The project uses the CMake toolchain to build the project.
 In order to simplify this process, the project comes with a `build.sh` script that you can run with the following:
