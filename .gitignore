@@ -4,11 +4,13 @@ CMakeFiles/
 .screenshots/
 .vscode/
 partie_2_autogen/
+documentation/
 
 # Files to ignore
 .Doxyfile
-.compte-rendu.org
+compte-rendu.org
 *.tar.gz
 cmake_install.cmake
 CMakeCache.txt
 partie_2
+Makefile
