@@ -1,81 +1,59 @@
-#+TITLE:    Rapport du projet C++ : Partie 1
+#+TITLE:    Rapport du projet C++ : Partie 1 & 2
 #+AUTHOR:   Gabriel Dos Santos, Raphael Marouani
 
 * Introduction
 Le but principal de ce projet est de développer un système de codage et de décodage basé sur le code de Huffmann.
 Le codage d’Huffmann a pour but de coder un texte en binaire préfixé qui consiste à coder chaque lettre par un mot sur 0, 1 (toujours le même pour une lettre). Etant donné le pourcentage d’occurrence de chaque lettre dans le texte à coder, l’algorithme de codage des lettres est le suivant :
-- Initialement, chaque lettre est un arbre binaire ramené à un sommet étiqueté par la proportion d’occurences de cette lettre dans le texte. Tant qu’il y a plus d’un arbre, réaliser les opérations suivantes :
+- Initialement, chaque lettre est un arbre binaire ramené à un sommet étiqueté par la proportion d’occurrences de cette lettre dans le texte. Tant qu’il y a plus d’un arbre, réaliser les opérations suivantes :
   1. Considérer ~A1~ et ~A2~ les deux arbres dont les racines portent les plus petites étiquettes ~e1~ et ~e2~.
   2. Construire un nouvel arbre ~A~ dont la racine ~r~ a pour fils les racines de ~A1~ et ~A2~.
   3. La racine ~r~ est étiqueté par ~e1 + e2~.
-- Pour chaque noeud de l’arbre final, l’arête vers son fils gauche est étiquetée 0 et celle vers son fils droit 1.
-- Le code associé à une lettre est le mot binaire composé des étiquettes sur les arêtes entre la racine de l’arbre final et la feuille étiquetée avec cette lettre.
+- Pour chaque noeud de l’arbre final, l’arrête vers son fils gauche est étiquetée 0 et celle vers son fils droit 1.
+- Le code associé à une lettre est le mot binaire composé des étiquettes sur les arrêtes entre la racine de l’arbre final et la feuille étiquetée avec cette lettre.
 
 * Utilisation de l'application
 ** Contenu de l'archive du projet
 L'archive que vous avez recu contient les fichiers suivants :
-- Le rapport du projet, que vous etes en train de lire.
-- Le fichier ~README.org~, qui resume le projet et explique rapidement comment utiliser l'application.
-- Le fichier ~listing.pdf~, qui est la documentation complete de la partie realisee par Gabriel.
-- Le fichier ~Makefile~, qui contient les outils de compilation et d'execution de l'application.
+- Le rapport du projet ~compte_rendu.pdf~, que vous etes en train de lire.
+- Le fichier ~README.md~, qui resume le projet et explique rapidement comment utiliser l'application.
+- Le fichier ~listing.pdf~, qui est la documentation complete du projet (partie 1 et 2).
+- Les fichiers executables ~build.sh~ et ~.check_dependencies.sh~ pour verifier la presence des dependances necessaires au projet et simplifier le processus de compilation avec CMake.
+- Le fichier ~CMakeLists.txt~, qui contient la configuration de l'outil CMake pour creer le Makefile qui compilera l'application.
 - Le dossier ~src~, qui contient les fichiers sources du projet. Celui-ci est divise en trois sous-dossiers :
-  - ~bin~, qui contient le fichier ~main1.cpp~ avec le programme de test.
-  - ~lib~, qui contient les fichiers des classes ~Sommet~ et ~ArbreB~.
-  - ~test~, qui contient les fichiers de la classe de test ~PartOneTests~, dont les methodes sont utilisees dans le programme de test.
+  - ~bin~, qui contient les fichiers ~main1.cpp~ et ~main2.cpp~, les programmes de test.
+  - ~lib~, qui contient les fichiers (~*.cpp~) des classes ~Sommet~, ~ArbreB~, ~Part1~ et ~AppWindow~ ainsi que le fichier des fonctions necessaires a la partie 2, ~Part2~.
+  - ~headers~, qui contient les fichiers headers (~*.hpp~) pour chacun des fichiers du dossiers ~lib~.
 
 ** Configuration requise
 Afin de pouvoir utiliser ce programme vous aurez besoin des outils suivants :
 - Le compilateur ~gcc~ (version 7.5.0 ou superieure). Alternativement, vous pouvez utiliser le compilateur ~clang++~ (testee avec la version 9.0.0 uniquement).
 - Le standard C++ 17 (le minimum requis est le standard C++ 11 mais il est preferable de compiler avec C++ 17).
+- L'outil de compilatiion ~cmake~ (version 3.1 ou superieure).
+- L'outil pour la realisation d'interface graphique Qt (version 5).
 
-** Compilation et execution avec interface en ligne de commande
-Ce projet peut etre compile et execute dans deux modes differents : soit en mode "debug", soit en mode "release".
-Le mode "debug" compile le programme avec les flags ~-Wall -Wextra -g~ afin de permettre a l'utilisateur une meilleure comprehension des erreurs et avertissements affiches par le compilateur, ainsi que d'executer le programme avec des outils comme Valgrind ou gdb.
-Le mode "release" compile quant a lui avec le flag d'optimisation ~-O2~ afin de rendre le binaire plus "compact" et plus rapide a l'execution.
 
-Afin de compiler et/ou executer le programme en mode "debug", vous pouvez utiliser les commandes du Makefile (fourni dans l'archive du projet) de la maniere suivante :
-#+BEGIN_SRC bash
-# Pour compiler uniquement :
-make build
-# Pour compiler et executer :
-make run
+** Compilation et execution
+Ce projet utilisant l'outil CMake, le script ~build.sh~ vous est fourni avec l'archive du projet afin de simpilifier les etapes de compilation. Ce script vous permettra egalement de verifier si vous avez les paquets necessaires et vous proposera d'installer les eventuelles dependences manquantes.
+
+Pour compiler le projet, il vous suffit de taper la commande suivante :
+#+BEGIN_SRC sh
+./build.sh
 #+END_SRC
 
-Vous pouvez egalement utiliser les outils de debugging gdb et Valgrind :
-#+BEGIN_SRC bash
-make gdb
-make vg
+Il vous suffit de suivre les instructions afichees dans le terminal afin de compiler le projet.
+
+Dans le cas ou le script ~build.sh~ n'aurait pas les droits pour etre executable, utilisez la commande suivante avant de relancer le script :
+#+BEGIN_SRC sh
+chmod +x build.sh .check_dependencies.sh
 #+END_SRC
 
-Si vous souhaitez compiler en mode "release", les commandes a taper sont les suivantes :
-#+BEGIN_SRC bash
-# Compilation uniquement :
-make build_release
-# Compilation et execution :
-make run_release
+Une fois le projet compile, il vous suffit de l'executer en tapant :
+#+BEGIN_SRC sh
+./partie_2
 #+END_SRC
 
-Dans l'eventualite ou vous souhaiteriez compiler et executer le programme manuellement, voici les commandes dont vous aurez besoin :
-#+BEGIN_SRC bash
-mkdir -p target/release
 
-g++ src/bin/main1.cpp src/lib/Sommet.cpp src/lib/ArbreB.cpp src/test/PartOneTests -std=c++17 -O2 -o target/release/main1
-
-./target/release/main1
-#+END_SRC
-
-Enfin, le Makefile met a votre disposition d'autres commandes "utilitaires" que voici :
-#+BEGIN_SRC bash
-# Pour supprimer les fichiers executables
-make clean
-# Pour generer une archive du projet
-make archive
-#+END_SRC
-
-** Compilation et execution avec interface graphique (Qt)
-/A faire par Raphael/
-
-* Description du travail realise
+* Partie 1
 ** Repartition du travail
 Nous avions initialement prevu de travailler de maniere equitable sur l'ensemble de la partie 1 du projet. Le but etait que chacun implemente une partie des classes et des fonctionnalitees demandees dans l'enonce, afin que chaque membre du binome comprenne les choix d'implementation et la facon dont est ecrit le programme.
 
@@ -113,3 +91,21 @@ L'affichage dans le terminal est inspire de bibliotheque de tests unitaires tell
 
 ** Interface graphique
 /A faire par Raphael/
+
+* Partie 2
+** Ajouts/Modifications sur la partie 1
+Pour la realisation de la partie 2, nous avons modifie certaines choses dans les classes ecrites dans la partie 1 :
+- La classe ~PartOneTests~ a ete renomme en ~Part1~ pour harmoniser les noms de fichiers entre la partie 1 et la partie 2.
+- Les attributs ~m_Left~ et ~m_Right~ de la classe ~Sommet~ ont ete rendu prive, de meme pour l'attribut ~m_Root~ de la classe ~ArbreB~. Les accesseurs pour ces attributs ont egalement ete reecrit.
+- Les noms des methodes des accesseurs et des mutateurs ont ete modifies pour etre plus simple et lisible dans le code.
+- Les constructeurs par recopie des classes ~Sommet~ et ~ArbreB~ initialisent desormais leurs attributs qui sont des pointeurs a ~nullptr~ avec la liste d'initialisation. Ceci permet d'eviter des fuites de memoires qui apparaissaient dans certains cas bien particuliers. Afin de prendre en compte ce changement, la surcharge de l'operateur "+" et le destructeur de chacune des classes ont egalement ete modifie.
+- La methode ~print()~ qui affiche l'arbre binaire dans le terminal a ete complete par Raphael (l'affichage final a ete legerement modifie par Gabriel pour la partie 2).
+
+** Repartition du travail
+Pour la partie 2 du projet, Raphael a corrige le travail qu'il a realise pour la partie en ligne de commande. Il a aussi essaye de poursuivre la realisation de l'affichage de l'arbre dans l'interface graphique avec Qt.
+Gabriel a quant a lui ecrit l'integralite des fonctions necessaires a l'implementation de la partie 2, ainsi que la classe ~AppWindow~ qui gere l'interface graphique avec Qt. Il a egalement ecrit les scripts ~build.sh~ et ~.check_dependencies.sh~, le fichier ~CMakeLists.txt~ et la documentation relative a la partie 2 du projet.
+
+** Description des fonctions
+
+
+** Realisation de l'interface graphique
