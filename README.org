@@ -35,49 +35,19 @@ The goal of this third and last part is to take a encrypted text with the Huffma
 - Display the text to decrypt in the GUI and print the result of the decryption process.
 
 * Building the project
-This project can either be compiled in debug or release mode.
-You can build and/or run it in debug mode using the provided Makefile as follows:
+The project uses the CMake toolchain to build the project.
+In order to simplify this process, the project comes with a ~build.sh~ script that you can run with the following:
 #+BEGIN_SRC bash
-# To only build, run:
-make build
-
-# To build and run immediately:
-make run
+./build.sh
 #+END_SRC
 
-
-This will allow you to use the other provided Makefile commands in case you need to do some debugging:
+Then simply follow the instructions on the screen.
+If, for whatever reason the script is not executable, you can make it with the following command:
 #+BEGIN_SRC bash
-# To run with gdb:
-make gdb
-
-# To run with valgrind:
-make vg
+chmod +x build.sh
 #+END_SRC
 
-
-If you wish to build and/or run the program in release mode, you can do so by running the following in your terminal:
+To run the application, simply type:
 #+BEGIN_SRC bash
-# To only build, run:
-make build_release
-
-# To build and run immediately:
-make run_release
-#+END_SRC
-This will compile the project with optimization flags that help the program run faster.
-
-
-If you wish to build and run the project manually, use the following commands at the root of the project:
-#+BEGIN_SRC bash
-# First, build the project:
-mkdir -p target/release
-g++ src/bin/main1.cpp src/lib/Sommet.cpp src/lib/ArbreB.cpp src/test/PartOneTests -std=c++17 -O2 -o target/release/main1
-
-# Then run it:
-./target/release/main1
-#+END_SRC
-
-Lastly, you can also create an archive of the project with the provided ~archive~ command:
-#+BEGIN_SRC bash
-make archive
+./partie_2
 #+END_SRC
