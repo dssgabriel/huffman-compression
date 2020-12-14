@@ -1,3 +1,11 @@
+/**
+ * @file AppWindow.hpp
+ * @author Gabriel Dos Santos
+ * @brief Implementation of the class AppWindow for GUI with Qt5
+ * @version 0.1.0
+ * @date 2020-12-14
+ */
+
 #include <QtCore/QObject>
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QApplication>
@@ -6,7 +14,7 @@
 #include <QtWidgets/QTextEdit>
 
 /**
- * The class `AppWindow` represents the GUI that dislays the program. 
+ * @brief The class `AppWindow` represents the GUI that dislays the program. 
  * @author Gabriel Dos Santos
  * @version 0.1.0
  * @date 2020/12/13

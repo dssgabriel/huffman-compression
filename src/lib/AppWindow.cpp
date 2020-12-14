@@ -24,11 +24,11 @@ AppWindow::AppWindow() {
     // Setting up button menu
     layout_menu = new QGridLayout();
     layout_menu->setAlignment(Qt::AlignTop);
-    
+
     compress = new QPushButton("Compress text", this);
     compress->show();
     layout_menu->addWidget(compress, 0, 0);
-    connect(compress, SIGNAL(clicked()), this, SLOT(run_compression())); 
+    connect(compress, SIGNAL(clicked()), this, SLOT(run_compression()));
 
     clear = new QPushButton("Clear text", this);
     clear->show();
@@ -51,11 +51,11 @@ AppWindow::~AppWindow() {}
 
 void AppWindow::run_compression() {
     std::string content = input->toPlainText().toStdString();
-    if (content.empty())  {
-        std::cout << "Warning: input string is empty" << std::endl;
+    if (content.empty() || content.length() == 1)  {
+        std::cout << "Warning: input string is empty or too small (minimum 2 characters)" << std::endl;
         return;
     }
-    print_input(content);
+    // print_input(content);
 
     std::vector<ArbreB> vec = build_btree_vector(content);
     ArbreB huffman = build_huffman_tree(vec);
@@ -67,7 +67,7 @@ void AppWindow::run_compression() {
     print_map(huffman_code_map);
 
     std::string compressed = compress_to_bin(huffman_code_map, content);
-    print_output(compressed);
+    // print_output(compressed);
 
     QString q_compressed = QString::fromStdString(compressed);
     output->setText(q_compressed);

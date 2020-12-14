@@ -1,3 +1,11 @@
+/**
+ * @file Sommet.hpp
+ * @author Gabriel Dos Santos, Raphael Marouani
+ * @brief Implementation of the class Sommet
+ * @version 0.2.0
+ * @date 2020-12-14
+ */
+
 #ifndef SOMMET_HPP
 #define SOMMET_HPP
 
@@ -7,7 +15,7 @@
 class ArbreB;
 
 /**
- * The class `Sommet` represents a node of the class `ArbreB`.
+ * @brief The class `Sommet` represents a node of the class `ArbreB`.
  * @author Gabriel Dos Santos
  * @version 0.1.0
  * @date 2020/11/17

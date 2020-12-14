@@ -1,3 +1,11 @@
+/**
+ * @file Part1.hpp
+ * @author Gabriel Dos Santos
+ * @brief Implementation of the class Part1
+ * @version 0.1.0
+ * @date 2020-12-14
+ */
+
 #ifndef PART_ONE_HPP
 #define PART_ONE_HPP
 
@@ -5,7 +13,7 @@
 #include "../headers/ArbreB.hpp"
 
 /**
- * The class `Part1` implements tests to assert that the functions in classes `Sommet` and `ArbreB` have the expected behavior.
+ * @brief The class `Part1` implements tests to assert that the functions in classes `Sommet` and `ArbreB` have the expected behavior.
  * @author Gabriel Dos Santos
  * @version 0.1.0
  * @date 2020/11/17

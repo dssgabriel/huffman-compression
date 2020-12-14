@@ -1,3 +1,11 @@
+/**
+ * @file ArbreB.hpp
+ * @author Gabriel Dos Santos, Raphael Marouani
+ * @brief Implementation of the class ArbreB
+ * @version 0.2.0
+ * @date 2020-12-14
+ */
+
 #ifndef ARBREB_HPP
 #define ARBREB_HPP
 
@@ -8,7 +16,7 @@
 #include "Sommet.hpp"
 
 /**
- * The class `ArbreB` represents a binary tree.
+ * @brief The class `ArbreB` represents a binary tree.
  * @author Gabriel Dos Santos
  * @version 0.2.0
  * @date 2020/11/17

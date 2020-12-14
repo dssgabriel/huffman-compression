@@ -92,13 +92,13 @@ void Sommet::print(int spacing) {
         std::cout << "    ";
     }
     if (m_Data == '\0') {
-        std::cout << "(" << m_Freq << "), " << std::endl;
+        std::cout << "(" << m_Freq << "%), " << std::endl;
     }
     else if (m_Data == '\n') {
-        std::cout << "(\\n, " << m_Freq << ")" << std::endl;
+        std::cout << "(\\n, " << m_Freq << "%)" << std::endl;
     }
     else {
-        std::cout << "(" << m_Data << ", " << m_Freq << ")" << std::endl;
+        std::cout << "(" << m_Data << ", " << m_Freq << "%)" << std::endl;
     }
 
     if (m_Left) {

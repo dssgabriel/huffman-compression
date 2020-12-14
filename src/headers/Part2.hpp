@@ -1,9 +1,8 @@
 /**
  * @file Part2.hpp
- * @author Gabriel Dos Santos (gabriel.dos-santos@ens.uvsq.fr)
+ * @author Gabriel Dos Santos
  * @brief Collection of functions used for the second part of C++ Project for module IN505.
  * @version 0.1.0
- * @copyright Copyright (c) 2020
  */
 
 #ifndef PART_TWO_HPP

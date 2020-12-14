@@ -83,6 +83,11 @@ std::vector<ArbreB> build_btree_vector(std::string& content) {
     // De-allocate unused memory
     btrees.shrink_to_fit();
 
+    // Convert the occurrences into percentages based on the length of the input string
+    for (unsigned int i = 0; i < btrees.size(); i++) {
+        btrees[i].get_root()->set_freq((btrees[i].get_root()->get_freq() / double(content.length())) * 100.);
+    }
+
     return btrees;
 }
 
@@ -107,7 +112,7 @@ std::string compress_to_bin(std::map<char, std::string> map, std::string file_co
 }
 
 void print_input(std::string input) {
-    std::cout << "Input text:\n" << input;
+    std::cout << "\nInput text:\n" << input;
 }
 
 void print_map(std::map<char, std::string> map) {
