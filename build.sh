@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Huffman Build script - IN505 C++ Project: Part 2\n"
+echo "IN505 C++ Project: Part 2 - Huffman build script\n"
 
 ./.check_dependencies.sh
 ret=$?
@@ -13,11 +13,12 @@ then
   echo "\nBuilding C++ project..."
   make
 
-  echo "\nBuild successful!"
-  echo "Run with './partie_2'"
+  echo "\nBUILD SUCCESSFUL!"
+  echo "\nYou can run the project with './partie_2'"
+  echo "ADVICE: Keep the terminal open as output will be printed to it during execution!"
 else
-  echo "\nWARNING: Dependencies are not met."
-  while true
+echo "\nWARNING: Dependencies are not met."
+while true
   do
     read -r -p "Do you want to proceed to the build anyway? [Y/n] " input
     case $input in
@@ -30,13 +31,14 @@ else
       echo "\nBuilding C++ project..."
       make
 
-      echo "\nBuild successful!"
-      echo "Run with './partie_2'"
+      echo "\nBUILD SUCCESSFUL!"
+      echo "\nYou can run the project with './partie_2'"
+      echo "ADVICE: Keep the terminal open as output will be printed to it during execution!"
       break
       ;;
 
     [nN]|[nN][oO])
-      echo "Try installing the necessary packages and re-run this script."
+      echo "\nTry installing the necessary packages and re-run this script."
       break
       ;;
 
