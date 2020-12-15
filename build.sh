@@ -3,9 +3,9 @@
 echo "IN505 C++ Project: Part 2 - Huffman build script\n"
 
 ./.check_dependencies.sh
-ret=$?
+check=$?
 
-if [ $ret -eq 0 ]
+if [ $check -eq 0 ]
 then
   echo "\nGenerating Makefile with cmake..."
   cmake CMakeLists.txt

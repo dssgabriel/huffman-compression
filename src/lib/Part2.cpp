@@ -74,7 +74,7 @@ std::vector<ArbreB> build_btree_vector(std::string& content) {
         // Emplace an ArbreB with the new character otherwise
         else {
             if (btrees.size() == btrees.capacity()) {
-                // Avoid reallocating memory with each call emplace_back()
+                // Avoid reallocating memory with each call to emplace_back()
                 btrees.reserve(btrees.size() * 2);
             }
             btrees.emplace_back(ArbreB(content[i], 1.));
@@ -92,7 +92,7 @@ std::vector<ArbreB> build_btree_vector(std::string& content) {
 }
 
 ArbreB build_huffman_tree(std::vector<ArbreB>& btrees) {
-    // Emplace fusions of ArbreBs when there is more than one in the vector
+    // Emplace fusions of ArbreBs while there is more than one in the vector
     while (btrees.size() > 1) {
         btrees.emplace_back(find_lowest(btrees) + find_lowest(btrees));
     }
@@ -103,9 +103,10 @@ ArbreB build_huffman_tree(std::vector<ArbreB>& btrees) {
 std::string compress_to_bin(std::map<char, std::string> map, std::string file_content) {
     std::string compressed;
 
+    // Iterate over the input string
     for (unsigned int i = 0; i < file_content.length(); i++) {
-        auto char_code = map.find(file_content[i]);
-        compressed += char_code->second;
+        // Append to compress the value of the corresponding key character found in the map
+        compressed += map.find(file_content[i])->second;
     }
 
     return  compressed;

@@ -12,21 +12,22 @@ do
     for package in g++ cmake qt5-default
     do
       echo -n "Checking $package... "
-      if [ $($package -v 2>/dev/null) ]
+      if [ $(dpkg -s $package >/dev/null 2>&1) ];
       then
-        echo "Not found"
+        echo "not found"
         while true
         do
           read -r -p "Do you want to install it? [Y/n] " answer
           case $answer in
           [yY]|[yY][eE][sS])
             sudo apt install $package
+            found=0
             break
             ;;
 
           [nN]|[nN][oO])
             echo "Not installing $package"
-            ret=1
+            found=1
             break
             ;;
 
@@ -36,24 +37,24 @@ do
           esac
         done
       else
-        echo "Ok"
-        ret=0
+        echo "ok"
+        found=0
       fi
     done
-    if [ $ret -eq 0 ]
+    if [ $found -eq 0 ];
     then
       echo "\nYou already have all the necessary dependencies."
-      deps=0
+      ret=0
     else
       echo "\nYou may have unmet dependencies."
-      deps=1
+      ret=1
     fi
     break
     ;;
 
   [nN]|[nN][oO])
     echo "\nSkipping checks..."
-    deps=1
+    ret=1
     break
     ;;
 
@@ -63,7 +64,7 @@ do
   esac
 done
 
-if [ $deps -eq 0 ]
+if [ $ret -eq 0 ]
 then
   exit 0
 else

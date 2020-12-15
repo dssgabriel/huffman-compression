@@ -11,6 +11,9 @@ Le codage d’Huffmann a pour but de coder un texte en binaire préfixé qui con
 - Pour chaque noeud de l’arbre final, l’arrête vers son fils gauche est étiquetée 0 et celle vers son fils droit 1.
 - Le code associé à une lettre est le mot binaire composé des étiquettes sur les arrêtes entre la racine de l’arbre final et la feuille étiquetée avec cette lettre.
 
+L'algorithme de Huffman etant avant tout un algorithme de compression de donnees, les mots "encryption" et "compression", ainsi que tous leurs derives grammaticaux, pourront etre utilises de facon interchangeable dans la suite de ce rapport.
+
+
 * Utilisation de l'application
 ** Contenu de l'archive du projet
 L'archive que vous avez recu contient les fichiers suivants :
@@ -92,20 +95,70 @@ L'affichage dans le terminal est inspire de bibliotheque de tests unitaires tell
 ** Interface graphique
 /A faire par Raphael/
 
+
 * Partie 2
-** Ajouts/Modifications sur la partie 1
-Pour la realisation de la partie 2, nous avons modifie certaines choses dans les classes ecrites dans la partie 1 :
+** Ajouts et modifications sur la partie 1
+Pour la realisation de la partie 2, nous avons du modifier certains aspects des classes ecrites dans la partie 1 :
 - La classe ~PartOneTests~ a ete renomme en ~Part1~ pour harmoniser les noms de fichiers entre la partie 1 et la partie 2.
-- Les attributs ~m_Left~ et ~m_Right~ de la classe ~Sommet~ ont ete rendu prive, de meme pour l'attribut ~m_Root~ de la classe ~ArbreB~. Les accesseurs pour ces attributs ont egalement ete reecrit.
-- Les noms des methodes des accesseurs et des mutateurs ont ete modifies pour etre plus simple et lisible dans le code.
-- Les constructeurs par recopie des classes ~Sommet~ et ~ArbreB~ initialisent desormais leurs attributs qui sont des pointeurs a ~nullptr~ avec la liste d'initialisation. Ceci permet d'eviter des fuites de memoires qui apparaissaient dans certains cas bien particuliers. Afin de prendre en compte ce changement, la surcharge de l'operateur "+" et le destructeur de chacune des classes ont egalement ete modifie.
-- La methode ~print()~ qui affiche l'arbre binaire dans le terminal a ete complete par Raphael (l'affichage final a ete legerement modifie par Gabriel pour la partie 2).
+- Les attributs ~m_Left~ et ~m_Right~ de la classe ~Sommet~ ont ete rendu prives, de meme pour l'attribut ~m_Root~ de la classe ~ArbreB~. Les accesseurs pour ces attributs ont egalement ete implementes.
+- Les noms de methodes des accesseurs et des mutateurs ont ete modifies pour etre plus lisible dans le code.
+- Les constructeurs par recopie des classes ~Sommet~ et ~ArbreB~ initialisent desormais leurs attributs qui sont des pointeurs a ~nullptr~ grace a la liste d'initialisation. Ceci permet d'eviter des fuites de memoires qui apparaissaient dans certains cas bien particuliers. Afin de prendre en compte ce changement, la surcharge de l'operateur "+" et le destructeur de chacune des classes ont egalement ete modifies.
+- La methode ~print()~ qui affiche l'arbre binaire dans le terminal a ete completee par Raphael (l'affichage final a ete legerement modifie par Gabriel pour la partie 2).
 
 ** Repartition du travail
-Pour la partie 2 du projet, Raphael a corrige le travail qu'il a realise pour la partie en ligne de commande. Il a aussi essaye de poursuivre la realisation de l'affichage de l'arbre dans l'interface graphique avec Qt.
-Gabriel a quant a lui ecrit l'integralite des fonctions necessaires a l'implementation de la partie 2, ainsi que la classe ~AppWindow~ qui gere l'interface graphique avec Qt. Il a egalement ecrit les scripts ~build.sh~ et ~.check_dependencies.sh~, le fichier ~CMakeLists.txt~ et la documentation relative a la partie 2 du projet.
+Pour la partie 2 du projet, Raphael a corrige le travail sur l'affichage qu'il avait realise pour la partie en ligne de commande. Il a aussi essaye de poursuivre la realisation de l'arbre dans l'interface graphique avec Qt.
+Gabriel a quant a lui ecrit l'integralite des fonctions et methodes des fichiers ~Part2.hpp~, ~Part2.cpp~ et la classe ~AppWindow~ (qui gere l'interface graphique avec Qt). Il a egalement ecrit les scripts ~build.sh~ et ~.check_dependencies.sh~, le fichier ~CMakeLists.txt~ ainsi que la documentation et le compte-rendu relatif a la partie 2 du projet.
 
-** Description des fonctions
+** Travail realise
+*** Fonctions implementees dans le fichier ~Part2.cpp~
+Afin de repondre a l'enonce de la partie 2, Gabriel a implemente les differentes fonctions qui permettent de recuperer un texte, calculer les occurences de chaque caracteres qui y sont presents et en construire l'arbre binaire qui y est associe en suivant l'algorithme de Huffman.
 
+Dans le cas ou l'utilisateur souhaiterait recuperer le texte a encrypter depuis un fichier, il peut se servir de la fonction ~parse_file_to_string()~ qui prend en argument le nom d'un fichier et renvoie une chaine de caractere ~std::string~ avec le contenu du fichier.
 
-** Realisation de l'interface graphique
+Afin de creer l'arbre de Huffman pour le texte a encrypter, nous avons choisi de d'abord construire un tableau dynamique ~std::vector~ d'ArbreB. Pour cela, on utilise la fonction ~build_btree~vector()~ qui prend en argument une chaine de caractere ~std::string~ (a noter que l'utilisateur peut ainsi donner directement une chaine de caractere a encrypter plutot qu'un fichier).
+Chaque caractere present dans la chaine, ainsi que son occurrence, est represente par un ArbreB dans le tableau.
+Cette fonction est relativement simple : on parcourt la chaine et pour chaque caractere lu, on regarde dans le tableau s'il existe deja un ArbreB pour celui-ci (a l'aide de la fonction ~find()~). Si c'est le cas, on augmente l'occurence de 1. Si ce n'est pas le cas, on construit un nouvel ArbreB avec le caractere lu et une occurrence de 1, puis on l'ajoute au tableau.
+Apres avoir lu l'integralite de la chaine, on transforme simplement l'occurrence de chaque ArbreB du tableau en pourcentage afin de repondre a l'enonce (cette etape n'etant pas necessaire pour la suite, elle peut etre omise pour des raisons de performance).
+Proceder de cette facon nous permet de simplifier l'etape suivante, qui est la construction de l'arbre de Huffman.
+
+Nous construisons ensuite l'arbre de Huffman en suivant l'algorithme du meme nom grace a la fonction ~build_huffman_tree()~. Tant que la taille du tableau construit a l'etape precedente est superieure a 1 :
+- On recupere dans le tableau les deux ArbreB ayant le plus petit pourcentage d'occurrence grace a la fonction ~find_lowest()~.
+- On fusionne ces deux ArbreB ensemble grace a la surcharge de l'operateur "+" implementee dans la partie 1
+- On ajoute au tableau le resulat de cette fusion.
+La fonction ~find_lowest()~ prend en argument une reference du tableau et le parcourt. Elle garde en memoire l'indice de l'ArbreB avec la plus petite occurrence, en cree une copie qui sera ensuite renvoyee a ~build_huffman_tree()~ et efface l'original du tableau.
+Ici, il est important de noter que c'est une reference du tableau qui doit etre passer a ~find_lowest()~. Sans cela, on supprimerait l'ArbreB sur une copie du tableau et on aurait ainsi une boucle infinie dans ~build_huffman_tree()~ qui causerait un stack overflow.
+Pour des raisons d'optimisation des performances et afin d'eviter des copies inutiles, on fusionne directement le resultat des appels a ~find_lowest()~. De meme, on utilise la methode ~emplace_back()~ plutot que ~push_back()~ sur le ~std::vector~ afin de construire l'ArbreB resultant de la fusion directement dans le tableau plutot que de devoir l'y copier.
+
+La derniere etape est d'encrypter en binaire la chaine de caractere de depart. Pour cela, on se sert de la fonction ~compress_to_bin()~ qui prend en argument la ~std::string~ de depart ainsi qu'une ~std::map~ (initialise grace une methode de la classe ArbreB decrite dans la section suivante), et renvoie une ~std::string~ contenant la version encryptee de la chaine de depart.
+
+Les fonctions ~print_input()~, ~print_output()~ et ~print_map()~ sont de simples fonctions d'affichage dans le terminal que nous jugeront inutiles de detailler ici.
+
+*** Methodes implementees dans la classe ArbreB
+Pour faciliter l'encryption de la chaine de caractere, Gabriel a implemente la methode publique ~build_huffman_map()~ qui renvoie une ~std::map~ contenant des caracteres en cle en une chaine en valeur. Cette methode initialise la map ainsi qu'une ~std::string~ vide, puis appelle recursivement la methde privee ~map_to_char_code()~ qui effectue un parcours infixe de l'arbre de Huffman.
+
+On ajoutera un "0" a la chaine de caractere a chaque fois que l'on prendra une branche gauche dans l'arbre, et un "1" a chaque fois que l'on prend une branche droite. Lorsque l'on arrive sur une feuille de l'arbre, on ajoute a la map le caractere contenu dans la feuille et la chaine de caracter courante qui nous donne l'encodage pour ce caractere. Enfin, a chaque fois que l'on remonte dans les appels recursifs, on effectue un ~pop_back()~ sur la ~std::string~ afin d'actualiser celle-ci selon notre position dans l'arbre.
+
+*** Implementation de la class AppWindow pour l'interface graphique avec Qt
+Etant donne que nous n'avions pas d'interface graphique fonctionnelle pour la partie 1, nous avons du en realiser une pour la partie 2. Gabriel a donc implementee celle-ci avec Qt et la classe ~AppWindow~.
+
+Cette derniere herite de la classe ~QWidget~. Les differents elements qui la compose sont :
+- Un ~QGridLayout~ global qui regroupe les elements suivants :
+  - Un ~QGridLayout~ qui regroupe les elements relatifs au menu. Ces derniers sont :
+    - Un ~QPushButton~ pour compresser un texte.
+    - Un ~QPushButton~ pour effacer les champs.
+    - Un ~QPushButton~ pour quitter l'application.
+  - Un ~QGridLayout~ qui regroupe les elements relatifs au texte. Ces derniers sont :
+    - Une ~QTextEdit~ dans laquelle l'utilisateur pourra taper le texte qu'il souhaite encrypter. Vous pouvez egalement directement y coller du texte plutot que de le taper.
+    - Une ~QTextEdit~ dans laquelle le texte encrypte en binaire apparaitra. L'utilisateur ne peut pas interagir avec le texte qui s'affichera dans cette "text box".
+
+#+CAPTION:  Voici la fenetre Qt qui vous sera affichee a l'execution du programme.
+#+NAME:     fig:qt_window.png
+[[./.screenshot/qt_window.png]]
+
+La classe ~AppWindow~ implemente egalement deux methodes qui sont appelees lorsque l'utilisateur clique sur un bouton :
+- ~run_compression()~ lorsque l'utilisateur clique sur "Compress". Cette fonction recupere le texte a compresser, cree le tableau d'ArbreB associe, construit l'arbre de Huffman pour le texte en entree, remplie la map pour obtenir le code de chaque caractere, initialise la chaine contenant la version encryptee du texte et enfin l'affiche a l'ecran. L'arbre de Huffman ainsi que l'encodage de chaque caractere s'affiche egalement dans le terminal.
+- ~clear_text()~ lorsque l'utilisateur clique sur "Clear". Cette fonction efface le texte precedemment entre par l'utilisateur, ainsi que sa version binaire si l'utilisateur l'a encrypter. A noter que cette fonction n'est pas absolument pas necessaire au bon fonctionnement de l'application et que l'utilisateur peut effacer manuellement le texte qu'il a ecrit.
+
+#+CAPTION:  Un exemple de compression d'une chaine de charactere en binaire avec Qt et l'affichage de l'arbre et de l'encodage de chaque caractere dans le terminal.
+#+NAME:     fig:qt_output.png
+[[./.screenshot/qt_output.png]]

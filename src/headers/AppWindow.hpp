@@ -14,7 +14,7 @@
 #include <QtWidgets/QTextEdit>
 
 /**
- * @brief The class `AppWindow` represents the GUI that dislays the program. 
+ * @brief The class `AppWindow` represents the GUI that dislays the program.
  * @author Gabriel Dos Santos
  * @version 0.1.0
  * @date 2020/12/13
@@ -52,7 +52,7 @@ class AppWindow : public QWidget {
          * The layout of the text boxes.
          */
         QGridLayout* layout_text;
-        
+
         /**
          * The global layout.
          */
