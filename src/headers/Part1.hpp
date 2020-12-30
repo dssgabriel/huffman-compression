@@ -3,7 +3,7 @@
  * @author Gabriel Dos Santos
  * @brief Implementation of the class Part1
  * @version 0.1.0
- * @date 2020-12-14
+ * @date 2020/12/14
  */
 
 #ifndef PART_ONE_HPP
