@@ -16,8 +16,9 @@ endif()
 find_package(Qt5 COMPONENTS Widgets Gui Core REQUIRED)
 
 set(LIBS
-    src/bin/main2.cpp
+    src/bin/main3.cpp
     src/lib/Part2.cpp
+    src/lib/Part3.cpp
     src/lib/AppWindow.cpp
     src/lib/ArbreB.cpp
     src/lib/Sommet.cpp
@@ -25,11 +26,12 @@ set(LIBS
 
 set(HEADERS
     src/headers/Part2.hpp
+    src/headers/Part3.hpp
     src/headers/AppWindow.hpp
     src/headers/ArbreB.hpp
     src/headers/Sommet.hpp
 )
 
-add_executable(partie_2 ${LIBS} ${HEADERS})
+add_executable(partie_3 ${LIBS} ${HEADERS})
 
-target_link_libraries(partie_2 Qt5::Widgets Qt5::Core Qt5::Gui)
+target_link_libraries(partie_3 Qt5::Widgets Qt5::Core Qt5::Gui)
