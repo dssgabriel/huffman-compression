@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "IN505 C++ Project: Part 2 - Huffman build script\n"
+echo "IN505 C++ Project: Part 3 - Huffman build script\n"
 
 ./.check_dependencies.sh
 check=$?
@@ -14,7 +14,7 @@ then
   make
 
   echo "\nBUILD SUCCESSFUL!"
-  echo "\nYou can run the project with './partie_2'"
+  echo "\nYou can run the project with './partie_3'"
   echo "ADVICE: Keep the terminal open as output will be printed to it during execution!"
 else
 echo "\nWARNING: Dependencies are not met."
@@ -32,7 +32,7 @@ while true
       make
 
       echo "\nBUILD SUCCESSFUL!"
-      echo "\nYou can run the project with './partie_2'"
+      echo "\nYou can run the project with './partie_3'"
       echo "ADVICE: Keep the terminal open as output will be printed to it during execution!"
       break
       ;;
