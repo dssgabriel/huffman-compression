@@ -46,21 +46,18 @@ The goal of this third and last part is to take a compressed text with the Huffm
 
 The project uses the CMake toolchain to build the project.
 In order to simplify this process, the project comes with a `build.sh` script that you can run with the following:
-
 ``` sh
 ./build.sh
 ```
 
 Then simply follow the instructions on the screen to complete the build process.
 
-If, for whatever reason the script is not executable, you can make it with the following command:
-
+If, for whatever reason the script is not executable, you can use the following command:
 ``` sh
 chmod +x build.sh .check_dependencies.sh
 ```
 
 To run the application, simply type:
-
 ``` sh
-./partie_2
+./partie_3
 ```
