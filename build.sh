@@ -14,7 +14,7 @@ then
   make
 
   echo "\nBUILD SUCCESSFUL!"
-  echo "\nYou can run the project with './partie_3'"
+  echo "\nYou can run the project with './huffman'"
   echo "ADVICE: Keep the terminal open as output will be printed to it during execution!"
 else
 echo "\nWARNING: Dependencies are not met."
@@ -32,7 +32,7 @@ while true
       make
 
       echo "\nBUILD SUCCESSFUL!"
-      echo "\nYou can run the project with './partie_3'"
+      echo "\nYou can run the project with './huffman'"
       echo "ADVICE: Keep the terminal open as output will be printed to it during execution!"
       break
       ;;

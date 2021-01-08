@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1.0)
 
-project(huffman VERSION 0.2.0 LANGUAGES CXX)
+project(huffman VERSION 0.3.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -32,6 +32,6 @@ set(HEADERS
     src/headers/Sommet.hpp
 )
 
-add_executable(partie_3 ${LIBS} ${HEADERS})
+add_executable(huffman ${LIBS} ${HEADERS})
 
-target_link_libraries(partie_3 Qt5::Widgets Qt5::Core Qt5::Gui)
+target_link_libraries(huffman Qt5::Widgets Qt5::Core Qt5::Gui)

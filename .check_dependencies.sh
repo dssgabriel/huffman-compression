@@ -8,7 +8,7 @@ do
   read -r -p "Continue anyway? [Y/n] " input
   case $input in
   [yY]|[yY][eE][sS])
-    echo "\nStarting checks..."
+    echo "\nStarting checks"
     for package in g++ cmake qt5-default
     do
       echo -n "Checking $package... "

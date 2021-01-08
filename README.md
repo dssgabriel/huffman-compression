@@ -62,5 +62,5 @@ chmod +x build.sh .check_dependencies.sh
 To run the application, simply type:
 
 ``` sh
-./partie_2
+./huffman
 ```
