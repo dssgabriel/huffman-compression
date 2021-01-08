@@ -1,8 +1,8 @@
-# IN505 - C++ Project: Compression and Decompression
+# IN505 - C++ Project: Compression and Uncompression
 
 ## Description of the project
 
-The goal of this project is to write an application for compressing and decompressing text based on a C++ implementation of the Huffman compression algorithm.
+The goal of this project is to write an application for compressing and uncompressing text based on a C++ implementation of the Huffman compression algorithm.
 
 The Huffman code aims at converting a text in binary (with '0's and '1's) and compressing the size of the output file without losing any data. For each letters in the text to compress, we count how much instances of each letters there are and then apply the following algorithm on each one:
 
@@ -33,34 +33,31 @@ The goal of this part is to take an input text (it can be in English, French, or
 3.  Compress an input text with the letter compression made in step 2.
 4.  Enhance the GUI to allow the user to print the text to compress and its binary output.
 
-### Part 3: Decompression
+### Part 3: Uncompression
 
-The goal of this third and last part is to take a compressed text with the Huffman code and to decompress this text. Your application should be able to:
+The goal of this third and last part is to take a compressed text with the Huffman code and to uncompress this text. Your application should be able to:
 
 -   Verify if a text has been compressed using the binary tree created in part 2.
--   Decompress a text compressed with the Huffman code.
--   Display the text to decompress in the GUI and print the result of the decompression process.
+-   Uncompress a text compressed with the Huffman code.
+-   Display the text to uncompress in the GUI and print the result of the uncompression process.
 
 
 ## Building the project
 
 The project uses the CMake toolchain to build the project.
 In order to simplify this process, the project comes with a `build.sh` script that you can run with the following:
-
 ``` sh
 ./build.sh
 ```
 
 Then simply follow the instructions on the screen to complete the build process.
 
-If, for whatever reason the script is not executable, you can make it with the following command:
-
+If, for whatever reason the script is not executable, you can use the following command:
 ``` sh
 chmod +x build.sh .check_dependencies.sh
 ```
 
 To run the application, simply type:
-
 ``` sh
 ./huffman
 ```
