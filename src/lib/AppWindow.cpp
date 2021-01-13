@@ -67,7 +67,7 @@ void AppWindow::run_compression() {
     output->setText("");
     std::string content = input->toPlainText().toStdString();
     if (content.empty() || content.length() == 1)  {
-        info->setText("Warning: input string is empty or too small (needs at least two characters");
+        info->setText("Error: input string is empty or too small (needs at least two characters)");
         return;
     }
 
@@ -90,27 +90,27 @@ void AppWindow::run_uncompression() {
     info->setText("");
     output->setText("");
     if (!huffman.get_root()) {
-        info->setText("Warning: No text has been compressed yet");
+        info->setText("Error: No text has been compressed yet");
         return;
     } 
 
     std::string content = input->toPlainText().toStdString();
     if (content.empty() || content.length() == 1)  {
-        info->setText("Warning: input string is empty or too small (needs at least two characters");
+        info->setText("Error: input string is empty or too small (needs at least two characters)");
         return;
     }
     
     if (is_huffman_code(content)) {
         std::string uncompressed = uncompress_binary(content, huffman);
         if (uncompressed.empty()) {
-            info->setText("Warning: input does not correspond to a known huffman tree");
+            info->setText("Error: input does not correspond to a known huffman tree");
         } else {
             QString q_uncompressed = QString::fromStdString(uncompressed);
             output->setText(q_uncompressed);
         }
     }
     else {
-        info->setText("Warning: input is not in binary");
+        info->setText("Error: input is not in binary");
     }
 }
 
