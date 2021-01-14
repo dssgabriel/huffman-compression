@@ -1,3 +1,11 @@
+/**
+ * @file Part2.cpp
+ * @author Gabriel Dos Santos
+ * @brief Implementation of the functions for the second part of the project.
+ * @version 0.2.0
+ * @date 2020/12/13
+ */
+
 #include "../headers/Part2.hpp"
 
 unsigned int find(std::vector<ArbreB>& vec, char& content) {
