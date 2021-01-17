@@ -1,3 +1,11 @@
+/**
+ * @file Part1.cpp
+ * @author Gabriel Dos Santos
+ * @brief Implementation of the class Part1
+ * @version 0.1.0
+ * @date 2020/12/14
+ */
+
 #include "../headers/Part1.hpp"
 
 unsigned int Part1::total_tests = 23;
