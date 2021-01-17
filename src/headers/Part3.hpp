@@ -19,6 +19,11 @@
  */
 bool is_huffman_code(std::string& input);
 
+/**
+ *
+ */
+bool is_repeated_character(std::string input);
+
 /** 
  * Uncompresses a binary string to its ASCII format.
  * Performs a inorder traversal of the specified Huffman tree to uncompress the input binary.

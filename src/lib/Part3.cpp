@@ -19,6 +19,15 @@ bool is_huffman_code(std::string& input) {
     return input.empty() ? false : binary;
 }
 
+bool is_repeated_character(std::string input) {
+    bool repeated = true;
+    for (unsigned int i = 0; i < input.length() - 1 && repeated; i++) {
+        repeated = (input[i] == input[i + 1]);
+    }
+
+    return repeated;
+}
+
 std::string uncompress_binary(std::string& input, ArbreB& huffman) {
     std::string uncompressed;
     Sommet* current = huffman.get_root();
